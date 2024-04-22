@@ -1,0 +1,35 @@
+.appWrapper {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "nav content content";
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 10fr;
+  box-sizing: border-box;
+}
+
+.appWrapperContent {
+  grid-area: content;
+}
+
+.preloaderWrapper {}
+
+
+@media (max-width: 992px) {
+  .appWrapper {
+    grid-template-areas:
+      "header header header"
+      "content content content";
+    grid-template-columns: 1fr;
+  }
+
+  .appWrapperContent {
+    margin-top: 60px;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
