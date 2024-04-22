@@ -1,0 +1,10 @@
+.formWithError {
+    border: 1px red solid;
+    position: relative;
+    color: red;
+}
+.spanError {
+    color: red;
+    position: absolute;
+    transform: translateX(-105%);
+}

@@ -1,0 +1,5 @@
+.posts {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 15px;
+}

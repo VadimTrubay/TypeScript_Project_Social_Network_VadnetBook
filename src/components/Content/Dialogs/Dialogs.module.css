@@ -1,0 +1,7 @@
+.messages {
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    padding-top: 15px;
+    gap: 15px;
+}
+

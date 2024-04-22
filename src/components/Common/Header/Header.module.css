@@ -1,0 +1,19 @@
+.header {
+    background-color: rgba(21, 34, 42, 0.9);
+    border: 1px solid rgba(112, 128, 144, 0.9);
+    border-radius: 0 0 15px 15px;
+    transform: translateY(-1px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+.title {
+    color: white;
+    font-size: 25px;
+}
+.login {
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}

@@ -1,0 +1,69 @@
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.photoContainer {
+    position: relative;
+    width: 100%;
+    height: 350px;
+}
+.photo {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+.changePhotoInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.description {
+    width: 100%;
+    height: 290px;
+}
+.statusSpan {
+    margin: 0;
+    color: white;
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
+.statusSpan:hover {
+    color: aquamarine;
+    border-bottom: 1px solid aquamarine;
+}
+.statusInput {
+    outline: none;
+    margin: 0;
+    border: none;
+}
+.info {
+    margin: 15px 0 0 0;
+    color: white;
+}
+.info a {
+    color: white;
+}
+.info a:hover {
+    color: aquamarine;
+}
+.infoButton {
+    margin: 15px 0 0 0;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+    width: 100px;
+    height: 20px;
+}
+.infoButton:hover {
+    background-color: aquamarine;
+    color: green;
+    border: 1px solid green;
+}

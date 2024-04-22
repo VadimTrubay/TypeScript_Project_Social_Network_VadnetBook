@@ -1,0 +1,75 @@
+.friend {
+    display: grid;
+    grid-template-columns: 1fr 11fr;
+    gap: 15px;
+    margin: 15px 15px 0 15px;
+    color: white;
+    font-size: 15px;
+    border-radius: 8px;
+    align-items: center;
+}
+.friend:last-child {
+    margin-bottom: 15px;
+}
+
+.photo {
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.button {
+    display: flex;
+    margin: 10px auto 0;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 25px;
+    border: 1px solid rgba(112, 128, 144, 0.9);
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    background: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.buttonFollow:hover {
+    color: aquamarine;
+    border: 1px solid aquamarine;
+}
+
+.buttonUnfollow:hover {
+    color: darksalmon;
+    border: 1px solid darksalmon;
+}
+
+.disabled {
+    background: rgba(112, 128, 144, 0.13);
+    color:rgba(112, 128, 144, 0.9);
+}
+
+.description {
+    display: flex;
+    justify-content: space-between;
+    height: 65px;
+    border: 1px solid rgba(112, 128, 144, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.nameStatus {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.location {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
