@@ -3,10 +3,10 @@ import {selectUsers} from "../../redux/users/selectors";
 import {useEffect} from "react";
 import {fetchUsers} from "../../redux/users/operations"
 
-const Users = () => {
+const UsersPage = () => {
   const dispatch = useDispatch();
   const allUsers = useSelector(selectUsers);
-  console.log(allUsers)
+  // console.log(allUsers)
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -26,4 +26,4 @@ const Users = () => {
   )
 }
 
-export default Users
+export default UsersPage

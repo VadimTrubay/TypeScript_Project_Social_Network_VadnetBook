@@ -12,23 +12,24 @@ import {ThemeProvider} from "@mui/material/styles";
 import {useFormik} from "formik";
 import {logIn} from "../../redux/auth/operations.js";
 import {validationSchemaLogin} from "../../validate/validationSchemaLogin.js";
-import {createTheme} from "@mui/material";
+import {Checkbox, createTheme} from "@mui/material";
 import {selectIsAuth, selectUserId} from "../../redux/auth/selectors.js";
 
 export const defaultTheme = createTheme();
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const selectedIsAuth = useSelector(selectIsAuth);
-  const selectedUserId = useSelector(selectUserId)
 
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
+      rememberMe: true,
     },
     validationSchema: validationSchemaLogin,
     onSubmit: (values) => {
+      console.log(values)
+
       if (formik.isValid) {
         dispatch(logIn(values));
       }
@@ -92,6 +93,7 @@ const LoginForm = () => {
               }
               helperText={formik.touched.password && formik.errors.password}
             />
+            <Checkbox type="checkbox" label="rememberMe" id="rememberMe"/>
             <Button
               type="submit"
               color="success"

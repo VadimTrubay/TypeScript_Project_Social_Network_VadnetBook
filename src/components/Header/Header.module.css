@@ -1,0 +1,176 @@
+@font-face {
+  font-family: 'Raleway';
+  src: local('Raleway'),
+  url('./../Other/fonts/Raleway/Raleway-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: local('Raleway'),
+  url('./../Other/fonts/Raleway/Raleway-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  background-color: #8d8d8d;
+  padding: 10px 20px;
+}
+
+.header img {
+  width: 30px;
+}
+
+.loginWrapper{
+    /*max-width: 130px;*/
+  display: flex;
+  align-items: center;
+}
+
+.loggedUserWrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginLogoWrapper{
+  transition: 0.3s all;
+  position: relative;
+}
+
+.loginLogoWrapperOverflow {
+  overflow: hidden;
+  transition: 0.3s all;
+  border-radius: 50%;
+}
+
+.loginLogo{
+  transform: scale(1.2);
+  max-width: 25px;
+  max-height: 25px;
+}
+
+.loginName{
+  margin-right: 10px;
+  font-size: 22px;
+  color: white;
+  font-weight: 300;
+  transition: 0.3s all;
+  transform: translateY(-2px);
+}
+
+.loggedUserLink{
+  text-decoration: none;
+  transition: 0.3s all;
+}
+
+.loggedUserLink:hover .loginLogoWrapperOverflow {
+  transform: scale(1.1);
+}
+
+.loggedUserLink:hover .loginName {
+  color: #ffdcb8;
+}
+
+.loginButton{
+  color: white;
+  font-size: 17px;
+  font-weight: 300;
+  text-decoration: none;
+  padding: 7px 15px;
+  background-color: #ff8f49;
+  border-radius: 10px;
+  transition: 0.3s all;
+}
+
+.loginButton:hover {
+  background-color: #fc5a35;
+}
+
+.logoutButtonWrapper {
+  position: absolute;
+  bottom: -10px;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.logoutButton {
+  color: white;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #464646;
+  text-decoration: none;
+  border: none;
+  display: none;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+.loggedUserLink:hover .logoutButton {
+  display: block;
+}
+
+.logoutButton:hover {
+  background-color: #fc5a35;
+}
+
+.headerSocialTitleWrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  max-width: 100px;
+  margin-left: 10px;
+}
+
+.headerSocialName{
+  font-family: "Raleway";
+  font-weight: 700;
+  display: block;
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+  width: 100%;
+
+}
+
+.headerSocialSubname{
+  font-family: "Raleway";
+  font-weight: 300;
+  display: block;
+  font-size: 12px;
+  color: white;
+  text-decoration: none;
+  width: 100%;
+}
+
+.navLinkHeaderLogoWrapper{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    padding: 10px;
+  }
+
+  .logoutButton{
+    display: block;
+  }
+
+  .loginButton {
+    margin-right: 10px;
+  }
+
+  .loggedUserLink{
+    margin-right: 10px;
+  }
+}

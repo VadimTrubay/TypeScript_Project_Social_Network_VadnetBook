@@ -15,6 +15,7 @@ export const fetchUsers = createAsyncThunk(
   async (currentPage = 1, pageSize = 10, onlyFriends = null, thunkAPI) => {
     try {
       const response = await axiosCustomInstance.get(`users?page=${currentPage}&count=${pageSize}&friend=${onlyFriends}`);
+      // console.log(response)
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

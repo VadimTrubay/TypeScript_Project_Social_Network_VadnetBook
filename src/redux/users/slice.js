@@ -18,7 +18,7 @@ const handleFetchUsersFulfilled = (state, action) => {
   state.error = null;
   state.items = action.payload.items;
   state.totalCount = action.payload.totalCount;
-  console.log(state.items);
+  // console.log(state.items);
 };
 
 const handleRejected = (state, action) => {
