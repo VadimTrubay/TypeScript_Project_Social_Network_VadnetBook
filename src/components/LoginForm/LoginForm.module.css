@@ -1,0 +1,9 @@
+.button {
+  background-color: var(--brand-color-contactbook);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.button:hover {
+  background-color: var(--brand-color-contactbook-hover);
+}
