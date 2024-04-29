@@ -20,8 +20,13 @@ const authSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(logIn.fulfilled, (state, action) => {
-        state.userId = action.payload.data.userId;
-        state.isAuth = true;
+        if (action.payload.resultCode === 0) {
+          state.userId = action.payload.data.userId;
+          state.email = action.payload.data.email;
+          state.login = action.payload.data.login;
+          state.smallLogo = action.payload.data.smallLogo;
+          state.isAuth = true;
+        }
       })
       .addCase(logOut.fulfilled, (state) => {
         state.email = null;

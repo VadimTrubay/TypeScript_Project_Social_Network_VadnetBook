@@ -1,121 +1,95 @@
-import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import {ThemeProvider} from "@mui/material/styles";
-import {useFormik} from "formik";
+import {useDispatch} from "react-redux";
+import styles from "./LoginForm.module.css"
+import {Field, Form, Formik, useFormik} from "formik";
 import {logIn} from "../../redux/auth/operations.js";
 import {validationSchemaLogin} from "../../validate/validationSchemaLogin.js";
-import {Checkbox, createTheme} from "@mui/material";
-import {selectIsAuth, selectUserId} from "../../redux/auth/selectors.js";
-
-export const defaultTheme = createTheme();
 
 const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-      rememberMe: true,
-    },
-    validationSchema: validationSchemaLogin,
-    onSubmit: (values) => {
-      console.log(values)
 
-      if (formik.isValid) {
-        dispatch(logIn(values));
-      }
-    },
-  });
+  const initialValues = {
+    email: 'free@samuraijs.com',
+    password: 'free',
+    remember: "",
+    captcha: '',
+  }
+
+  const handleSubmit = values => {
+    console.log(values)
+    dispatch(logIn({...values}));
+  };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline/>
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{m: 1, bgcolor: "#2aaf00"}}>
-            <LockOutlinedIcon/>
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Login
-          </Typography>
-          <Box
-            component="form"
-            onSubmit={formik.handleSubmit}
-            sx={{mt: 1, borderColor: "red"}}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              color="success"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              color="success"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={
-                formik.touched.password && Boolean(formik.errors.password)
-              }
-              helperText={formik.touched.password && formik.errors.password}
-            />
-            <Checkbox type="checkbox" label="rememberMe" id="rememberMe"/>
-            <Button
-              type="submit"
-              color="success"
-              fullWidth
-              variant="contained"
-              sx={{bgcolor: "#2aaf00"}}
-            >
-              Login
-            </Button>
-            {/*<Grid container justifyContent="flex-end">*/}
-              {/*<Grid item>*/}
-                {/*<Span>Don&apos;t have an account?</Span>*/}
-                {/*<Link to="/register" variant="body2">*/}
-                {/*  Register*/}
-                {/*</Link>*/}
-              {/*</Grid>*/}
-            {/*</Grid>*/}
-          </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
-  );
+    <div>
+      <h1 className={styles.title}>Login</h1>
+
+      <div className={styles.testedDataWrapper}>
+        <div className={styles.testedDataTitle}>Test account:</div>
+        <div className={styles.testedData}>Login: free@samuraijs.com</div>
+        <div className={styles.testedData}>Password: free</div>
+
+        <button className={styles.loginTestAccountButton} onClick={() => {
+          dispatch(logIn(initialValues));
+        }}>Login test account
+        </button>
+      </div>
+
+      <div className={styles.afterDataText}>or login your account:</div>
+
+      <Formik
+        initialValues={{
+          email: '',
+          password: '',
+          remember: '',
+          captcha: '',
+        }}
+        validationSchema={validationSchemaLogin}
+        onSubmit={(values, actions) => {
+          handleSubmit(values);
+          actions.resetForm();
+        }}
+      >
+        {({errors, touched, dirty, isValid}) => {
+          return <Form>
+            <div className={styles.formWrapper}>
+              <div className={styles.inputWrapper}>
+                <label htmlFor="login">Email:</label>
+                <Field className={styles.input} id="email" name="email" placeholder="Your email" type="text"/>
+                {errors.email && touched.email && <div className={styles.errorBlock}>{errors.email}</div>}
+              </div>
+              <div className={styles.inputWrapper}>
+                <label htmlFor="password">Password:</label>
+                <Field className={styles.input} id="password" name="password" placeholder="Your password"/>
+                {errors.password && touched.password && <div className={styles.errorBlock}>{errors.password}</div>}
+              </div>
+
+              <div className={styles.inputWrapper + ' ' + styles.checkboxWrapper}>
+                <label htmlFor="remember" className={styles.checkboxLabel}>Remember me</label>
+                <Field className={styles.checkbox} id="remember" name="remember" type="checkbox"/>
+              </div>
+
+              {/*<div className={`${styles.generalErrorFetchingWrapper} ${isError ? styles.setHeightErrorWrapper : ''} `}>*/}
+              {/*  {isError ? <div className={styles.generalErrorFetching}>{errorMessage}</div> : ''}*/}
+              {/*</div>*/}
+
+              {/*{captchaUrl ?*/}
+              {/*  <div className={styles.inputWrapper}>*/}
+              {/*    <img src={captchaUrl} alt="captcha"/>*/}
+              {/*<Field className={styles.checkbox} id="captcha" name="captcha" placeholder="Captcha"/>*/}
+              {/*  </div> : ''*/}
+              {/*}*/}
+
+              <div className={styles.buttonWrapper}>
+                <button type="submit" className={styles.authButton}>Log In</button>
+                {/*<div className={styles.preloaderWrapper}>{isFetching ? <Preloader/> : ''}</div>*/}
+              </div>
+            </div>
+          </Form>
+        }}
+      </Formik>
+    </div>
+  )
 };
 
 export default LoginForm;

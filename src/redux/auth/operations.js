@@ -24,6 +24,7 @@ const clearAuthHeader = () => {
 export const logIn = createAsyncThunk(
   "auth/login",
   async (credentials, thunkAPI) => {
+    console.log(credentials)
     try {
       const response = await axiosCustomInstance.post("/auth/login", credentials);
       // setAuthHeader(API_KEY);
@@ -36,9 +37,9 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk(
   "auth/logout",
-  async (credentials, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      await axiosCustomInstance.post("/auth/logout", credentials);
+      await axiosCustomInstance.delete("/auth/login");
       clearAuthHeader();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
