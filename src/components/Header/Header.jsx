@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectIsAuth, selectUserId, selectUserLogin} from "../../redux/auth/selectors.js";
 import {selectUser} from "../../redux/users/selectors.js";
 import {logOut} from "../../redux/auth/operations.js";
+import {useEffect} from "react";
 // import {ModalButton} from "../Other/ModalButton/ModalButton";
 
 const Header = () => {
@@ -13,17 +14,10 @@ const Header = () => {
   const userId = useSelector(selectUserId);
   const userLogin = useSelector(selectUserLogin);
   const isAuth = useSelector(selectIsAuth);
-  const currentUser = useSelector(selectUser);
-  // console.log(userId)
-  // console.log(currentUser)
 
   const editUserProfileModal = () => {
-
   }
 
-  // const logout = () => {
-  //   dispatch(logOut())
-  // }
 
   return (
     <header className={styles.header}>
@@ -41,25 +35,26 @@ const Header = () => {
                      onClick={() => {
                        editUserProfileModal(true)
                      }}>
-              {/*<div className={styles.loggedUserWrapper}>*/}
-              {/*<span className={styles.loginName}>{userLogin}</span>*/}
-              {/*<div className={styles.loginLogoWrapper}>*/}
-              {/*<div className={styles.loginLogoWrapperOverflow}>*/}
-              {/*{currentUser && <img className={styles.loginLogo}*/}
-              {/*                     src={currentUser.photos.small ? defaultUser : currentUser.photos.small}*/}
-              {/*alt="user"/>}*/}
-              {/*</div>*/}          </NavLink>
-
-            <button onClick={() => {
+              <div className={styles.loggedUserWrapper}>
+                <span className={styles.loginName}>{userLogin}</span>
+                <div className={styles.loginLogoWrapper}>
+                  <div className={styles.loginLogoWrapperOverflow}>
+                    <img className={styles.loginLogo}
+                         src={defaultUser}
+                         alt="user"/>
+                  </div>
+                </div>
+              </div>
+            </NavLink>
+            <button className={styles.logoutButton} onClick={() => {
               dispatch(logOut());
               // editUserProfileModal(false);
             }}>LogOut
             </button>
           </div> :
-
-          // </div>
-          //   </div>
-          <NavLink to={'/login'} className={styles.loginButton}>LogIn</NavLink>}
+          <NavLink to={'/login'} className={styles.loginButton}>LogIn
+          </NavLink>
+        }
 
         {/*<ModalButton burgerMenuStatus={props.burgerMenuStatus}*/}
         {/*             switchBurgerMenuStatus={props.switchBurgerMenuStatus}></ModalButton>*/}

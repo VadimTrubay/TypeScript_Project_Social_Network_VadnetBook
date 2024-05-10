@@ -11,12 +11,12 @@ const LoginForm = () => {
   const initialValues = {
     email: 'free@samuraijs.com',
     password: 'free',
-    remember: "",
+    rememberMe: true,
     captcha: '',
   }
 
   const handleSubmit = values => {
-    console.log(values)
+    // console.log(values)
     dispatch(logIn({...values}));
   };
 
@@ -41,7 +41,7 @@ const LoginForm = () => {
         initialValues={{
           email: '',
           password: '',
-          remember: '',
+          // rememberMe: true,
           captcha: '',
         }}
         validationSchema={validationSchemaLogin}
@@ -65,8 +65,8 @@ const LoginForm = () => {
               </div>
 
               <div className={styles.inputWrapper + ' ' + styles.checkboxWrapper}>
-                <label htmlFor="remember" className={styles.checkboxLabel}>Remember me</label>
-                <Field className={styles.checkbox} id="remember" name="remember" type="checkbox"/>
+                <label htmlFor="rememberMe" className={styles.checkboxLabel}>Remember me</label>
+                <Field className={styles.checkbox} id="rememberMe" name="rememberMe" type="checkbox"/>
               </div>
 
               {/*<div className={`${styles.generalErrorFetchingWrapper} ${isError ? styles.setHeightErrorWrapper : ''} `}>*/}

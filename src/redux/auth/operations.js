@@ -28,6 +28,20 @@ export const logIn = createAsyncThunk(
     try {
       const response = await axiosCustomInstance.post("/auth/login", credentials);
       // setAuthHeader(API_KEY);
+      // console.log(response.data)
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getMe = createAsyncThunk(
+  "auth/me",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosCustomInstance.get("/auth/me");
+      // console.log(response.data)
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

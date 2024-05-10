@@ -1,12 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {logIn, logOut} from "./operations";
+import {logIn, logOut, getMe} from "./operations";
 
 
 const initialAuth = {
   userId: null,
-  email: null,
-  login: null,
-  smallLogo: null,
+  me: {
+    email: null,
+    login: null,
+  },
   isAuth: false,
   loading: false,
   error: null,
@@ -22,9 +23,14 @@ const authSlice = createSlice({
       .addCase(logIn.fulfilled, (state, action) => {
         if (action.payload.resultCode === 0) {
           state.userId = action.payload.data.userId;
-          state.email = action.payload.data.email;
-          state.login = action.payload.data.login;
-          state.smallLogo = action.payload.data.smallLogo;
+          state.isAuth = true;
+        }
+      })
+      .addCase(getMe.fulfilled, (state, action) => {
+        if (action.payload.resultCode === 0) {
+          state.me.userId = action.payload.data.id;
+          state.me.email = action.payload.data.email;
+          state.me.login = action.payload.data.login;
           state.isAuth = true;
         }
       })

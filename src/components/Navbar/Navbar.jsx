@@ -11,17 +11,19 @@ const Navbar = () => {
   return (
     <>
       <nav className={styles.nav}>
-        <div><NavLink to="/profile">Profile</NavLink></div>
-        {isAuth ? <div><NavLink to="/friends">Friends</NavLink></div> : ''}
-        <div><NavLink to="/dialogs">Messages</NavLink></div>
-        <div className={styles.lastNavChild}><NavLink to="/users">Users</NavLink></div>
-
-        {isAuth && window.innerWidth > 500 ? <> {/* hide friends list on mobile view */}
-          <span className={styles.onlineTitle}>Your friends:</span>
-          <div className={styles.sidebarFriends}>
-            <OnlineFriendsListItem/>
+        <div><NavLink to="/users">Users</NavLink></div>
+        {isAuth &&
+          <div>
+            <div><NavLink to="/friends">Friends</NavLink></div>
+            <div><NavLink to="/messages">Messages</NavLink></div>
+            <div><NavLink to="/me">Profile</NavLink></div>
+            <div className={styles.lastNavChild}><NavLink to="/settings">Settings</NavLink></div>
+            <span className={styles.onlineTitle}>Your friends:</span>
+            <div className={styles.sidebarFriends}>
+              <OnlineFriendsListItem/>
+            </div>
           </div>
-        </> : ''}
+        }
       </nav>
     </>
   );

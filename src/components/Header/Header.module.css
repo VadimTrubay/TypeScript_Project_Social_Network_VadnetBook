@@ -24,19 +24,19 @@
   width: 30px;
 }
 
-.loginWrapper{
-    /*max-width: 130px;*/
+.loginWrapper {
+  /*max-width: 130px;*/
   display: flex;
   align-items: center;
 }
 
-.loggedUserWrapper{
+.loggedUserWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.loginLogoWrapper{
+.loginLogoWrapper {
   transition: 0.3s all;
   position: relative;
 }
@@ -47,13 +47,13 @@
   border-radius: 50%;
 }
 
-.loginLogo{
+.loginLogo {
   transform: scale(1.2);
   max-width: 25px;
   max-height: 25px;
 }
 
-.loginName{
+.loginName {
   margin-right: 10px;
   font-size: 22px;
   color: white;
@@ -62,7 +62,7 @@
   transform: translateY(-2px);
 }
 
-.loggedUserLink{
+.loggedUserLink {
   text-decoration: none;
   transition: 0.3s all;
 }
@@ -75,7 +75,7 @@
   color: #ffdcb8;
 }
 
-.loginButton{
+.loginButton {
   color: white;
   font-size: 17px;
   font-weight: 300;
@@ -90,22 +90,13 @@
   background-color: #fc5a35;
 }
 
-.logoutButtonWrapper {
-  position: absolute;
-  bottom: -10px;
-  right: 50%;
-  transform: translateX(50%);
-}
-
 .logoutButton {
   color: white;
-  font-size: 12px;
+  font-size: 16px;
   padding: 5px;
-  border-radius: 5px;
+  border: 0;
+  border-radius: 8px;
   background-color: #464646;
-  text-decoration: none;
-  border: none;
-  display: none;
   cursor: pointer;
   transition: 0.3s all;
 }
@@ -126,7 +117,7 @@
   margin-left: 10px;
 }
 
-.headerSocialName{
+.headerSocialName {
   font-family: "Raleway";
   font-weight: 700;
   display: block;
@@ -137,7 +128,7 @@
 
 }
 
-.headerSocialSubname{
+.headerSocialSubname {
   font-family: "Raleway";
   font-weight: 300;
   display: block;
@@ -147,7 +138,7 @@
   width: 100%;
 }
 
-.navLinkHeaderLogoWrapper{
+.navLinkHeaderLogoWrapper {
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -162,7 +153,7 @@
     padding: 10px;
   }
 
-  .logoutButton{
+  .logoutButton {
     display: block;
   }
 
@@ -170,7 +161,7 @@
     margin-right: 10px;
   }
 
-  .loggedUserLink{
+  .loggedUserLink {
     margin-right: 10px;
   }
 }
