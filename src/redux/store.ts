@@ -10,19 +10,22 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import {usersReducer} from "./users/slice";
 import {authReducer} from "./auth/slice";
+// import {commentsReducer} from "./comments/slice.ts";
+
 
 const authPersistConfig = {
-  key: "API_KEY",
+  key: "auth",
   storage,
-  whitelist: ["api_key"],
+  whitelist: ["access_token"],
 };
+
+type AuthPersistedState = ReturnType<typeof authReducer>;
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-    users: usersReducer,
+    auth: persistReducer<AuthPersistedState>(authPersistConfig, authReducer),
+    // users: usersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -34,3 +37,5 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
