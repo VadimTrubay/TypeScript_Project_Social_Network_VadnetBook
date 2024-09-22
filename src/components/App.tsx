@@ -15,16 +15,18 @@ const NotFoundPage = lazy(() => import ("../pages/NotFoundPage/NotFoundPage.jsx"
 
 const App = () => {
   const isAuth = useSelector(selectIsAuth);
-  const loading = useSelector(selectLoading);
+  // const loading = useSelector(selectLoading);
+  const loading = true;
+
   // console.log(isAuth)
 
-  if (loading) {
-    return (
-      <div>
-        <Preloader/>
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div>
+  //       <Preloader/>
+  //     </div>
+  //   );
+  // }
   return (
     <>
       <Layout>
