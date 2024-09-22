@@ -18,7 +18,7 @@ const handlePending = (state: initialUsersType) => {
 const handleFetchUsersFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
-  state.items = action.payload.items;
+  state.items = action.payload.results;
   state.count = action.payload.count;
   state.next = action.payload.next;
   state.previous = action.payload.previous;

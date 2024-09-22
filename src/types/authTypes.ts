@@ -12,5 +12,5 @@ export interface UserType {
   username: string;
   followed: boolean,
   status: string | null;
-  profile_picture: string | null;
+  profile_picture: string | undefined;
 }

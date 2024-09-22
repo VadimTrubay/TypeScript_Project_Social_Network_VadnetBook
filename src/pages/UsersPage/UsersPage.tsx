@@ -19,10 +19,11 @@ const UsersPage: React.FC = () => {
   return (
     <div>
       <ul>
-        {users.map(({id, username}) => (
-          <li key={id}>
-            {/*{id}*/}
-            {username}
+        {users.map(({...props}) => (
+          <li key={props.id}>
+            <p>{props.id}</p>
+            <p>{props.username}</p>
+            <a href={props.profile_picture}>{props.profile_picture}</a>
             {/*{el.photos.small !== null ? el.photos.small : defaultUser}*/}
           </li>
         ))}
