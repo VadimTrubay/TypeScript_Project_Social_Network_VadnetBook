@@ -4,8 +4,8 @@ import {lazy} from "react";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {selectIsAuth} from "../redux/auth/selectors.js";
-import {RestrictedRoute} from "./RestrictedRoute/RestrictedRoute.jsx";
 import Preloader from "./Other/Preloader/Preloader";
+import {RouterEndpoints} from "../config/routes";
 
 const HomePage = lazy(() => import ("../pages/HomePage/HomePage.jsx"))
 const LoginForm = lazy(() => import ("../components/LoginForm/LoginForm.jsx"))
@@ -31,19 +31,18 @@ const App = () => {
     <>
       <Layout>
         <Routes>
-          <Route path="profile" element={<ProfilePage/>}/>
-          {/*<Route path="friends" element={<FriendsPage/>}/>*/}
-          {/*<Route path="messages" element={<MessagesPage/>}/>*/}
-          <Route path="users" element={<UsersPage/>}/>
-          <Route
-            path="login"
-            element={
-              <RestrictedRoute
-                redirectTo="/"
-                component={<LoginForm/>}
-              />
-            }
-          />
+          <Route path={RouterEndpoints.users} element={<UsersPage/>}/>
+          {/*<Route path={RouterEndpoints.profile} element={<ProfilePage/>}/>*/}
+          {/*<Route path={RouterEndpoints.friends} element={<FriendsPage/>}/>*/}
+          {/*<Route path={RouterEndpoints.messages} element={<MessagesPage/>}/>*/}
+          {/*<Route*/}
+          {/*  path={RouterEndpoints.signup}*/}
+          {/*  element={isLoggedIn ? <Navigate to={RouterEndpoints.profile}/> : <UserRegistrationPage/>}*/}
+          {/*/>*/}
+          {/*<Route*/}
+          {/*  path={RouterEndpoints.signin}*/}
+          {/*  element={isLoggedIn ? <Navigate to={RouterEndpoints.profile}/> : <UserAuthorizationPage/>}*/}
+          {/*/>*/}
           <Route path="*" element={<NotFoundPage/>}/>
         </Routes>
       </Layout>

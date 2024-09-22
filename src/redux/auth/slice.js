@@ -8,6 +8,7 @@ const initialAuth = {
     email: null,
     login: null,
   },
+  access_token: "",
   isAuth: false,
   loading: false,
   error: null,

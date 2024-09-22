@@ -1,27 +1,30 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {fetchUsers} from "./operations";
+import {initialUsersType} from "../../types/authTypes";
 
-const initialUsers = {
+const initialUsers: initialUsersType = {
   items: [],
-  totalCount: 0,
+  count: 0,
+  next: null,
+  previous: null,
   loading: false,
   error: null,
-  api_key: null
 };
 
-const handlePending = (state) => {
+const handlePending = (state: initialUsersType) => {
   state.loading = true;
 };
 
-const handleFetchUsersFulfilled = (state, action) => {
+const handleFetchUsersFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
   state.items = action.payload.items;
-  state.totalCount = action.payload.totalCount;
-  // console.log(state.items);
+  state.count = action.payload.count;
+  state.next = action.payload.next;
+  state.previous = action.payload.previous;
 };
 
-const handleRejected = (state, action) => {
+const handleRejected = (state: initialUsersType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = action.payload;
 };
@@ -29,6 +32,7 @@ const handleRejected = (state, action) => {
 const usersSlice = createSlice({
   name: "users",
   initialState: initialUsers,
+  reducers: {},
   extraReducers: (builder) =>
     builder
       .addCase(fetchUsers.pending, handlePending)
