@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {logIn, logOut, getMe} from "./operations";
+import {logOut, getMe, signIn} from "./operations";
 
 
 const initialAuth = {
@@ -9,7 +9,7 @@ const initialAuth = {
     login: null,
   },
   access_token: "",
-  isAuth: false,
+  isAuth: true,
   loading: false,
   error: null,
   captchaUrl: null,
@@ -21,7 +21,7 @@ const authSlice = createSlice({
   initialState: initialAuth,
   extraReducers: (builder) =>
     builder
-      .addCase(logIn.fulfilled, (state, action) => {
+      .addCase(signIn.fulfilled, (state, action) => {
         if (action.payload.resultCode === 0) {
           state.userId = action.payload.data.userId;
           state.isAuth = true;

@@ -7,7 +7,7 @@ export const mainUrls = {
     me: `${auth}/me`,
     profile: `${auth}/profile`,
     signup: `${auth}/signup`,
-    login: `${auth}/signin`,
+    signin: `${auth}/signin`,
     users: `${auth}/users`
   },
 
