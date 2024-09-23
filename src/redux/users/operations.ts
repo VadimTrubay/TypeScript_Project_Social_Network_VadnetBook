@@ -3,12 +3,12 @@ import {getUsersApi} from "../../api/apiUsers";
 
 export const fetchUsers = createAsyncThunk(
   "users/fetchUsers",
-  async (_, thunkAPI) => {
+  async (page: number, thunkAPI) => {
     try {
-      const response = await getUsersApi();
+      const response = await getUsersApi(page);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.detail);
     }
   }
 );

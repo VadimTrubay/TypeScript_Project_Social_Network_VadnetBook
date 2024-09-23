@@ -8,7 +8,8 @@ export const mainUrls = {
     profile: `${auth}/profile`,
     signup: `${auth}/signup`,
     signin: `${auth}/signin`,
-    users: `${auth}/users`
+    users: (page: number) => `${auth}/users?page=${page}`,
+
   },
 
   // companies: {

@@ -1,6 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {fetchUsers} from "./operations";
-import {initialUsersType} from "../../types/authTypes";
+import {initialUsersType} from "../../types/userTypes";
+import {toast} from "react-toastify";
 
 const initialUsers: initialUsersType = {
   items: [],
@@ -15,6 +16,11 @@ const handlePending = (state: initialUsersType) => {
   state.loading = true;
 };
 
+const handleRejected = (state: initialUsersType, action: PayloadAction<any>) => {
+  state.loading = false;
+  state.error = action.payload;
+};
+
 const handleFetchUsersFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
@@ -24,10 +30,6 @@ const handleFetchUsersFulfilled = (state: initialUsersType, action: PayloadActio
   state.previous = action.payload.previous;
 };
 
-const handleRejected = (state: initialUsersType, action: PayloadAction<any>) => {
-  state.loading = false;
-  state.error = action.payload;
-};
 
 const usersSlice = createSlice({
   name: "users",
@@ -37,7 +39,8 @@ const usersSlice = createSlice({
     builder
       .addCase(fetchUsers.pending, handlePending)
       .addCase(fetchUsers.fulfilled, handleFetchUsersFulfilled)
-      .addCase(fetchUsers.rejected, handleRejected),
+      .addCase(fetchUsers.rejected, handleRejected)
+
 });
 
 export const usersReducer = usersSlice.reducer;

@@ -27,7 +27,6 @@ const RegistrationForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleClickShowConfirmPassword = () =>
@@ -40,15 +39,8 @@ const RegistrationForm = () => {
   const formik = useFormik({
     initialValues: initialValueUserRegistration,
     validationSchema: validationSchemaRegistration,
-    onSubmit: async (values) => {
-      setIsSubmitting(true);
-      try {
-        await dispatch(signUp(values));
-      } catch (error) {
-        console.error("Registration failed:", error);
-      } finally {
-        setIsSubmitting(false);
-      }
+    onSubmit: (values) => {
+      dispatch(signUp(values));
     },
   });
 
@@ -155,11 +147,10 @@ const RegistrationForm = () => {
               fullWidth
               variant="contained"
               color="warning"
-              disabled={isSubmitting || !formik.isValid}
               className={styles.submit}
               sx={{marginTop: 2, marginBottom: 1}}
             >
-              {isSubmitting ? "Registering..." : "Register"}
+              SignUp
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>

@@ -1,33 +1,35 @@
-export interface initialUsersType {
-  items: UserType[] | [];
-  count: number;
-  next: string | null,
-  previous: string | null,
+export interface initialAuthType {
+  me: meType | null;
+  profile: profileType | null;
+  access_token: string | null,
+  isAuth: boolean,
   loading: boolean;
   error: string | null;
 }
 
-export interface UserType {
+export interface meType {
+  id: string | null;
+  username: string | null;
+  email: string | null;
+}
+
+export interface profileType {
   id: string;
   username: string;
-  followed: boolean,
+  email: string;
   status: string | null;
-  profile_picture: string | undefined;
-}
-
-export interface authType {
-  id: number;
-  username: string;
-  email: string;
-  password: string;
-  new_password: string;
-}
-
-export interface authUserType {
-  id: number;
-  username: string;
-  email: string;
-  password: string;
+  first_name: string | null;
+  last_name: string | null;
+  website_page: string | null;
+  github_page: string | null;
+  linkedin_page: string | null;
+  looking_from_job: boolean;
+  job_skills: string | null;
+  about_me: string | null;
+  birth_date: string | null;
+  profile_picture: string | null;
+  phone_number: string | null;
+  date_joined: string;
 }
 
 export interface UserAuthorizationType {
@@ -38,7 +40,6 @@ export interface UserAuthorizationType {
 export interface UserRegistrationType {
   username: string;
   email: string;
-  home_page: string;
   password: string;
   confirmPassword: string,
 }

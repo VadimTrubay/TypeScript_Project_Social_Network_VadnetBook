@@ -11,11 +11,6 @@ export const validationSchemaRegistration = Yup.object({
     .required()
     .min(4, "Email must be at least 4 characters")
     .max(50, "Email must not exceed 50 characters"),
-  home_page: Yup.string()
-    .url("Enter a valid URL for the home page")
-    .required("Home page is required")
-    .min(4, "Home page must be at least 4 characters")
-    .max(150, "Home page cannot exceed 50 characters"),
   password: Yup.string()
     .min(4, "Password must be at least 8 characters")
     .max(50, "Password must not exceed 50 characters"),

@@ -1,0 +1,40 @@
+.usersMainWrapper{
+  overflow: hidden;
+  position: relative;
+}
+
+.usersBlockWrapper{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 220px);
+  grid-gap: 15px;
+  padding: 0 20px;
+}
+
+.OnlyFriendsBlockWrapper{
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.OnlyFriendsBlockWrapper label {
+  margin-right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.OnlyFriendsBlockWrapper input {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .usersBlockWrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
