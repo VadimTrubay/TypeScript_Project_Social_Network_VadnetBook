@@ -1,4 +1,5 @@
-.userBlock{
+.userBlock {
+  border: 1px solid #000000;
   max-width: 220px;
   height: 340px;
   padding: 15px;
@@ -7,19 +8,22 @@
   position: relative;
 }
 
-.userBlockLogout{
+.userBlockLogout {
+  border: 1px solid #000000;
+  border-radius: 10px;
   max-width: 220px;
   height: 300px;
   padding: 15px;
   background-color: #f9f9f9;
-  border-radius: 10px;
   position: relative;
 }
 
 .imgWrapper {
-  width: 100%;
-  margin-bottom: 10px;
+  border: 1px solid #000000;
   border-radius: 10px;
+  width: 100%;
+  min-height: 250px;
+  margin-bottom: 10px;
   overflow: hidden;
 }
 
@@ -29,7 +33,7 @@
   align-items: center;
 }
 
-.userImg{
+.userImg {
   width: 100%;
   transform: scale(1.15);
   transition: 0.3s all;
@@ -50,6 +54,8 @@
   text-align: center;
   margin-bottom: 10px;
   height: 22px;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
 }
 
@@ -57,9 +63,11 @@
   height: 44px;
   max-height: 44px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
-.buttonsWrapper{
+.buttonsWrapper {
   position: absolute;
   bottom: 15px;
   left: 0;
@@ -112,6 +120,6 @@
 @media (max-width: 992px) {
   .userBlock {
     height: auto;
-    padding-bottom:70px;
+    padding-bottom: 70px;
   }
 }

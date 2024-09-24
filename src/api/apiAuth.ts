@@ -17,5 +17,5 @@ export const getMeApi = async (): Promise<AxiosResponse> => {
 };
 
 export const getMeProfileApi = async (): Promise<AxiosResponse> => {
-  return await axiosInstance.get(mainUrls.auth.profile);
+  return await axiosInstance.get(mainUrls.profile.profile);
 };

@@ -11,15 +11,13 @@ export interface meType {
   id: string | null;
   username: string | null;
   email: string | null;
+  first_name: string | null;
+  last_name: string | null;
 }
 
 export interface profileType {
-  id: string;
-  username: string;
-  email: string;
+  user: meType;
   status: string | null;
-  first_name: string | null;
-  last_name: string | null;
   website_page: string | null;
   github_page: string | null;
   linkedin_page: string | null;

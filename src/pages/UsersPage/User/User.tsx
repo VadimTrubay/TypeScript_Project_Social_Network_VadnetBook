@@ -9,17 +9,19 @@ import {UserType} from "../../../types/userTypes";
 const User = ({user}: UserType) => {
   const isAuth = useSelector(selectIsAuth);
 
-
   return (
     <div className={isAuth ? styles.userBlock : styles.userBlockLogout} key={user.id}>
       <div className={styles.imgWrapper}>
         {/*<NavLink to={`/profile/${user.id}`}>*/}
-          <img className={styles.userImg} src={user.profile_picture ?  user.profile_picture : defaultImg} alt=""/>
+        {/*<img className={styles.userImg} src={user.profile_picture ? user.profile_picture : defaultImg} alt=""/>*/}
+        <img
+          src={user.profile_picture ? `https://res.cloudinary.com/dip870vma/${user?.profile_picture}`: defaultImg}
+        />
         {/*</NavLink>*/}
       </div>
       <div className={styles.infoBlock}>
-        <div className={styles.nameBlockWrapper}>{user.username}</div>
-        {user.status ? <div className={styles.statusBlockWrapper}><b>status:</b> {user.status}</div> : ''}
+        <div className={styles.nameBlockWrapper}>{user.user.username}</div>
+        {user.status ? <div className={styles.statusBlockWrapper}><b>status: </b> {user.status}</div> : ''}
       </div>
       {/*{isAuth && loggedUserId !== user.id ?*/}
       {/*  <div className={styles.buttonsWrapper}>*/}

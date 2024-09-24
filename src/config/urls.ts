@@ -1,17 +1,27 @@
 export const auth = "/auth";
+export const profile = "/profile";
+export const users = "/users";
+
 
 export const mainUrls = {
   id: ":id",
   notFound: "*",
   auth: {
     me: `${auth}/me`,
-    profile: `${auth}/profile`,
     signup: `${auth}/signup`,
     signin: `${auth}/signin`,
-    users: (page: number) => `${auth}/users?page=${page}`,
-
   },
-
+  profile: {
+    profile: `${profile}/`,
+    edit: `${profile}/edit`,
+    delete: `${profile}/delete`,
+    editPhoto: `${profile}/edit/photo`,
+    editStatus: `${profile}/edit/status`,
+  },
+  users: {
+    users: (page: number) => `${users}/?page=${page}`,
+    friends: (page: number) => `${users}/friends?page=${page}`,
+  },
   // companies: {
   //   submit: companies,
   //   all: (skip: number, limit: number) => `${companies}?skip=${skip}&limit=${limit}`,
