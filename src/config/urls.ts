@@ -1,3 +1,5 @@
+import {setStatusProfileApi} from "../api/apiProfile";
+
 export const auth = "/auth";
 export const profile = "/profile";
 export const users = "/users";
@@ -15,8 +17,8 @@ export const mainUrls = {
     profile: `${profile}/`,
     edit: `${profile}/edit`,
     delete: `${profile}/delete`,
-    editPhoto: `${profile}/edit/photo`,
-    editStatus: `${profile}/edit/status`,
+    setPhoto: `${profile}/edit/photo`,
+    setStatus: `${profile}/edit/status`,
   },
   users: {
     users: (page: number) => `${users}/?page=${page}`,

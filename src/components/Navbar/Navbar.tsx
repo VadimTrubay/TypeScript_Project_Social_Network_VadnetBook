@@ -15,10 +15,13 @@ const Navbar: React.FC = () => {
         <div><NavLink to={RouterEndpoints.users}>Users</NavLink></div>
         {isAuth &&
           <div>
+            <div><NavLink to={RouterEndpoints.profile}>Profile</NavLink></div>
             <div><NavLink to={RouterEndpoints.friends}>Friends</NavLink></div>
             <div><NavLink to={RouterEndpoints.messages}>Messages</NavLink></div>
-            <div><NavLink to={RouterEndpoints.profile}>Profile</NavLink></div>
-            <div className={styles.lastNavChild}><NavLink to={RouterEndpoints.settings}>Settings</NavLink></div>
+            <div className={styles.lastNavChild}>
+              <NavLink to={RouterEndpoints.settings}>
+                Settings
+              </NavLink></div>
             <span className={styles.onlineTitle}>Your friends:</span>
             <div className={styles.sidebarFriends}>
               <OnlineFriendsListItem/>

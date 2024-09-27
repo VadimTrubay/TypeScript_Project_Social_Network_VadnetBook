@@ -11,8 +11,8 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import {authReducer} from "./auth/slice";
+import {profileReducer} from "./profile/slice";
 import {usersReducer} from "./users/slice";
-
 
 const authPersistConfig = {
   key: "auth",
@@ -25,6 +25,7 @@ type AuthPersistedState = ReturnType<typeof authReducer>;
 export const store = configureStore({
   reducer: {
     auth: persistReducer<AuthPersistedState>(authPersistConfig, authReducer),
+    profile: profileReducer,
     users: usersReducer,
   },
   middleware: (getDefaultMiddleware) =>

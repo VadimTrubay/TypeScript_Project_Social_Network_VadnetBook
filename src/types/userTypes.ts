@@ -14,3 +14,11 @@ export interface UserType {
   status: string | null;
   profile_picture: string | undefined;
 }
+
+export interface UserProfileType {
+  id: string;
+  username: string;
+  email: string;
+  first_name: string | null;
+  last_name: string | null;
+}

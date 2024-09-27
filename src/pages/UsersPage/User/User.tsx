@@ -15,7 +15,7 @@ const User = ({user}: UserType) => {
         {/*<NavLink to={`/profile/${user.id}`}>*/}
         {/*<img className={styles.userImg} src={user.profile_picture ? user.profile_picture : defaultImg} alt=""/>*/}
         <img
-          src={user.profile_picture ? `https://res.cloudinary.com/dip870vma/${user?.profile_picture}`: defaultImg}
+          src={user?.profile_picture ? `https://res.cloudinary.com/dip870vma/${user?.profile_picture}`: defaultImg}
         />
         {/*</NavLink>*/}
       </div>

@@ -1,12 +1,10 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {logOut, signIn, signUp, fetchMe, fetchMeProfile} from "./operations";
+import {logOut, signIn, signUp, fetchMe} from "./operations";
 import {initialAuthType} from "../../types/authTypes";
-import {toast} from "react-toastify";
 
 
 const initialAuth: initialAuthType = {
   me: null,
-  profile: null,
   access_token: "",
   isAuth: false,
   loading: false,
@@ -43,18 +41,10 @@ const handleFetchMeFulfilled = (state: initialAuthType, action: PayloadAction<an
   state.isAuth = true;
 };
 
-const handleFetchMeProfileFulfilled = (state: initialAuthType, action: PayloadAction<any>) => {
-  state.loading = false;
-  state.error = null;
-  state.profile = action.payload;
-  state.isAuth = true;
-};
-
 const handleLogOutFulfilled = (state: initialAuthType) => {
   state.loading = false;
   state.error = null;
   state.me = null;
-  state.profile = null;
   state.access_token = "";
   state.isAuth = false;
 }
@@ -78,9 +68,6 @@ const authSlice = createSlice({
       .addCase(fetchMe.pending, handlePending)
       .addCase(fetchMe.fulfilled, handleFetchMeFulfilled)
       .addCase(fetchMe.rejected, handleRejected)
-      .addCase(fetchMeProfile.pending, handlePending)
-      .addCase(fetchMeProfile.fulfilled, handleFetchMeProfileFulfilled)
-      .addCase(fetchMeProfile.rejected, handleRejected)
       .addCase(logOut.pending, handlePending)
       .addCase(logOut.fulfilled, handleLogOutFulfilled)
       .addCase(logOut.rejected, handleRejected),

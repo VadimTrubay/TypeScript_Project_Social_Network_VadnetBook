@@ -1,7 +1,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {RegisterType, UserAuthorizationType} from '../../types/authTypes';
 import {clearAuthHeader, setAuthHeader} from '../../utils/authUtils';
-import {getMeApi, getMeProfileApi, signInApi, signUpApi} from "../../api/apiAuth";
+import {getMeApi, signInApi, signUpApi} from "../../api/apiAuth";
 
 export const signUp = createAsyncThunk(
   "auth/signUp",
@@ -42,18 +42,6 @@ export const fetchMe = createAsyncThunk(
   }
 );
 
-
-export const fetchMeProfile = createAsyncThunk(
-  "auth/fetchMeProfile",
-  async (_, thunkAPI) => {
-    try {
-      const response = await getMeProfileApi();
-      return response.data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
-    }
-  }
-);
 
 export const logOut = createAsyncThunk(
   "auth/logOut",

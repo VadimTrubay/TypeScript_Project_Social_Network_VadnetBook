@@ -15,7 +15,3 @@ export const signInApi = async (credentials: UserAuthorizationType): Promise<Axi
 export const getMeApi = async (): Promise<AxiosResponse> => {
   return await axiosInstance.get(mainUrls.auth.me);
 };
-
-export const getMeProfileApi = async (): Promise<AxiosResponse> => {
-  return await axiosInstance.get(mainUrls.profile.profile);
-};
