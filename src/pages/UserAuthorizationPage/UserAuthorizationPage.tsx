@@ -56,7 +56,7 @@ const UserAuthorizationPage = () => {
                 <LockOutlinedIcon/>
               </Avatar>
               <Typography component="h1" variant="h5">
-                Login
+                SignIn
               </Typography>
               <Box
                 component="form"
@@ -115,7 +115,7 @@ const UserAuthorizationPage = () => {
                   color="warning"
                   sx={{marginTop: 1, marginBottom: 1}}
                 >
-                  SignUp
+                  SignIn
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>

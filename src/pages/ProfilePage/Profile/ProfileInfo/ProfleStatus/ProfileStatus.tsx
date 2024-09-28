@@ -2,10 +2,10 @@ import React, {useEffect, useState} from "react";
 import styles from './ProfleStatus.module.css'
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "../../../../../redux/store";
-import {setStatusProfile} from "../../../../../redux/profile/operations";
+import {fetchMeProfile, setStatusProfile} from "../../../../../redux/profile/operations";
 
 
-const ProfileStatus = ({myStatus, editMode, setEditMode}: any) => {
+const ProfileStatus = ({myStatus, editStatus, setEditStatus}: any) => {
   const dispatch = useDispatch<AppDispatch>();
   let [status, setStatus] = useState(myStatus);
 
@@ -13,15 +13,15 @@ const ProfileStatus = ({myStatus, editMode, setEditMode}: any) => {
     setStatus(myStatus)
   }, [myStatus])
 
-  const activateEditMode = () => {
-    setEditMode(true);
+  const activateEditStatus = () => {
+    setEditStatus(true);
   }
 
-  const deactivateEditMode = () => {
+  const deactivateEditStatus = () => {
     dispatch(setStatusProfile({
       status: status,
     }));
-    setEditMode(false);
+    setEditStatus(false);
   }
 
   const onStatusChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -29,19 +29,19 @@ const ProfileStatus = ({myStatus, editMode, setEditMode}: any) => {
 };
 
   return <>
-    {editMode ?
+    {editStatus ?
       <div className={styles.statusWrapper}>
         <input className={styles.inputChangeStatus}
                onChange={onStatusChange}
                autoFocus={true}
-               onBlur={deactivateEditMode}
+               onBlur={deactivateEditStatus}
                type="text"
                value={status}
         />
       </div> :
       <div className={styles.statusWrapper}>
           <span className={styles.status}
-                onClick={activateEditMode}>
+                onClick={activateEditStatus}>
             {myStatus ? myStatus : ''}
 
           </span>

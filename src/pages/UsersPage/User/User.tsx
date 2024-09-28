@@ -5,19 +5,20 @@ import React from "react";
 import {useSelector} from "react-redux";
 import {selectIsAuth} from "../../../redux/auth/selectors";
 import {UserType} from "../../../types/userTypes";
+import {mainUrls} from "../../../config/urls";
 
 const User = ({user}: UserType) => {
   const isAuth = useSelector(selectIsAuth);
 
   return (
-    <div className={isAuth ? styles.userBlock : styles.userBlockLogout} key={user.id}>
+    <div className={styles.userBlock} key={user.id}>
       <div className={styles.imgWrapper}>
-        {/*<NavLink to={`/profile/${user.id}`}>*/}
+        <NavLink to={mainUrls.users.userById(user.user.id)}>
         {/*<img className={styles.userImg} src={user.profile_picture ? user.profile_picture : defaultImg} alt=""/>*/}
-        <img
+        <img  className={styles.userImg}
           src={user?.profile_picture ? `https://res.cloudinary.com/dip870vma/${user?.profile_picture}`: defaultImg}
         />
-        {/*</NavLink>*/}
+        </NavLink>
       </div>
       <div className={styles.infoBlock}>
         <div className={styles.nameBlockWrapper}>{user.user.username}</div>

@@ -4,9 +4,10 @@ import Header from "../Header/Header";
 import Loader from "../Loader/Loader.jsx";
 import Navbar from "../Navbar/Navbar.jsx";
 import styles from "./Layout.module.css";
+import {LayoutProps} from "../../types/layoutTypes";
 
 
-export const Layout: React.FC = ({children}) => {
+export const Layout = ({children}: LayoutProps) => {
   return (
     <div className={styles.appWrapper}>
       <Header/>

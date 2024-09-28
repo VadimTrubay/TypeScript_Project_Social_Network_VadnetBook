@@ -53,7 +53,7 @@ const RegistrationForm = () => {
             <LockOutlinedIcon/>
           </Avatar>
           <Typography component="h1" variant="h5">
-            Register
+            SignUp
           </Typography>
           <Box component="form" onSubmit={formik.handleSubmit} noValidate>
             <Grid container spacing={2}>

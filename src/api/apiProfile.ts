@@ -1,11 +1,15 @@
 import {AxiosResponse} from 'axios';
 import {mainUrls} from '../config/urls';
 import axiosInstance from "../utils/createAxiosInstance";
-import {photoDataType, statusDataType} from "../types/profileTypes";
+import {EditProfileType, photoDataType, statusDataType} from "../types/profileTypes";
 
 
 export const getMeProfileApi = async (): Promise<AxiosResponse> => {
   return await axiosInstance.get(mainUrls.profile.profile);
+};
+
+export const editProfileApi = async (profileData: EditProfileType): Promise<AxiosResponse> => {
+  return await axiosInstance.patch(mainUrls.profile.edit, profileData);
 };
 
 export const setStatusProfileApi = async (statusData: statusDataType): Promise<AxiosResponse> => {

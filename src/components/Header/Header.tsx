@@ -9,6 +9,7 @@ import {fetchMe, logOut, signIn} from "../../redux/auth/operations.js";
 import {AppDispatch} from "../../redux/store";
 import {RouterEndpoints} from "../../config/routes";
 import {selectMe} from "../../redux/auth/selectors";
+import {mainUrls} from "../../config/urls";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -34,7 +35,7 @@ const Header: React.FC = () => {
 
       <div>
         {isAuth ? <div className={styles.loginWrapper}>
-            <NavLink className={styles.loggedUserLink} to={`/profile/${me?.id}`}
+            <NavLink className={styles.loggedUserLink} to={mainUrls.profile.profile}
                      onClick={() => {
                        // editUserProfileModal(true)
                      }}>

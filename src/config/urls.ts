@@ -22,6 +22,7 @@ export const mainUrls = {
   },
   users: {
     users: (page: number) => `${users}/?page=${page}`,
+    userById: (user_id: string) => `${users}/${user_id}`,
     friends: (page: number) => `${users}/friends?page=${page}`,
   },
   // companies: {

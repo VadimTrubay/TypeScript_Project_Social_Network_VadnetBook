@@ -1,5 +1,6 @@
 export const selectUsers = (state) => state.users.items || [];
 export const selectTotalCountUsers = (state) => state.users.count || 0;
+export const selectUserById = (state) => state.users.userById;
 export const selectNextUrl = (state) => state.users.next;
 export const selectPreviousUrl = (state) => state.users.previous;
 export const selectLoadingUsers = (state) => state.users.loading;
