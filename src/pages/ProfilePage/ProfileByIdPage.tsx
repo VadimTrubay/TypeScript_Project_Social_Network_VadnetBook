@@ -1,6 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {selectIsAuth} from "../../redux/auth/selectors";
 import {AppDispatch} from "../../redux/store";
 import {profileType} from "../../types/profileTypes";
 import React from "react";
@@ -14,15 +13,15 @@ const ProfilePage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const {id} = useParams<{ id: string }>();
   const profile = useSelector(selectUserById) as profileType;
-  const isAuth = useSelector<boolean>(selectIsAuth);
+
 
   useEffect(() => {
-    if (isAuth) {
-      // @ts-ignore
+    if (id) {
       dispatch(fetchUserById(id));
     }
-  }, [dispatch]);
+  }, [id, dispatch]);
 
+  // @ts-ignore
   return (
     <div className={styles.profileMainWrapper}>
       <div className={styles.leftBlockWrapper}>

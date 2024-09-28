@@ -6,7 +6,8 @@ export const RouterEndpoints = {
     signin: "/signin",
     profile: "/profile",
     users: "/users",
-    friends: "/friends",
+    followers: "/users/followers",
+    following: "/users/following",
     messages: "/messages",
     settings: "/settings",
 

@@ -4,6 +4,9 @@ import {
 } from "../types/authTypes";
 import {EditProfileType} from "../types/profileTypes";
 
+export const pageSize = 10;  // Adjust the page size as per your requirement
+
+
 export const initialValueUserAuthorization: UserAuthorizationType = {
   email: "",
   password: "",

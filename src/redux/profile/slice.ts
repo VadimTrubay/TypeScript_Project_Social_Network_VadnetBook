@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {initialProfileType} from "../../types/profileTypes";
-import {editProfile, fetchMeProfile, setStatusProfile} from "./operations";
+import {editProfile, fetchMeProfile, setPhotoProfile, setStatusProfile} from "./operations";
 
 
 const initialProfile: initialProfileType = {
@@ -24,6 +24,7 @@ const initialProfile: initialProfileType = {
     phone_number: "",
     date_joined: "",
   },
+  refreshed: false,
   loading: false,
   error: null,
 };
@@ -47,6 +48,13 @@ const handleSetMeStatusFulfilled = (state: initialProfileType, action: PayloadAc
   state.loading = false;
   state.error = null;
   state.profile.status = action.payload.status;
+  state.refreshed = true;
+};
+
+const handleSetPhotoFulfilled = (state: initialProfileType, action: PayloadAction<any>) => {
+  state.loading = false;
+  state.error = null;
+  state.refreshed = true;
 };
 
 const handleEditProfileFulfilled = (state: initialProfileType, action: PayloadAction<any>) => {
@@ -63,6 +71,7 @@ const handleEditProfileFulfilled = (state: initialProfileType, action: PayloadAc
   state.profile.job_skills = action.payload.job_skills || state.profile.job_skills;
   state.profile.birth_date = action.payload.birth_date || state.profile.birth_date;
   state.profile.phone_number = action.payload.phone_number || state.profile.phone_number;
+  state.refreshed = true;
 };
 
 const profileSlice = createSlice({
@@ -79,7 +88,10 @@ const profileSlice = createSlice({
       .addCase(setStatusProfile.rejected, handleRejected)
       .addCase(editProfile.pending, handlePending)
       .addCase(editProfile.fulfilled, handleEditProfileFulfilled)
-      .addCase(editProfile.rejected, handleRejected),
+      .addCase(editProfile.rejected, handleRejected)
+      .addCase(setPhotoProfile.pending, handlePending)
+      .addCase(setPhotoProfile.fulfilled, handleSetPhotoFulfilled)
+      .addCase(setPhotoProfile.rejected, handleRejected),
 });
 
 export const profileReducer = profileSlice.reducer;

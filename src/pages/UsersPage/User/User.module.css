@@ -45,8 +45,12 @@
 }
 
 .infoBlock {
-  display: block;
+  display: flex;
   width: 100%;
+}
+
+.infoBlockWrapper {
+  display: flex;
 }
 
 .nameBlockWrapper {

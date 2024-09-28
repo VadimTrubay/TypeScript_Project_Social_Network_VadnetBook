@@ -1,6 +1,7 @@
 .nav {
   grid-area: nav;
-  background-color: antiquewhite;
+  background-color: #0f4fe2;
+  color: #fff;
   height: fit-content;
   min-height: 590px;
   border-bottom-right-radius: 30px;
@@ -10,17 +11,17 @@
 
 .nav div a {
   display: block;
+  color: #fff;
   padding: 10px 20px;
   text-decoration: none;
-  color: #424242;
 }
 
 .nav div a:hover {
-  background-color: #e3d6c3;
+  background-color: #006bc9;
 }
 
 .nav div a.active {
-  background-color: #c2b7a7;
+  background-color: #006bc9;
 }
 
 .nav .lastNavChild {

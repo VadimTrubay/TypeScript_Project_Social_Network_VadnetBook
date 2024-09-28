@@ -1,7 +1,7 @@
 import {AxiosResponse} from 'axios';
 import {mainUrls} from '../config/urls';
 import axiosInstance from "../utils/createAxiosInstance";
-import {EditProfileType, photoDataType, statusDataType} from "../types/profileTypes";
+import {EditProfileType, statusDataType} from "../types/profileTypes";
 
 
 export const getMeProfileApi = async (): Promise<AxiosResponse> => {

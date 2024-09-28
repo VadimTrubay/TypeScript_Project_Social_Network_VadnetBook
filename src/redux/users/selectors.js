@@ -1,14 +1,20 @@
-export const selectUsers = (state) => state.users.items || [];
-export const selectTotalCountUsers = (state) => state.users.count || 0;
 export const selectUserById = (state) => state.users.userById;
-export const selectNextUrl = (state) => state.users.next;
-export const selectPreviousUrl = (state) => state.users.previous;
-export const selectLoadingUsers = (state) => state.users.loading;
-export const selectErrorUsers = (state) => state.users.error;
-// export const selectUser = (state, id) => {
-//   if (state.users.items !== null) {
-//     state.users.items.find((user) => user.id === id)
-//   } else {
-//     return null;
-//   }
-// };
+
+export const selectUsers = (state) => state.users.users.items || [];
+export const selectNextUrlUsers  = (state) => state.users.users.next;
+export const selectPreviousUrlUsers  = (state) => state.users.users.previous;
+export const selectTotalCountUsers  = (state) => state.users.users.count || 0;
+
+export const selectFollowers = (state) => state.users.followers.items || [];
+export const selectNextUrlFollowers  = (state) => state.users.followers.next;
+export const selectPreviousUrlFollowers = (state) => state.users.followers.previous;
+export const selectTotalCountFollowers  = (state) => state.users.followers.count || 0;
+
+export const selectFollowing = (state) => state.users.following.items || [];
+export const selectNextUrlFollowing  = (state) => state.users.following.next;
+export const selectPreviousUrlFollowing  = (state) => state.users.following.previous;
+export const selectTotalCountFollowing  = (state) => state.users.following.count || 0;
+
+export const selectRefresh = (state) => state.users.refreshed;
+export const selectLoading = (state) => state.users.loading;
+export const selectError = (state) => state.users.error;

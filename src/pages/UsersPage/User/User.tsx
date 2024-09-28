@@ -2,40 +2,71 @@ import styles from "./User.module.css";
 import {NavLink} from "react-router-dom";
 import defaultImg from "../../../components/Other/user-smalled.png";
 import React from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {selectIsAuth} from "../../../redux/auth/selectors";
-import {UserType} from "../../../types/userTypes";
 import {mainUrls} from "../../../config/urls";
+import {follow, unfollow} from "../../../redux/users/operations";
+import {AppDispatch} from "../../../redux/store";
+import {UserType} from "../../../types/userTypes";
 
 const User = ({user}: UserType) => {
+  const dispatch = useDispatch<AppDispatch>();
   const isAuth = useSelector(selectIsAuth);
 
+  const handleUnfollow = () => {
+    dispatch(unfollow(user.user.id));
+  };
+
+  const handleFollow = () => {
+    dispatch(follow(user.user.id));
+  };
+
   return (
-    <div className={styles.userBlock} key={user.id}>
+    <div className={styles.userBlock}>
       <div className={styles.imgWrapper}>
         <NavLink to={mainUrls.users.userById(user.user.id)}>
-        {/*<img className={styles.userImg} src={user.profile_picture ? user.profile_picture : defaultImg} alt=""/>*/}
-        <img  className={styles.userImg}
-          src={user?.profile_picture ? `https://res.cloudinary.com/dip870vma/${user?.profile_picture}`: defaultImg}
-        />
+          <img
+            className={styles.userImg}
+            src={
+              user?.profile_picture
+                ? `https://res.cloudinary.com/dip870vma/${user?.profile_picture}`
+                : defaultImg
+            }
+            alt={user.user.username}
+          />
         </NavLink>
       </div>
-      <div className={styles.infoBlock}>
-        <div className={styles.nameBlockWrapper}>{user.user.username}</div>
-        {user.status ? <div className={styles.statusBlockWrapper}><b>status: </b> {user.status}</div> : ''}
+      <div className={styles.infoBlockWrapper}>
+        <div className={styles.infoBlock}>
+          <div className={styles.nameBlockWrapper}>{user.user.username}</div>
+          {user.status ? (
+            <div className={styles.statusBlockWrapper}>
+              <b>Status:</b> {user.status}
+            </div>
+          ) : null}
+        </div>
       </div>
-      {/*{isAuth && loggedUserId !== user.id ?*/}
-      {/*  <div className={styles.buttonsWrapper}>*/}
-      {/*  {user.followed === true ?*/}
-      {/*    <button disabled={followingInProgress.some(id => user.id === id)}*/}
-      {/*            onClick={() => {unfollow(user.id);}}*/}
-      {/*            className={styles.unfollowButton}>Unfollow</button> :*/}
-      {/*    <button disabled={followingInProgress.some(id => user.id === id)}*/}
-      {/*            onClick={() => {follow(user.id);}}*/}
-      {/*            className={styles.followButton}>Follow</button>}*/}
-      {/*  </div> : ""}*/}
+      {isAuth && (
+        <div className={styles.buttonsWrapper}>
+          {user.is_friend ? (
+            <button
+              onClick={handleUnfollow}
+              className={styles.unfollowButton}
+            >
+              Unfollow
+            </button>
+          ) : (
+            <button
+              onClick={handleFollow}
+              className={styles.followButton}
+            >
+              Follow
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default User;

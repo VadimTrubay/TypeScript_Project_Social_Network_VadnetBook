@@ -1,7 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {selectIsAuth} from "../../redux/auth/selectors";
-import {fetchMeProfile} from "../../redux/profile/operations";
+import {fetchMeProfile, setPhotoProfile} from "../../redux/profile/operations";
 import {AppDispatch} from "../../redux/store";
 import {profileType} from "../../types/profileTypes";
 import React from "react";
@@ -9,25 +8,22 @@ import styles from './ProfilePage.module.css';
 import defaultUser from '../../components/Other/user.png'
 import {selectMeProfile} from "../../redux/profile/selectors";
 import ProfileStatus from "./Profile/ProfileInfo/ProfleStatus/ProfileStatus";
-import {setPhotoProfileApi} from "../../api/apiProfile";
 import EditProfile from "./Profile/ProfileInfo/EditProfile/EditProfile";
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import Typography from "@mui/material/Typography";
 
 const ProfilePage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const profile = useSelector(selectMeProfile) as profileType;
-  const isAuth = useSelector<boolean>(selectIsAuth);
+  const [refresh, setRefresh] = useState(false);
   const [editStatus, setEditStatus] = useState(false);
   const [editProfile, setEditeProfile] = useState(false);
   const [photo, setPhoto] = useState<File | null>(null);
-  const [uploading, setUploading] = useState(false); // State to handle uploading process
-  const [error, setError] = useState<string | null>(null); // State to handle errors
+
 
   useEffect(() => {
-    if (isAuth) {
-      dispatch(fetchMeProfile());
-    }
-  }, [photo, editProfile, editStatus, uploading, isAuth, dispatch]);
+    dispatch(fetchMeProfile());
+  }, [refresh, dispatch]);
 
   const onChangedPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -39,21 +35,18 @@ const ProfilePage = () => {
     if (photo) {
       const formData = new FormData();
       formData.append('profile_picture', photo);
-
-      const uploadPhoto = async () => {
-        setUploading(true);
-        setError(null);  // Clear previous error if any
-        // @ts-ignore
-        await dispatch(setPhotoProfileApi(formData));
-        setUploading(false);
-        setPhoto(null);  // Clear the selected photo after uploading
-      };
-      uploadPhoto();
+      dispatch(setPhotoProfile(formData));
+      setPhoto(null);
+      // Clear the selected photo after uploading
     }
-  }, [photo, uploading, dispatch]);
+    setTimeout(() => {
+      setRefresh(!refresh)
+    }, 2000)
+  }, [photo, dispatch]);
 
   return (
     <div className={styles.profileMainWrapper}>
+
       {editProfile && <EditProfile
         profile={profile}
         setEditeProfile={setEditeProfile}/>
@@ -77,7 +70,6 @@ const ProfilePage = () => {
                    title=" "
             />
           </>
-          {error && <p style={{color: 'red'}}>{error}</p>}
         </div>
         <div className={styles.contactsWrapper}>
           <div className={styles.contactsTitle}>Contacts:</div>
@@ -100,6 +92,9 @@ const ProfilePage = () => {
       </div>
 
       <div className={styles.rightBlockWrapper}>
+        <Typography variant="h5" fontSize={30}>
+          Profile
+        </Typography>
         <button className={styles.editButton}
                 onClick={() => {
                   setEditeProfile(true)
