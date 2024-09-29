@@ -3,9 +3,6 @@ export const selectUserById = (state) => state.users.userById;
 export const selectUsers = (state) => state.users.users.items || [];
 export const selectTotalCountUsers  = (state) => state.users.users.count || 0;
 
-export const selectSearchUsers = (state) => state.users.searchUsers.items || [];
-export const selectTotalCountSearchUsers  = (state) => state.users.searchUsers.count || 0;
-
 export const selectFollowers = (state) => state.users.followers.items || [];
 export const selectTotalCountFollowers  = (state) => state.users.followers.count || 0;
 

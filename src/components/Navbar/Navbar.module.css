@@ -1,7 +1,7 @@
 .nav {
   grid-area: nav;
-  background-color: #0f4fe2;
-  color: #fff;
+  background-color: var(--brand-color);
+  color: var(--link);
   height: fit-content;
   min-height: 590px;
   border-bottom-right-radius: 30px;
@@ -11,17 +11,17 @@
 
 .nav div a {
   display: block;
-  color: #fff;
+  color: var(--link);
   padding: 10px 20px;
   text-decoration: none;
 }
 
 .nav div a:hover {
-  background-color: #006bc9;
+  background-color: var(--brand-color-hover);
 }
 
 .nav div a.active {
-  background-color: #006bc9;
+  background-color: var(--brand-color-hover);
 }
 
 .nav .lastNavChild {

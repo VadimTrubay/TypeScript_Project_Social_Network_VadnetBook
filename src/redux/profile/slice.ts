@@ -1,6 +1,9 @@
+import "react-toastify/dist/ReactToastify.css";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {initialProfileType} from "../../types/profileTypes";
 import {editProfile, fetchMeProfile, setPhotoProfile, setStatusProfile} from "./operations";
+import {toast} from "react-toastify";
+import {toast_settings} from "../../utils/toasts_settings";
 
 
 const initialProfile: initialProfileType = {
@@ -36,6 +39,7 @@ const handlePending = (state: initialProfileType) => {
 const handleRejected = (state: initialProfileType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = action.payload;
+  toast.error(`${state.error}`, toast_settings);
 };
 
 const handleFetchMeProfileFulfilled = (state: initialProfileType, action: PayloadAction<any>) => {
@@ -49,12 +53,14 @@ const handleSetMeStatusFulfilled = (state: initialProfileType, action: PayloadAc
   state.error = null;
   state.profile.status = action.payload.status;
   state.refreshed = true;
+  toast.success('Status setting successfully', toast_settings);
 };
 
 const handleSetPhotoFulfilled = (state: initialProfileType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
   state.refreshed = true;
+  toast.success('Photo setting successfully', toast_settings);
 };
 
 const handleEditProfileFulfilled = (state: initialProfileType, action: PayloadAction<any>) => {
@@ -72,6 +78,7 @@ const handleEditProfileFulfilled = (state: initialProfileType, action: PayloadAc
   state.profile.birth_date = action.payload.birth_date || state.profile.birth_date;
   state.profile.phone_number = action.payload.phone_number || state.profile.phone_number;
   state.refreshed = true;
+  toast.success('Profile edited successfully', toast_settings);
 };
 
 const profileSlice = createSlice({

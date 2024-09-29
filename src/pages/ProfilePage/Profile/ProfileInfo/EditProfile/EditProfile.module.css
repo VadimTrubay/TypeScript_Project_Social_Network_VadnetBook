@@ -122,7 +122,7 @@
   padding: 3px 10px;
   background-color: #f5f5f7;
   border-radius: 10px;
-  border-bottom: 3px solid red;
+  border-bottom: 3px solid var(--brand-color);
 }
 
 .authButton{
@@ -130,13 +130,13 @@
   height: 35px;
   border-radius: 10px;
   border: none;
-  background-color: #ff8f49;
+  background-color: var(--brand-color);
   color: white;
   transition: 0.3s all;
 }
 
 .authButton:hover {
-  background-color: #fc5a35;
+  background-color: var(--brand-color-hover);
 }
 
 .authButton:disabled {
@@ -165,7 +165,7 @@
 
 .generalErrorFetching{
   padding: 13px 20px;
-  background-color: #e73737;
+  background-color: var(--brand-color-hover);
   color: white;
   font-size: 18px;
   font-weight: 300;
@@ -193,7 +193,7 @@
   width: 100%;
   border-radius: 2px;
   height: 4px;
-  background: linear-gradient(to left, #f1c387, #ff8f49);
+  background: linear-gradient(to left, #46a6ff, #0f4fe2);
 }
 
 @media (max-width: 800px) {

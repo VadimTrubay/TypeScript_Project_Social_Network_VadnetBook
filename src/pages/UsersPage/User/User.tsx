@@ -7,9 +7,9 @@ import {selectIsAuth, selectMe} from "../../../redux/auth/selectors";
 import {mainUrls} from "../../../config/urls";
 import {follow, unfollow} from "../../../redux/users/operations";
 import {AppDispatch} from "../../../redux/store";
-import {UserType} from "../../../types/userTypes";
 
-const User = ({user}: UserType) => {
+
+const User = ({user}: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const me = useSelector(selectMe);
   const isAuth = useSelector(selectIsAuth);
@@ -47,7 +47,7 @@ const User = ({user}: UserType) => {
           ) : null}
         </div>
       </div>
-      {isAuth && user.user.id !== me.id ? (
+      {isAuth && user.user?.id !== me?.id ? (
         <div className={styles.buttonsWrapper}>
           {user.is_friend ? (
             <button

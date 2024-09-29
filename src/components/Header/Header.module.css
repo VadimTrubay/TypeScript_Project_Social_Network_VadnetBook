@@ -84,31 +84,10 @@
   font-weight: 600;
 }
 
-.loginButton {
-  color: white;
-  font-size: 17px;
-  font-weight: 300;
-  text-decoration: none;
-  padding: 7px 15px;
-  background-color: #ff8f49;
-  border-radius: 10px;
-  transition: 0.3s all;
-}
 
-.loginButton:hover {
-  background-color: #fc5a35;
-}
-
-.logoutButton {
-  margin-left: 10px;
-}
 
 .loggedUserLink:hover .logoutButton {
   display: block;
-}
-
-.logoutButton:hover {
-  background-color: #fc5a35;
 }
 
 .headerSocialTitleWrapper {

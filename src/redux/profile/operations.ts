@@ -1,5 +1,11 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {editProfileApi, getMeProfileApi, setPhotoProfileApi, setStatusProfileApi} from "../../api/apiProfile";
+import {
+  deleteProfileApi,
+  editProfileApi,
+  getMeProfileApi,
+  setPhotoProfileApi,
+  setStatusProfileApi
+} from "../../api/apiProfile";
 import {EditProfileType, statusDataType} from "../../types/profileTypes";
 
 
@@ -45,6 +51,18 @@ export const editProfile = createAsyncThunk(
   async (statusData: EditProfileType, thunkAPI) => {
     try {
       const response = await editProfileApi(statusData);
+      return response.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.detail);
+    }
+  }
+);
+
+export const deleteProfile = createAsyncThunk(
+  "profile/deleteProfile",
+  async (_, thunkAPI) => {
+    try {
+      const response = await deleteProfileApi();
       return response.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);

@@ -27,9 +27,9 @@ const Header: React.FC = () => {
     dispatch(fetchMe());
   }, [isAuth, dispatch]);
 
-  useEffect(() => {
-    handleSearch();
-  }, [isRefresh]);
+  // useEffect(() => {
+  //   handleSearch();
+  // }, [isRefresh]);
 
 
   const handleSearch = () => {
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
     }
     dispatch(fetchSearchUsers(searchUsersData));
     setSearch("");
-    navigate(`${RouterEndpoints.searchUsers}`);
+    navigate(`${RouterEndpoints.users}`);
   }
 
   return (
@@ -79,9 +79,12 @@ const Header: React.FC = () => {
                 </div>
               </div>
             </NavLink>
-            <Button className={styles.logoutButton} variant="contained" onClick={() => {
-              dispatch(logOut());
-            }}>LogOut
+            <Button
+              className={styles.logoutButton}
+              variant="contained"
+              onClick={() => {dispatch(logOut())}}
+              style={{textTransform: "none"}}>
+              LogOut
             </Button>
           </div> :
           <NavLink to={RouterEndpoints.signin}>

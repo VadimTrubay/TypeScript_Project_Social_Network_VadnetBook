@@ -6,10 +6,6 @@ export interface initialUsersType {
     items: UserType[] | [];
     count: number;
   };
-  searchUsers: {
-    items: UserType[] | [];
-    count: number;
-  };
   followers: {
     items: UserType[] | [];
     count: number;

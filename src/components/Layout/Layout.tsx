@@ -5,6 +5,8 @@ import Loader from "../Loader/Loader.jsx";
 import Navbar from "../Navbar/Navbar.jsx";
 import styles from "./Layout.module.css";
 import {LayoutProps} from "../../types/layoutTypes";
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer} from 'react-toastify';
 
 
 export const Layout = ({children}: LayoutProps) => {
@@ -14,6 +16,7 @@ export const Layout = ({children}: LayoutProps) => {
       <Navbar/>
       <Suspense fallback={<Loader/>}>
         {children}
+        <ToastContainer/>
         <Outlet/>
       </Suspense>
     </div>

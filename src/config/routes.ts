@@ -8,7 +8,6 @@ export const RouterEndpoints = {
     users: "/users",
     followers: "/users/followers",
     following: "/users/following",
-    searchUsers: "/users/search",
     messages: "/messages",
     settings: "/settings",
 

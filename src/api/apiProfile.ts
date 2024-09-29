@@ -12,6 +12,10 @@ export const editProfileApi = async (profileData: EditProfileType): Promise<Axio
   return await axiosInstance.patch(mainUrls.profile.edit, profileData);
 };
 
+export const deleteProfileApi = async (): Promise<AxiosResponse> => {
+  return await axiosInstance.delete(mainUrls.profile.delete);
+};
+
 export const setStatusProfileApi = async (statusData: statusDataType): Promise<AxiosResponse> => {
   return await axiosInstance.put(mainUrls.profile.setStatus, statusData);
 };

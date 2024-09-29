@@ -1,6 +1,8 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {logOut, signIn, signUp, fetchMe} from "./operations";
 import {initialAuthType} from "../../types/authTypes";
+import {toast} from "react-toastify";
+import {toast_settings} from "../../utils/toasts_settings";
 
 
 const initialAuth: initialAuthType = {
@@ -18,6 +20,7 @@ const handlePending = (state: initialAuthType) => {
 const handleRejected = (state: initialAuthType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = action.payload;
+  // toast.error(`${state.error}`, toast_settings);
 };
 
 const handleSignInFulfilled = (state: initialAuthType, action: PayloadAction<any>) => {

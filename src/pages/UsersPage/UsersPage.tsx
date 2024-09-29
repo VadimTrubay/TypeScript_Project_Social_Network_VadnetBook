@@ -6,15 +6,13 @@ import User from "./User/User";
 import {Pagination} from "@mui/material";
 import styles from "./Users.module.css";
 import {selectRefresh, selectTotalCountUsers, selectUsers} from "../../redux/users/selectors";
-import {RequestListUserType} from "../../types/userTypes";
-import {selectIsAuth} from "../../redux/auth/selectors";
 import {pageSize} from "../../initialValues/initialValues";
 import Typography from "@mui/material/Typography";
 
 
 const UsersPage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const users = useSelector(selectUsers) as RequestListUserType;
+  const users = useSelector(selectUsers);
   const totalCountUsers: number = useSelector(selectTotalCountUsers);
   const isRefresh = useSelector<boolean>(selectRefresh);
   const [page, setPage] = useState(1);
@@ -40,7 +38,7 @@ const UsersPage = () => {
         variant="outlined"/>
 
       <div className={styles.usersBlockWrapper}>
-        {users.map((user) =>
+        {users?.map((user: { id: React.Key | null | undefined; }) =>
           <User
             key={user.id}
             user={user}

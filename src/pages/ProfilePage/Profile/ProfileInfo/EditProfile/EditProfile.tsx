@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import styles from './EditProfile.module.css';
-import {Field, Form, Formik} from "formik";
+import {Field, Form, Formik, FormikErrors} from "formik";
 import {EditProfileInfoValidationSchema} from "../../../../../validate/validationSchemaEditProfile";
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "../../../../../redux/store";
 import {editProfile, fetchMeProfile} from "../../../../../redux/profile/operations";
 import {fetchMe} from "../../../../../redux/auth/operations";
+import {Bounce, toast} from "react-toastify";
 
 // @ts-ignore
 const EditProfile = ({profile, setEditeProfile}) => {
@@ -16,7 +17,20 @@ const EditProfile = ({profile, setEditeProfile}) => {
     dispatch(fetchMe())
   }, [dispatch]);
 
-  const createFormikTextField = (formDataName, labelTitle, placeholder, errorsObject) => {
+  const createFormikTextField = (formDataName: string | undefined, labelTitle: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined, placeholder: string, errorsObject: FormikErrors<{
+    username: any;
+    about_me: any;
+    first_name: any;
+    last_name: any;
+    website_page: any;
+    github_page: any;
+    linkedin_page: any;
+    looking_from_job: any;
+    job_skills: any;
+    birth_date: any;
+    phone_number: any;
+  }>) => {
+    // @ts-ignore
     return <div className={styles.inputWrapper}>
       <label htmlFor={formDataName}>{labelTitle}:</label>
       <Field className={styles.input} id={formDataName} name={formDataName} placeholder={placeholder} type="text"/>
@@ -59,8 +73,6 @@ const EditProfile = ({profile, setEditeProfile}) => {
           phone_number: formData.phone_number === "" ? null : formData.phone_number,
         }));
         setEditeProfile(false)
-        // dispatch(fetchMeProfile())
-        // dispatch(fetchMe())
       }
       }
     >
