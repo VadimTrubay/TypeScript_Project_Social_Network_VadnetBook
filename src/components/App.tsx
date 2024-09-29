@@ -14,6 +14,7 @@ import FollowersPage from "../pages/UsersPage/FollowersPage.js";
 import FollowingPage from "../pages/UsersPage/FollowingPage.js";
 import {fetchFollowing} from "../redux/users/operations";
 import {fetchMeProfile} from "../redux/profile/operations";
+import SearchUsersPage from "../pages/UsersPage/SearchUsersPage";
 
 
 // const UsersPage = React.lazy(() => import("../pages/UsersPage/UsersPage"));
@@ -69,6 +70,7 @@ const App = () => {
           />
           <Route path="*" element={<NotFoundPage/>}/>
           <Route path={`${RouterEndpoints.users}/${RouterEndpoints.id}`} element={<ProfileByIdPage/>}/>
+          <Route path={`${RouterEndpoints.searchUsers}`} element={<SearchUsersPage/>}/>
         </Routes>
       </Layout>
     </>

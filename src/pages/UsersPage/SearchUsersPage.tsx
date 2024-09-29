@@ -5,17 +5,20 @@ import {AppDispatch} from "../../redux/store";
 import User from "./User/User";
 import {Pagination} from "@mui/material";
 import styles from "./Users.module.css";
-import {selectRefresh, selectTotalCountUsers, selectUsers} from "../../redux/users/selectors";
+import {
+  selectRefresh,
+  selectSearchUsers,
+  selectTotalCountSearchUsers,
+} from "../../redux/users/selectors";
 import {RequestListUserType} from "../../types/userTypes";
-import {selectIsAuth} from "../../redux/auth/selectors";
 import {pageSize} from "../../initialValues/initialValues";
 import Typography from "@mui/material/Typography";
 
 
-const UsersPage = () => {
+const SearchUsersPage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const users = useSelector(selectUsers) as RequestListUserType;
-  const totalCountUsers: number = useSelector(selectTotalCountUsers);
+  const searchUsers = useSelector(selectSearchUsers) as RequestListUserType;
+  const totalCountSearchUsers: number = useSelector(selectTotalCountSearchUsers);
   const isRefresh = useSelector<boolean>(selectRefresh);
   const [page, setPage] = useState(1);
 
@@ -30,17 +33,17 @@ const UsersPage = () => {
   return (
     <div className={styles.usersMainWrapper}>
       <Typography variant="h5" fontSize={30}>
-        Users
+        Users search results
       </Typography>
       <Pagination
-        count={Math.ceil(totalCountUsers / pageSize)} // Total number of pages
+        count={Math.ceil(totalCountSearchUsers / pageSize)} // Total number of pages
         page={page}
         onChange={handlePageChange}
         color="primary"
         variant="outlined"/>
 
       <div className={styles.usersBlockWrapper}>
-        {users.map((user) =>
+        {searchUsers?.map((user) =>
           <User
             key={user.id}
             user={user}
@@ -51,4 +54,4 @@ const UsersPage = () => {
   );
 };
 
-export default UsersPage;
+export default SearchUsersPage;

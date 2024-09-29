@@ -1,27 +1,24 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {fetchUserById, fetchUsers, fetchFollowers, fetchFollowing, follow, unfollow} from "./operations";
+import {fetchUserById, fetchUsers, fetchFollowers, fetchFollowing, follow, unfollow, fetchSearchUsers} from "./operations";
 import {initialUsersType} from "../../types/userTypes";
-import {toast} from "react-toastify";
 
 const initialUsers: initialUsersType = {
   userById: null,
   users: {
     items: [],
     count: 0,
-    next: null,
-    previous: null,
+  },
+  searchUsers: {
+    items: [],
+    count: 0,
   },
   followers: {
     items: [],
     count: 0,
-    next: null,
-    previous: null,
   },
   following: {
     items: [],
     count: 0,
-    next: null,
-    previous: null,
   },
   refreshed: false,
   loading: false,
@@ -43,8 +40,6 @@ const handleFetchUsersFulfilled = (state: initialUsersType, action: PayloadActio
   state.error = null;
   state.users.items = action.payload.results;
   state.users.count = action.payload.count;
-  state.users.next = action.payload.next;
-  state.users.previous = action.payload.previous;
 };
 
 const handleFetchFollowersFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
@@ -52,8 +47,6 @@ const handleFetchFollowersFulfilled = (state: initialUsersType, action: PayloadA
   state.error = null;
   state.followers.items = action.payload.results;
   state.followers.count = action.payload.count;
-  state.followers.next = action.payload.next;
-  state.followers.previous = action.payload.previous;
 };
 
 const handleFetchFollowingFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
@@ -61,8 +54,6 @@ const handleFetchFollowingFulfilled = (state: initialUsersType, action: PayloadA
   state.error = null;
   state.following.items = action.payload.results;
   state.following.count = action.payload.count;
-  state.following.next = action.payload.next;
-  state.following.previous = action.payload.previous;
 };
 
 const handleFetchUserByIdFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
@@ -72,16 +63,23 @@ const handleFetchUserByIdFulfilled = (state: initialUsersType, action: PayloadAc
 };
 
 
-const handleFollowFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
+const handleFollowFulfilled = (state: initialUsersType) => {
   state.loading = false;
   state.error = null;
   state.refreshed = true;
 };
 
-const handleUnfollowFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
+const handleUnfollowFulfilled = (state: initialUsersType) => {
   state.loading = false;
   state.error = null;
   state.refreshed = true;
+};
+
+const handleSearchUsersFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
+  state.loading = false;
+  state.error = null;
+  state.searchUsers.items = action.payload.results;
+  state.searchUsers.count = action.payload.count;
 };
 
 const usersSlice = createSlice({
@@ -108,6 +106,9 @@ const usersSlice = createSlice({
       .addCase(unfollow.pending, handlePending)
       .addCase(unfollow.fulfilled, handleUnfollowFulfilled)
       .addCase(unfollow.rejected, handleRejected)
+      .addCase(fetchSearchUsers.pending, handlePending)
+      .addCase(fetchSearchUsers.fulfilled, handleSearchUsersFulfilled)
+      .addCase(fetchSearchUsers.rejected, handleRejected)
 });
 
 export const usersReducer = usersSlice.reducer;

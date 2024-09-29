@@ -1,25 +1,22 @@
 import {profileType} from "./profileTypes";
-import {number, string} from "yup";
 
 export interface initialUsersType {
   userById: profileType | null;
   users: {
     items: UserType[] | [];
     count: number;
-    next: string | null;
-    previous: string | null;
-  }
+  };
+  searchUsers: {
+    items: UserType[] | [];
+    count: number;
+  };
   followers: {
     items: UserType[] | [];
     count: number;
-    next: string | null;
-    previous: string | null;
   };
   following: {
     items: UserType[] | [];
     count: number;
-    next: string | null;
-    previous: string | null;
   };
   refreshed: boolean;
   loading: boolean;
@@ -54,4 +51,9 @@ export interface UserEditProfileType {
   username: string;
   first_name: string | null;
   last_name: string | null;
+}
+
+export interface searchUsersType {
+  page: number;
+  q: string;
 }

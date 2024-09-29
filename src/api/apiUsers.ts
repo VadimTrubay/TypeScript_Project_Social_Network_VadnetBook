@@ -25,3 +25,7 @@ export const followApi = async (user_id: string): Promise<AxiosResponse> => {
 export const unfollowApi = async (user_id: string): Promise<AxiosResponse> => {
   return await axiosInstance.delete(mainUrls.users.unfollow(user_id));
 };
+
+export const fetchSearchUsersApi = async (page: number, q: string): Promise<AxiosResponse> => {
+  return await axiosInstance.get(mainUrls.users.searchUsers(page, q));
+};

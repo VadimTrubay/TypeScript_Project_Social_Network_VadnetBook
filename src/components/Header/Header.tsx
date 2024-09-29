@@ -1,30 +1,46 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import styles from './Header.module.css';
-import {NavLink} from "react-router-dom";
-import defaultUser from '../Other/user-smalled.png';
+import {NavLink, useNavigate} from "react-router-dom";
+import SearchBar from '@mkyy/mui-search-bar';
 import logo from './../Other/logo.png';
 import {useDispatch, useSelector} from "react-redux";
 import {selectIsAuth} from "../../redux/auth/selectors.js";
-import {fetchMe, logOut, signIn} from "../../redux/auth/operations.js";
+import {fetchMe, logOut} from "../../redux/auth/operations.js";
 import {AppDispatch} from "../../redux/store";
 import {RouterEndpoints} from "../../config/routes";
-import {selectMe} from "../../redux/auth/selectors";
 import {mainUrls} from "../../config/urls";
 import Button from "@mui/material/Button";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import defaultImg from "../Other/user-smalled.png";
 import {selectMeProfile} from "../../redux/profile/selectors";
+import {fetchSearchUsers} from "../../redux/users/operations";
+import {selectRefresh} from "../../redux/users/selectors";
+import defaultImage from "../../components/Other/user-smalled.png"
 
 const Header: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector(selectMeProfile);
   const isAuth = useSelector(selectIsAuth);
+  const [search, setSearch] = useState("");
+  const isRefresh = useSelector<boolean>(selectRefresh);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchMe());
   }, [isAuth, dispatch]);
 
-console.log(user)
+  useEffect(() => {
+    handleSearch();
+  }, [isRefresh]);
+
+
+  const handleSearch = () => {
+    const searchUsersData = {
+      page: 1,
+      q: search
+    }
+    dispatch(fetchSearchUsers(searchUsersData));
+    setSearch("");
+    navigate(`${RouterEndpoints.searchUsers}`);
+  }
 
   return (
     <header className={styles.header}>
@@ -37,11 +53,17 @@ console.log(user)
       </NavLink>
 
       <div>
+        <SearchBar
+          value={search}
+          onChange={newValue => setSearch(newValue)}
+          onSearch={handleSearch}
+          onCancelResearch={() => setSearch("")}
+        />
+      </div>
+
+      <div>
         {isAuth ? <div className={styles.loginWrapper}>
-            <NavLink className={styles.loggedUserLink} to={mainUrls.profile.profile}
-                     onClick={() => {
-                       // editUserProfileModal(true)
-                     }}>
+            <NavLink className={styles.loggedUserLink} to={mainUrls.profile.profile}>
               <div className={styles.loggedUserWrapper}>
                 <span className={styles.loginName}>{user.user?.username}</span>
                 <div className={styles.loginLogoWrapper}>
@@ -51,10 +73,8 @@ console.log(user)
                       alt={user?.username}
                       src={user?.profile_picture ?
                         `https://res.cloudinary.com/dip870vma/${user?.profile_picture}`
-                       :
-                      <AccountCircleIcon className={styles.loginLogo}/>}
-                    />
-
+                        :
+                        defaultImage}/>
                   </div>
                 </div>
               </div>

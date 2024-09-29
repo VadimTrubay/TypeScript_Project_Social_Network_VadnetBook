@@ -5,8 +5,11 @@ import {
   getFollowersApi,
   getFollowingApi,
   followApi,
-  unfollowApi
+  unfollowApi,
+  fetchSearchUsersApi
 } from "../../api/apiUsers";
+import {searchUsersType} from "../../types/userTypes";
+
 
 export const fetchUsers = createAsyncThunk(
   "users/fetchUsers",
@@ -73,6 +76,18 @@ export const unfollow = createAsyncThunk(
   async (user_id: string, thunkAPI) => {
     try {
       const response = await unfollowApi(user_id);
+      return response.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.detail);
+    }
+  }
+);
+
+export const fetchSearchUsers = createAsyncThunk(
+  "users/fetchSearchUsers",
+  async (searchUsersData: searchUsersType , thunkAPI) => {
+    try {
+      const response = await fetchSearchUsersApi(searchUsersData.page, searchUsersData.q);
       return response.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);

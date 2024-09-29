@@ -1,5 +1,3 @@
-import {setStatusProfileApi} from "../api/apiProfile";
-
 export const auth = "/auth";
 export const profile = "/profile";
 export const users = "/users";
@@ -27,5 +25,6 @@ export const mainUrls = {
     following: (page: number) => `${users}/following?page=${page}`,
     follow: (user_id: string) => `${users}/follow/${user_id}`,
     unfollow: (user_id: string) => `${users}/unfollow/${user_id}`,
+    searchUsers: (page: number, q: string) => `${users}/search?q=${q}&page=${page}`,
   },
 }
