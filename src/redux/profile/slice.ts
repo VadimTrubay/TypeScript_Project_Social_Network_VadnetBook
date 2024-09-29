@@ -39,7 +39,7 @@ const handlePending = (state: initialProfileType) => {
 const handleRejected = (state: initialProfileType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = action.payload;
-  toast.error(`${state.error}`, toast_settings);
+  // toast.error(`${state.error}`, toast_settings);
 };
 
 const handleFetchMeProfileFulfilled = (state: initialProfileType, action: PayloadAction<any>) => {
@@ -53,6 +53,7 @@ const handleSetMeStatusFulfilled = (state: initialProfileType, action: PayloadAc
   state.error = null;
   state.profile.status = action.payload.status;
   state.refreshed = true;
+  // @ts-ignore
   toast.success('Status setting successfully', toast_settings);
 };
 
@@ -60,6 +61,7 @@ const handleSetPhotoFulfilled = (state: initialProfileType, action: PayloadActio
   state.loading = false;
   state.error = null;
   state.refreshed = true;
+  // @ts-ignore
   toast.success('Photo setting successfully', toast_settings);
 };
 
@@ -78,6 +80,7 @@ const handleEditProfileFulfilled = (state: initialProfileType, action: PayloadAc
   state.profile.birth_date = action.payload.birth_date || state.profile.birth_date;
   state.profile.phone_number = action.payload.phone_number || state.profile.phone_number;
   state.refreshed = true;
+  // @ts-ignore
   toast.success('Profile edited successfully', toast_settings);
 };
 

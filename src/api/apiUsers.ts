@@ -2,8 +2,8 @@ import {AxiosResponse} from 'axios';
 import {mainUrls} from '../config/urls';
 import axiosInstance from "../utils/createAxiosInstance";
 
-export const getUsersApi = async (page: number): Promise<AxiosResponse> => {
-  return await axiosInstance.get(mainUrls.users.users(page));
+export const getUsersApi = async (search: string, page: number): Promise<AxiosResponse> => {
+  return await axiosInstance.get(mainUrls.users.users(search, page));
 };
 
 export const getUserByIdApi = async (user_id: string): Promise<AxiosResponse> => {
@@ -24,8 +24,4 @@ export const followApi = async (user_id: string): Promise<AxiosResponse> => {
 
 export const unfollowApi = async (user_id: string): Promise<AxiosResponse> => {
   return await axiosInstance.delete(mainUrls.users.unfollow(user_id));
-};
-
-export const fetchSearchUsersApi = async (page: number, q: string): Promise<AxiosResponse> => {
-  return await axiosInstance.get(mainUrls.users.searchUsers(page, q));
 };

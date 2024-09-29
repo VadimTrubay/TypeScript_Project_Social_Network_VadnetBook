@@ -27,11 +27,8 @@ export interface UserType {
 }
 
 export interface RequestListUserType {
-  count: number,
-  next: string | null,
-  previous: string | null,
   result: UserType[] | [],
-  friendsList?: RequestListUserType
+  count: number,
 }
 
 
@@ -49,7 +46,7 @@ export interface UserEditProfileType {
   last_name: string | null;
 }
 
-export interface searchUsersType {
+export interface usersParamsType {
+  search: string;
   page: number;
-  q: string;
 }

@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {fetchUserById, fetchUsers, fetchFollowers, fetchFollowing, follow, unfollow, fetchSearchUsers} from "./operations";
+import {fetchUserById, fetchUsers, fetchFollowers, fetchFollowing, follow, unfollow} from "./operations";
 import {initialUsersType} from "../../types/userTypes";
 import {toast} from "react-toastify";
 import {toast_settings} from "../../utils/toasts_settings";
@@ -31,6 +31,7 @@ const handlePending = (state: initialUsersType) => {
 const handleRejected = (state: initialUsersType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = action.payload;
+  // @ts-ignore
   toast.error(`${state.error}`, toast_settings);
 };
 
@@ -74,12 +75,6 @@ const handleUnfollowFulfilled = (state: initialUsersType) => {
   state.refreshed = true;
 };
 
-const handleSearchUsersFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
-  state.loading = false;
-  state.error = null;
-  state.users.items = action.payload.results;
-  state.users.count = action.payload.count;
-};
 
 const usersSlice = createSlice({
   name: "users",
@@ -105,9 +100,6 @@ const usersSlice = createSlice({
       .addCase(unfollow.pending, handlePending)
       .addCase(unfollow.fulfilled, handleUnfollowFulfilled)
       .addCase(unfollow.rejected, handleRejected)
-      .addCase(fetchSearchUsers.pending, handlePending)
-      .addCase(fetchSearchUsers.fulfilled, handleSearchUsersFulfilled)
-      .addCase(fetchSearchUsers.rejected, handleRejected)
 });
 
 export const usersReducer = usersSlice.reducer;

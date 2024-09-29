@@ -11,9 +11,9 @@ import {RouterEndpoints} from "../../config/routes";
 import {mainUrls} from "../../config/urls";
 import Button from "@mui/material/Button";
 import {selectMeProfile} from "../../redux/profile/selectors";
-import {fetchSearchUsers} from "../../redux/users/operations";
 import {selectRefresh} from "../../redux/users/selectors";
 import defaultImage from "../../components/Other/user-smalled.png"
+import {fetchUsers} from "../../redux/users/operations";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,17 +27,13 @@ const Header: React.FC = () => {
     dispatch(fetchMe());
   }, [isAuth, dispatch]);
 
-  // useEffect(() => {
-  //   handleSearch();
-  // }, [isRefresh]);
-
 
   const handleSearch = () => {
-    const searchUsersData = {
-      page: 1,
-      q: search
+    const usersParams = {
+      search: search,
+      page: 1
     }
-    dispatch(fetchSearchUsers(searchUsersData));
+    dispatch(fetchUsers(usersParams));
     setSearch("");
     navigate(`${RouterEndpoints.users}`);
   }

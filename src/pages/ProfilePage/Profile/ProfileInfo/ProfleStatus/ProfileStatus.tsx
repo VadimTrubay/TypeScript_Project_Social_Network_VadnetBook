@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 import styles from './ProfleStatus.module.css'
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "../../../../../redux/store";
-import {fetchMeProfile, setStatusProfile} from "../../../../../redux/profile/operations";
+import {setStatusProfile} from "../../../../../redux/profile/operations";
+import EditIcon from "@mui/icons-material/Edit";
 
 
 const ProfileStatus = ({myStatus, editStatus, setEditStatus}: any) => {
@@ -45,9 +46,7 @@ const ProfileStatus = ({myStatus, editStatus, setEditStatus}: any) => {
             {myStatus ? myStatus : ''}
 
           </span>
-        <span className={styles.editButton}>
-          edit
-        </span>
+          <EditIcon color={"primary"}/>
       </div>
     }
   </>

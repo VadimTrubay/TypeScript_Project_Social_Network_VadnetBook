@@ -10,5 +10,4 @@ export const selectFollowing = (state) => state.users.following.items || [];
 export const selectTotalCountFollowing  = (state) => state.users.following.count || 0;
 
 export const selectRefresh = (state) => state.users.refreshed;
-export const selectLoading = (state) => state.users.loading;
-export const selectError = (state) => state.users.error;
+export const selectLoadingUsers = (state) => state.users.loading;

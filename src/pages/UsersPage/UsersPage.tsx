@@ -18,7 +18,11 @@ const UsersPage = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dispatch(fetchUsers(page));
+    const usersParams = {
+      search: "",
+      page: page
+    }
+    dispatch(fetchUsers(usersParams));
   }, [page, isRefresh]);
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {

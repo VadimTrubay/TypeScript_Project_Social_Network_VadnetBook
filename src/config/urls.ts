@@ -19,12 +19,11 @@ export const mainUrls = {
     setStatus: `${profile}/edit/status`,
   },
   users: {
-    users: (page: number) => `${users}/?page=${page}`,
+    users: (search: string, page: number) => `${users}/?search=${search}&page=${page}`,
     userById: (user_id: string) => `${users}/${user_id}`,
     followers: (page: number) => `${users}/followers?page=${page}`,
     following: (page: number) => `${users}/following?page=${page}`,
     follow: (user_id: string) => `${users}/follow/${user_id}`,
     unfollow: (user_id: string) => `${users}/unfollow/${user_id}`,
-    searchUsers: (page: number, q: string) => `${users}/search?q=${q}&page=${page}`,
   },
 }
