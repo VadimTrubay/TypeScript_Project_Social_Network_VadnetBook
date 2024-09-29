@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import styles from './Header.module.css';
 import {NavLink} from "react-router-dom";
 import defaultUser from '../Other/user-smalled.png';
-import samuraiLogo from './../Other/samuraiLogo.png';
+import logo from './../Other/logo.png';
 import {useDispatch, useSelector} from "react-redux";
 import {selectIsAuth} from "../../redux/auth/selectors.js";
 import {fetchMe, logOut, signIn} from "../../redux/auth/operations.js";
@@ -10,25 +10,28 @@ import {AppDispatch} from "../../redux/store";
 import {RouterEndpoints} from "../../config/routes";
 import {selectMe} from "../../redux/auth/selectors";
 import {mainUrls} from "../../config/urls";
+import Button from "@mui/material/Button";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import defaultImg from "../Other/user-smalled.png";
+import {selectMeProfile} from "../../redux/profile/selectors";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const me = useSelector(selectMe);
+  const user = useSelector(selectMeProfile);
   const isAuth = useSelector(selectIsAuth);
 
   useEffect(() => {
     dispatch(fetchMe());
   }, [isAuth, dispatch]);
-  // const editUserProfileModal = (a) => {
-  // }
 
+console.log(user)
 
   return (
     <header className={styles.header}>
-      <NavLink to={'/'} className={styles.navLinkHeaderLogoWrapper}>
-        <img src={samuraiLogo} alt="logo"/>
+      <NavLink to={'/users'} className={styles.navLinkHeaderLogoWrapper}>
+        <img src={logo} alt="logo" className={styles.logo}/>
         <div className={styles.headerSocialTitleWrapper}>
-          <span className={styles.headerSocialName}>Samurai</span>
+          <span className={styles.headerSocialName}>VadnetBook</span>
           <span className={styles.headerSocialSubname}>Social Network</span>
         </div>
       </NavLink>
@@ -40,22 +43,34 @@ const Header: React.FC = () => {
                        // editUserProfileModal(true)
                      }}>
               <div className={styles.loggedUserWrapper}>
-                <span className={styles.loginName}>{me?.username}</span>
+                <span className={styles.loginName}>{user.user?.username}</span>
                 <div className={styles.loginLogoWrapper}>
                   <div className={styles.loginLogoWrapperOverflow}>
-                    <img className={styles.loginLogo}
-                         src={defaultUser}
-                         alt="user"/>
+                    <img
+                      className={styles.userImg}
+                      alt={user?.username}
+                      src={user?.profile_picture ?
+                        `https://res.cloudinary.com/dip870vma/${user?.profile_picture}`
+                       :
+                      <AccountCircleIcon className={styles.loginLogo}/>}
+                    />
+
                   </div>
                 </div>
               </div>
             </NavLink>
-            <button className={styles.logoutButton} onClick={() => {
+            <Button className={styles.logoutButton} variant="contained" onClick={() => {
               dispatch(logOut());
             }}>LogOut
-            </button>
+            </Button>
           </div> :
-          <NavLink to={RouterEndpoints.signin} className={styles.loginButton}>SignIn
+          <NavLink to={RouterEndpoints.signin}>
+            <Button
+              className={styles.logoutButton}
+              variant="contained"
+              style={{textTransform: "none"}}>
+              SignIn
+            </Button>
           </NavLink>
         }
 

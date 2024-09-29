@@ -102,13 +102,15 @@ const ProfilePage = () => {
           Редактировать профиль
         </button>
         <h1 className={styles.UserName}>{profile?.user.username}</h1>
-        <span className={styles.contactsTitle}>Status: </span>
-        <div className={styles.userAbout}>
-          <ProfileStatus
-            myStatus={profile?.status}
-            editStatus={editStatus}
-            setEditStatus={setEditStatus}
-          />
+        <div className={styles.profileBox}>
+          <span className={styles.contactsTitle}>Status: </span>
+          <div className={styles.userAbout}>
+            <ProfileStatus
+              myStatus={profile?.status}
+              editStatus={editStatus}
+              setEditStatus={setEditStatus}
+            />
+          </div>
         </div>
         <div className={styles.contactsTitle}>First name: <span>{profile?.user.first_name}</span></div>
         <div className={styles.contactsTitle}>Last name: {profile?.user.last_name}</div>

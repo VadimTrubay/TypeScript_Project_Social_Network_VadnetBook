@@ -22,7 +22,7 @@ const NotFoundPage = () => {
             <Typography variant="h6">
               The page you’re looking for doesn’t exist.
             </Typography>
-            <Button className={styles.button} href="/" variant="contained">
+            <Button className={styles.button} href="/users" variant="contained">
               Back Home
             </Button>
           </Grid>

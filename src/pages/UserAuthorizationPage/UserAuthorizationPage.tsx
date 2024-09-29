@@ -52,7 +52,7 @@ const UserAuthorizationPage = () => {
           <Container component="main" maxWidth="xs">
             <CssBaseline/>
             <Box className={styles.box}>
-              <Avatar className={styles.avatar}>
+              <Avatar  className={styles.avatar}>
                 <LockOutlinedIcon/>
               </Avatar>
               <Typography component="h1" variant="h5">
@@ -70,7 +70,7 @@ const UserAuthorizationPage = () => {
                   fullWidth
                   id="email"
                   label="Email Address"
-                  color="warning"
+                  color="primary"
                   name="email"
                   autoComplete="email"
                   autoFocus
@@ -85,7 +85,7 @@ const UserAuthorizationPage = () => {
                   fullWidth
                   name="password"
                   label="Password"
-                  color="warning"
+                  color="primary"
                   type={showPassword ? "text" : "password"}
                   id="password"
                   autoComplete="current-password"
@@ -112,7 +112,8 @@ const UserAuthorizationPage = () => {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  color="warning"
+                  color="primary"
+                  style={{ textTransform: "none" }}
                   sx={{marginTop: 1, marginBottom: 1}}
                 >
                   SignIn
@@ -120,7 +121,8 @@ const UserAuthorizationPage = () => {
                 <Grid container justifyContent="flex-end">
                   <Grid item>
                     <span className={styles.span}>Don't have an account?</span>
-                    <Link to={RouterEndpoints.signup}>SignUp</Link>
+
+                    <Link to={RouterEndpoints.signup} >SignUp</Link>
                   </Grid>
                 </Grid>
               </Box>

@@ -22,7 +22,7 @@
   border: 1px solid #000000;
   border-radius: 10px;
   width: 100%;
-  min-height: 250px;
+  min-height: 200px;
   margin-bottom: 10px;
   overflow: hidden;
 }
@@ -31,6 +31,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.loginLogo {
+  width: 150px;
+  color: #7e7e7e;
 }
 
 .userImg {
@@ -46,6 +51,7 @@
 
 .infoBlock {
   display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -64,8 +70,8 @@
 }
 
 .statusBlockWrapper {
-  height: 44px;
-  max-height: 44px;
+  height: 20px;
+  max-height: 20px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -94,7 +100,7 @@
 }
 
 .buttonsWrapper .followButton {
-  background-color: #ff8f49;
+  background-color: #006bc9;
   color: white;
 }
 
@@ -104,7 +110,7 @@
 }
 
 .buttonsWrapper .followButton:hover {
-  background-color: #fc5a35;
+  background-color: #3f50b5;
 }
 
 .buttonsWrapper .unfollowButton {

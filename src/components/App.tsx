@@ -13,6 +13,7 @@ import UsersPage from "../pages/UsersPage/UsersPage";
 import FollowersPage from "../pages/UsersPage/FollowersPage.js";
 import FollowingPage from "../pages/UsersPage/FollowingPage.js";
 import {fetchFollowing} from "../redux/users/operations";
+import {fetchMeProfile} from "../redux/profile/operations";
 
 
 // const UsersPage = React.lazy(() => import("../pages/UsersPage/UsersPage"));
@@ -25,6 +26,11 @@ const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isAuth = useSelector(selectIsAuth);
 
+  useEffect(() => {
+    dispatch(fetchMe());
+    dispatch(fetchMeProfile())
+    dispatch(fetchFollowing(1));
+  }, [isAuth, dispatch]);
 
   // @ts-ignore
   return (

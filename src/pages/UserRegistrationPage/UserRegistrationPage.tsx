@@ -63,7 +63,7 @@ const RegistrationForm = () => {
                   fullWidth
                   id="username"
                   label="Username"
-                  color="warning"
+                  color="primary"
                   autoFocus
                   value={formik.values.username}
                   onChange={formik.handleChange}
@@ -77,7 +77,7 @@ const RegistrationForm = () => {
                   fullWidth
                   id="email"
                   label="Email Address"
-                  color="warning"
+                  color="primary"
                   name="email"
                   value={formik.values.email}
                   onChange={formik.handleChange}
@@ -90,7 +90,7 @@ const RegistrationForm = () => {
                   fullWidth
                   name="password"
                   label="Password"
-                  color="warning"
+                  color="primary"
                   type={showPassword ? "text" : "password"}
                   id="password"
                   value={formik.values.password}
@@ -118,7 +118,7 @@ const RegistrationForm = () => {
                   fullWidth
                   name="confirmPassword"
                   label="Confirm Password"
-                  color="warning"
+                  color="primary"
                   type={showConfirmPassword ? "text" : "password"}
                   id="confirmPassword"
                   value={formik.values.confirmPassword}
@@ -146,9 +146,10 @@ const RegistrationForm = () => {
               type="submit"
               fullWidth
               variant="contained"
-              color="warning"
+              color="primary"
               className={styles.submit}
               sx={{marginTop: 2, marginBottom: 1}}
+              style={{ textTransform: "none" }} 
             >
               SignUp
             </Button>

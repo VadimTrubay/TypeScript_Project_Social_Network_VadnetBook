@@ -21,7 +21,8 @@
 }
 
 .header img {
-  width: 30px;
+  width: 40px;
+  border-radius: 5px;
 }
 
 .loginWrapper {
@@ -41,15 +42,20 @@
 .loginLogoWrapper {
   transition: 0.3s all;
   position: relative;
+  margin-left: 10px;
 }
 
 .loginLogoWrapperOverflow {
   overflow: hidden;
   transition: 0.3s all;
   border-radius: 50%;
+  margin-right: 10px;
 }
 
 .loginLogo {
+  color: #ffffff;
+  width: 205px;
+  margin-right: 10px;
   transform: scale(1.2);
   max-width: 25px;
   max-height: 25px;
@@ -74,7 +80,7 @@
 }
 
 .loggedUserLink:hover .loginName {
-  color: #00488a;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -94,15 +100,7 @@
 }
 
 .logoutButton {
-  color: white;
-  font-size: 16px;
-  padding: 5px;
   margin-left: 10px;
-  border: 0;
-  border-radius: 8px;
-  background-color: #464646;
-  cursor: pointer;
-  transition: 0.3s all;
 }
 
 .loggedUserLink:hover .logoutButton {

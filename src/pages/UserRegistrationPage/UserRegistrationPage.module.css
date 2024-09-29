@@ -11,7 +11,7 @@
 
 .avatar {
   margin: 8px;
-  background-color: var(--brand-color-contactbook-hover);;
+  /*background-color: var(--brand-color-contactbook-hover);*/
 }
 
 .box_submit {
@@ -20,7 +20,7 @@
 }
 
 .success {
-  background-color: var(--brand-color-contactbook);
+  /*background-color: var(--brand-color-contactbook);*/
 }
 
 .success:disabled {

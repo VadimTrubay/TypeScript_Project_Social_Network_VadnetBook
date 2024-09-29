@@ -3,6 +3,7 @@ import styles from './OnlineFriendsListItem.module.css';
 import defaultImage from '../../Other/user.png';
 import {NavLink} from "react-router-dom";
 import {mainUrls} from "../../../config/urls";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 
 // @ts-ignore
@@ -14,13 +15,14 @@ const OnlineFriendsListItem = ({friend}) => {
           to={mainUrls.users.userById(friend.user.id)}
           className={styles.friendItem}
         >
-          <img src={friend.profile_picture ?
-            `https://res.cloudinary.com/dip870vma/${friend?.profile_picture}`
-            :
-            defaultImage
+          {friend.profile_picture ?
+          <img src={
+            `https://res.cloudinary.com/dip870vma/${friend?.profile_picture}`}
+
+           // alt={friend.user.username}
+          /> : <AccountCircleIcon className={styles.loginLogo}/>
+
           }
-           alt={friend.user.username}
-          />
           <span>{friend.user.username}</span>
         </NavLink>
     </>);

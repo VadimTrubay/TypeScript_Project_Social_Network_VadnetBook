@@ -41,7 +41,7 @@ const User = ({user}: UserType) => {
           <div className={styles.nameBlockWrapper}>{user.user.username}</div>
           {user.status ? (
             <div className={styles.statusBlockWrapper}>
-              <b>Status:</b> {user.status}
+              <b>status: </b> {user.status}
             </div>
           ) : null}
         </div>

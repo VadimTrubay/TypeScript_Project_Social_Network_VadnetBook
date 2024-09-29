@@ -27,8 +27,12 @@
 }
 
 .editButton:hover {
-  background-color: #ff8f49;
+  background-color: #3f50b5;
   color: white;
+}
+
+.profileBox {
+  display: flex;
 }
 
 .photoWrapper{
@@ -64,9 +68,8 @@
 }
 
 .userAbout {
-  display: block;
   font-size: 16px;
-  margin-bottom: 30px;
+  margin-left: 15px;
 }
 
 .jobStatus{
@@ -118,7 +121,7 @@
 }
 
 .profileChangePhotoButtonLabel:hover {
-  background-color: #fc5a35;
+  background-color: #3f50b5;
 }
 
 .profileChangePhotoButton{
@@ -140,7 +143,7 @@
 }
 
 .goChatButton:hover {
-  background-color: #ff8f49;
+  background-color: #3f50b5;
 }
 
 @media (max-width: 992px) {

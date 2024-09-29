@@ -25,8 +25,8 @@ const ProfileStatus = ({myStatus, editStatus, setEditStatus}: any) => {
   }
 
   const onStatusChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-  setStatus(e.currentTarget.value);
-};
+    setStatus(e.currentTarget.value);
+  };
 
   return <>
     {editStatus ?
@@ -46,8 +46,8 @@ const ProfileStatus = ({myStatus, editStatus, setEditStatus}: any) => {
 
           </span>
         <span className={styles.editButton}>
-              edit
-            </span>
+          edit
+        </span>
       </div>
     }
   </>
