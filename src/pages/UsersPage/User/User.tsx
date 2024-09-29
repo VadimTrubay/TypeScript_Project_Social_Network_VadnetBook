@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import defaultImg from "../../../components/Other/user-smalled.png";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {selectIsAuth} from "../../../redux/auth/selectors";
+import {selectIsAuth, selectMe} from "../../../redux/auth/selectors";
 import {mainUrls} from "../../../config/urls";
 import {follow, unfollow} from "../../../redux/users/operations";
 import {AppDispatch} from "../../../redux/store";
@@ -11,6 +11,7 @@ import {UserType} from "../../../types/userTypes";
 
 const User = ({user}: UserType) => {
   const dispatch = useDispatch<AppDispatch>();
+  const me = useSelector(selectMe);
   const isAuth = useSelector(selectIsAuth);
 
   const handleUnfollow = () => {
@@ -46,7 +47,7 @@ const User = ({user}: UserType) => {
           ) : null}
         </div>
       </div>
-      {isAuth && (
+      {isAuth && user.user.id !== me.id ? (
         <div className={styles.buttonsWrapper}>
           {user.is_friend ? (
             <button
@@ -64,7 +65,7 @@ const User = ({user}: UserType) => {
             </button>
           )}
         </div>
-      )}
+      ) : ""}
     </div>
   );
 };
