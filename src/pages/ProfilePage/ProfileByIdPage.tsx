@@ -8,6 +8,10 @@ import defaultUser from '../../components/Other/user.png'
 import {NavLink, useParams} from "react-router-dom";
 import {selectUserById} from "../../redux/users/selectors";
 import {fetchUserById} from "../../redux/users/operations";
+import {Grid} from "@mui/material";
+import Button from "@mui/material/Button";
+import RateReviewIcon from '@mui/icons-material/RateReview';
+
 
 const ProfilePage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -32,20 +36,32 @@ const ProfilePage = () => {
                  : defaultUser}
                alt="UserPhoto"/>
         </div>
+        <Grid container justifyContent="center">
+          <Grid item>
+            <Button
+              size="large"
+              variant="contained"
+              startIcon={<RateReviewIcon/>}
+              sx={{marginTop: 1, marginBottom: 1}}
+            >
+              Go to chat
+            </Button>
+          </Grid>
+        </Grid>
         <div className={styles.contactsWrapper}>
           <div className={styles.contactsTitle}>Contacts:</div>
-          <div><span className={styles.contactsTitle}>Website: </span>
-            <NavLink to={profile?.website_page}>
+          <div><span className={styles.title}>Website: </span>
+            <NavLink to={`${profile?.website_page}`}>
               {profile?.website_page}
             </NavLink>
           </div>
-          <div><span className={styles.contactsTitle}>Github: </span>
-            <NavLink to={profile?.github_page}>
+          <div><span className={styles.title}>Github: </span>
+            <NavLink to={`${profile?.github_page}`}>
               {profile?.github_page}
             </NavLink>
           </div>
-          <div><span className={styles.contactsTitle}>Linkedin: </span>
-            <NavLink to={profile?.linkedin_page}>
+          <div><span className={styles.title}>Linkedin: </span>
+            <NavLink to={`${profile?.linkedin_page}`}>
               {profile?.linkedin_page}
             </NavLink>
           </div>
@@ -54,13 +70,13 @@ const ProfilePage = () => {
 
       <div className={styles.rightBlockWrapper}>
         <h1 className={styles.UserName}>{profile?.user.username}</h1>
-        <span className={styles.contactsTitle}>Status: </span>
+        <span className={styles.title}>Status: </span>
         <div className={styles.userAbout}>{profile?.status}</div>
-        <div className={styles.contactsTitle}>First name: <span>{profile?.user.first_name}</span></div>
-        <div className={styles.contactsTitle}>Last name: {profile?.user.last_name}</div>
-        <div className={styles.contactsTitle}>About me: {profile?.about_me}</div>
-        <div className={styles.contactsTitle}>Birth date: {profile?.birth_date}</div>
-        <div className={styles.contactsTitle}>Phone number: {profile?.phone_number}</div>
+        <div className={styles.title}>First name: <span>{profile?.user.first_name}</span></div>
+        <div className={styles.title}>Last name: {profile?.user.last_name}</div>
+        <div className={styles.title}>About me: {profile?.about_me}</div>
+        <div className={styles.title}>Birth date: {profile?.birth_date}</div>
+        <div className={styles.title}>Phone number: {profile?.phone_number}</div>
 
         {profile?.looking_from_job && (
           <div className={styles.jobBlockWrapper}>

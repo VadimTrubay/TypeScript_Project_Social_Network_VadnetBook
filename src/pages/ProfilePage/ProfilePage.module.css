@@ -63,6 +63,13 @@
 .contactsTitle {
   font-weight: 700;
   margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+
+.title {
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .UserName {

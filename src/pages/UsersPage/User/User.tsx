@@ -7,6 +7,9 @@ import {selectIsAuth, selectMe} from "../../../redux/auth/selectors";
 import {mainUrls} from "../../../config/urls";
 import {follow, unfollow} from "../../../redux/users/operations";
 import {AppDispatch} from "../../../redux/store";
+import {Grid} from "@mui/material";
+import Button from "@mui/material/Button";
+import RateReviewIcon from "@mui/icons-material/RateReview";
 
 
 const User = ({user}: any) => {
@@ -47,6 +50,23 @@ const User = ({user}: any) => {
           ) : null}
         </div>
       </div>
+      {isAuth && user.user?.id !== me?.id && user.is_friend ?
+              <Grid container justifyContent="center">
+        <Grid item>
+          <Button
+            size="large"
+            variant="contained"
+            startIcon={<RateReviewIcon/>}
+            sx={{marginTop: 1, marginBottom: 1}}
+          >
+            Go to chat
+          </Button>
+        </Grid>
+      </Grid>
+        :
+        null
+      }
+
       {isAuth && user.user?.id !== me?.id ? (
         <div className={styles.buttonsWrapper}>
           {user.is_friend ? (

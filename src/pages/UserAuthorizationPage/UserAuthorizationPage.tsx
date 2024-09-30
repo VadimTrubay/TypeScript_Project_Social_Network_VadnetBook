@@ -21,7 +21,8 @@ import {selectIsAuth} from "../../redux/auth/selectors";
 import styles from "../UserRegistrationPage/UserRegistrationPage.module.css";
 import {initialValueUserAuthorization} from "../../initialValues/initialValues";
 import {RouterEndpoints} from "../../config/routes";
-
+import GoogleIcon from '@mui/icons-material/Google';
+import {Login} from "@mui/icons-material";
 
 const defaultTheme = createTheme();
 
@@ -52,7 +53,7 @@ const UserAuthorizationPage = () => {
           <Container component="main" maxWidth="xs">
             <CssBaseline/>
             <Box className={styles.box}>
-              <Avatar  className={styles.avatar}>
+              <Avatar className={styles.avatar}>
                 <LockOutlinedIcon/>
               </Avatar>
               <Typography component="h1" variant="h5">
@@ -113,16 +114,28 @@ const UserAuthorizationPage = () => {
                   fullWidth
                   variant="contained"
                   color="primary"
-                  style={{ textTransform: "none" }}
+                  style={{textTransform: "none"}}
                   sx={{marginTop: 1, marginBottom: 1}}
+                  endIcon={<Login/>}
                 >
                   SignIn
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
+                    <Button
+                      size="large"
+                      variant="contained"
+                      startIcon={<GoogleIcon/>}
+                      sx={{marginTop: 1, marginBottom: 1}}
+                    >
+                      Login with Google
+                    </Button>
+                  </Grid>
+                </Grid>
+                <Grid container justifyContent="flex-end">
+                  <Grid item>
                     <span className={styles.span}>Don't have an account?</span>
-
-                    <Link to={RouterEndpoints.signup} >SignUp</Link>
+                    <Link to={RouterEndpoints.signup}>SignUp</Link>
                   </Grid>
                 </Grid>
               </Box>

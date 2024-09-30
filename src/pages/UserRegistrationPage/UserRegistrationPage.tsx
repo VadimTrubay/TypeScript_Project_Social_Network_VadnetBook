@@ -20,8 +20,10 @@ import {initialValueUserRegistration} from "../../initialValues/initialValues";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {RouterEndpoints} from "../../config/routes";
+import {Login} from "@mui/icons-material";
 
 const defaultTheme = createTheme();
+
 
 const RegistrationForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -149,7 +151,8 @@ const RegistrationForm = () => {
               color="primary"
               className={styles.submit}
               sx={{marginTop: 2, marginBottom: 1}}
-              style={{ textTransform: "none" }} 
+              style={{textTransform: "none"}}
+              endIcon={<Login/>}
             >
               SignUp
             </Button>

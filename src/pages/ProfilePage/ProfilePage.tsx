@@ -97,17 +97,17 @@ const ProfilePage = () => {
         </div>
         <div className={styles.contactsWrapper}>
           <div className={styles.contactsTitle}>Contacts:</div>
-          <div><span className={styles.contactsTitle}>Website: </span>
+          <div><span className={styles.title}>Website: </span>
             <NavLink to={`${profile?.website_page}`}>
               {profile?.website_page}
             </NavLink>
           </div>
-          <div><span className={styles.contactsTitle}>Github: </span>
+          <div><span className={styles.title}>Github: </span>
             <NavLink to={`${profile?.github_page}`}>
               {profile?.github_page}
             </NavLink>
           </div>
-          <div><span className={styles.contactsTitle}>Linkedin: </span>
+          <div><span className={styles.title}>Linkedin: </span>
             <NavLink to={`${profile?.linkedin_page}`}>
               {profile?.linkedin_page}
             </NavLink>
@@ -123,7 +123,7 @@ const ProfilePage = () => {
           <div>
             <h1 className={styles.UserName}>{profile?.user.username}</h1>
             <div className={styles.profileBox}>
-              <span className={styles.contactsTitle}>Status: </span>
+              <span className={styles.title}>Status: </span>
               <div className={styles.userAbout}>
                 <ProfileStatus
                   myStatus={profile?.status}
@@ -132,11 +132,11 @@ const ProfilePage = () => {
                 />
               </div>
             </div>
-            <div className={styles.contactsTitle}>First name: <span>{profile?.user.first_name}</span></div>
-            <div className={styles.contactsTitle}>Last name: {profile?.user.last_name}</div>
-            <div className={styles.contactsTitle}>About me: {profile?.about_me}</div>
-            <div className={styles.contactsTitle}>Birth date: {profile?.birth_date}</div>
-            <div className={styles.contactsTitle}>Phone number: {profile?.phone_number}</div>
+            <div className={styles.title}>First name: <span>{profile?.user.first_name}</span></div>
+            <div className={styles.title}>Last name: {profile?.user.last_name}</div>
+            <div className={styles.title}>About me: {profile?.about_me}</div>
+            <div className={styles.title}>Birth date: {profile?.birth_date}</div>
+            <div className={styles.title}>Phone number: {profile?.phone_number}</div>
 
             {profile?.looking_from_job && (
               <div className={styles.jobBlockWrapper}>

@@ -34,12 +34,17 @@ const UsersPage = () => {
       <Typography variant="h5" fontSize={30}>
         Users
       </Typography>
-      <Pagination
-        count={Math.ceil(totalCountUsers / pageSize)} // Total number of pages
-        page={page}
-        onChange={handlePageChange}
-        color="primary"
-        variant="outlined"/>
+
+      {totalCountUsers > 0 &&
+        <Pagination
+          count={Math.ceil(totalCountUsers / pageSize)} // Total number of pages
+          page={page}
+          onChange={handlePageChange}
+          color="primary"
+          variant="outlined"
+          sx={{m: 2}}
+        />
+      }
 
       <div className={styles.usersBlockWrapper}>
         {users?.map((user: { id: React.Key | null | undefined; }) =>

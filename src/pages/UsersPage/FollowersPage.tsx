@@ -32,12 +32,17 @@ const UsersPage = () => {
       <Typography variant="h5" fontSize={30}>
         Followers
       </Typography>
-      <Pagination
-        count={Math.ceil(totalCountFollowers / pageSize)} // Total number of pages
-        page={page}
-        onChange={handlePageChange}
-        color="primary"
-        variant="outlined"/>
+
+      {totalCountFollowers > 0 &&
+        <Pagination
+          count={Math.ceil(totalCountFollowers / pageSize)} // Total number of pages
+          page={page}
+          onChange={handlePageChange}
+          color="primary"
+          variant="outlined"
+          sx={{m: 2}}
+        />
+      }
 
       <div className={styles.usersBlockWrapper}>
         {followers?.map((follower: UserType) =>

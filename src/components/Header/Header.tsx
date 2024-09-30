@@ -14,6 +14,9 @@ import {selectMeProfile} from "../../redux/profile/selectors";
 import {selectRefresh} from "../../redux/users/selectors";
 import defaultImage from "../../components/Other/user-smalled.png"
 import {fetchUsers} from "../../redux/users/operations";
+import LogoutIcon from '@mui/icons-material/Logout';
+import {Login} from "@mui/icons-material";
+
 
 const Header: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -79,7 +82,9 @@ const Header: React.FC = () => {
               className={styles.logoutButton}
               variant="contained"
               onClick={() => {dispatch(logOut())}}
-              style={{textTransform: "none"}}>
+              style={{textTransform: "none"}}
+              endIcon={<LogoutIcon/>}
+            >
               LogOut
             </Button>
           </div> :
@@ -87,7 +92,9 @@ const Header: React.FC = () => {
             <Button
               className={styles.logoutButton}
               variant="contained"
-              style={{textTransform: "none"}}>
+              style={{textTransform: "none"}}
+              endIcon={<Login/>}
+            >
               SignIn
             </Button>
           </NavLink>
