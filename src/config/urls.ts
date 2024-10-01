@@ -10,6 +10,7 @@ export const mainUrls = {
     me: `${auth}/me`,
     signup: `${auth}/signup`,
     signin: `${auth}/signin`,
+    googleAuth: `${auth}/convert-token/`,
   },
   profile: {
     profile: `${profile}/`,

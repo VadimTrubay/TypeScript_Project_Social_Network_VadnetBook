@@ -1,7 +1,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {RegisterType, UserAuthorizationType} from '../../types/authTypes';
+import {googleCredType, RegisterType, UserAuthorizationType} from '../../types/authTypes';
 import {clearAuthHeader, setAuthHeader} from '../../utils/authUtils';
-import {getMeApi, signInApi, signUpApi} from "../../api/apiAuth";
+import {getMeApi, googleAuthApi, signInApi, signUpApi} from "../../api/apiAuth";
 
 export const signUp = createAsyncThunk(
   "auth/signUp",
@@ -29,6 +29,19 @@ export const signIn = createAsyncThunk(
   }
 );
 
+export const googleAuth = createAsyncThunk(
+  "auth/googleAuth",
+  async (googleCred: googleCredType, thunkAPI) => {
+    try {
+      const response = await googleAuthApi(googleCred);
+      setAuthHeader(response.data.access_token);
+      console.log('Access Token2:', response.data.access_token);
+      return response.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.detail);
+    }
+  }
+);
 
 export const fetchMe = createAsyncThunk(
   "auth/fetchMe",

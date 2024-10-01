@@ -26,11 +26,11 @@ const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isAuth = useSelector(selectIsAuth);
 
-  useEffect(() => {
-    dispatch(fetchMe());
-    dispatch(fetchMeProfile())
-    dispatch(fetchFollowing(1));
-  }, [isAuth, dispatch]);
+  // useEffect(() => {
+    // dispatch(fetchMe());
+    // dispatch(fetchMeProfile())
+    // dispatch(fetchFollowing(1));
+  // }, [isAuth, dispatch]);
 
   // @ts-ignore
   return (

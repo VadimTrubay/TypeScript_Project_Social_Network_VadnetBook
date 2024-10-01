@@ -31,3 +31,11 @@ export interface RegisterType {
   email: string;
   password: string;
 }
+
+export interface googleCredType {
+  token: string,
+  backend: string,
+  grant_type: string,
+  client_id: string,
+  client_secret: string,
+}
