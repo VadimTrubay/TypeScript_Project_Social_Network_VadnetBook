@@ -1,5 +1,5 @@
 import {AxiosResponse} from 'axios';
-import {RegisterType, UserAuthorizationType} from '../types/authTypes';
+import {googleCredType, RegisterType, UserAuthorizationType} from '../types/authTypes';
 import {mainUrls} from '../config/urls';
 import axiosInstance from "../utils/createAxiosInstance";
 
@@ -10,6 +10,11 @@ export const signUpApi = async (credentials: RegisterType): Promise<AxiosRespons
 
 export const signInApi = async (credentials: UserAuthorizationType): Promise<AxiosResponse> => {
   return await axiosInstance.post(mainUrls.auth.signin, credentials);
+};
+
+
+export const googleAuthApi = async (googleCred: googleCredType): Promise<AxiosResponse> => {
+  return await axiosInstance.post(mainUrls.auth.googleAuth, googleCred);
 };
 
 export const getMeApi = async (): Promise<AxiosResponse> => {

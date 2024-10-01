@@ -15,14 +15,15 @@ import {InputAdornment, IconButton, Grid} from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {validationSchemaAuthorization} from "../../validate/validationSchemaAuthorization.js";
-import {signIn} from "../../redux/auth/operations";
+import {googleAuth, signIn} from "../../redux/auth/operations";
 import {AppDispatch} from "../../redux/store";
 import {selectIsAuth} from "../../redux/auth/selectors";
 import styles from "../UserRegistrationPage/UserRegistrationPage.module.css";
 import {initialValueUserAuthorization} from "../../initialValues/initialValues";
 import {RouterEndpoints} from "../../config/routes";
-import GoogleIcon from '@mui/icons-material/Google';
 import {Login} from "@mui/icons-material";
+import {GoogleLogin, GoogleOAuthProvider} from "@react-oauth/google";
+import axios from "axios";
 
 const defaultTheme = createTheme();
 
@@ -46,6 +47,35 @@ const UserAuthorizationPage = () => {
         }
       },
     });
+
+    const handleGoogleLoginSuccess = (response: any) => {
+      // const accessToken = response.credential;
+      // console.log(`Access token1: ${accessToken}`)
+      // const googleCred = {
+      //   token: accessToken,
+      //   backend: 'google-oauth2',
+      //   grant_type: 'convert_token',
+      //   client_id: '818320348557-678cnb41bfihf7368pdj2dklmnhf2o2v.apps.googleusercontent.com',
+      //   client_secret: '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',
+      // }
+      // dispatch(googleAuth(googleCred))
+      console.log('Google');
+      console.log(response);
+      const accessToken = response.credential;  // You get this from Google's response
+      axios.post('http://localhost:8000/api/v1/auth/convert-token/', {
+        token: accessToken,
+        backend: 'google-oauth2',
+        grant_type: 'convert_token',
+        client_id: '818320348557-678cnb41bfihf7368pdj2dklmnhf2o2v.apps.googleusercontent.com',
+        client_secret: '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',
+      }).then(res => {
+        console.log('Access Token:', res.data.access_token);
+        // Store access token in local storage or context
+      }).catch(err => {
+        console.error('Error:', err);
+      });
+
+    };
 
     return (
       !isAuth && (
@@ -120,18 +150,14 @@ const UserAuthorizationPage = () => {
                 >
                   SignIn
                 </Button>
-                <Grid container justifyContent="flex-end">
-                  <Grid item>
-                    <Button
-                      size="large"
-                      variant="contained"
-                      startIcon={<GoogleIcon/>}
-                      sx={{marginTop: 1, marginBottom: 1}}
-                    >
-                      Login with Google
-                    </Button>
-                  </Grid>
-                </Grid>
+                <GoogleOAuthProvider clientId="818320348557-678cnb41bfihf7368pdj2dklmnhf2o2v.apps.googleusercontent.com">
+                  <GoogleLogin
+                    onSuccess={handleGoogleLoginSuccess}
+                    onError={() => {
+                      console.log('Google Login Failed');
+                    }}
+                  />
+                </GoogleOAuthProvider>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
                     <span className={styles.span}>Don't have an account?</span>
