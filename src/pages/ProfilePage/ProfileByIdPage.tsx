@@ -5,18 +5,21 @@ import {profileType} from "../../types/profileTypes";
 import React from "react";
 import styles from './ProfilePage.module.css';
 import defaultUser from '../../components/Other/user.png'
-import {NavLink, useParams} from "react-router-dom";
+import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {selectUserById} from "../../redux/users/selectors";
 import {fetchUserById} from "../../redux/users/operations";
 import {Grid} from "@mui/material";
 import Button from "@mui/material/Button";
 import RateReviewIcon from '@mui/icons-material/RateReview';
+import {createDialog} from "../../redux/dialogs/operations";
+import {mainUrls} from "../../config/urls";
 
 
 const ProfilePage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const {id} = useParams<{ id: string }>();
   const profile = useSelector(selectUserById) as profileType;
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -24,6 +27,13 @@ const ProfilePage = () => {
       dispatch(fetchUserById(id));
     }
   }, [id, dispatch]);
+
+  const handleCreateDialog = () => {
+    dispatch(createDialog({
+      "users": id
+    }));
+    navigate(mainUrls.dialogs.dialogs);
+  }
 
   // @ts-ignore
   return (
@@ -39,6 +49,7 @@ const ProfilePage = () => {
         <Grid container justifyContent="center">
           <Grid item>
             <Button
+              onClick={handleCreateDialog}
               size="large"
               variant="contained"
               startIcon={<RateReviewIcon/>}

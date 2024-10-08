@@ -1,0 +1,34 @@
+.dialogsItem {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-decoration: none;
+  color: #333;
+}
+
+.dialogsItem:hover {
+  background-color: #fcf4ec;
+}
+
+.dialogsItem img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.dialogsItem.active {
+  background-color: #fce0c0;
+}
+
+.friendPhoto{
+  border-radius: 50%;
+}
+
+.dialogsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.deleteDialogIcon {
+  margin-top: 7%;
+}

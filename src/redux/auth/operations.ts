@@ -35,7 +35,6 @@ export const googleAuth = createAsyncThunk(
     try {
       const response = await googleAuthApi(googleCred);
       setAuthHeader(response.data.access_token);
-      console.log('Access Token2:', response.data.access_token);
       return response.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);

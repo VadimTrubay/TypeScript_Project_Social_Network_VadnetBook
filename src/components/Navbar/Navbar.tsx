@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
             </div>
             <div>
               <NavLink
-                to={RouterEndpoints.messages}
+                to={RouterEndpoints.dialogs}
                 end
                 className={({isActive}) => isActive ? styles.active : ''}>
                 Messages

@@ -26,9 +26,10 @@ export interface UserType {
   profile_picture: string | undefined;
 }
 
-export interface RequestListUserType {
-  result: UserType[] | [],
-  count: number,
+export interface RequestDialogsUserType {
+  id: string;
+  username: string;
+  profile_picture: string | undefined;
 }
 
 
@@ -49,4 +50,9 @@ export interface UserEditProfileType {
 export interface usersParamsType {
   search: string;
   page: number;
+}
+
+
+export interface userIdType {
+  users: string | undefined;
 }

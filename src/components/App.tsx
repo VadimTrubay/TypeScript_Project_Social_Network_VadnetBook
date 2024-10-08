@@ -9,6 +9,7 @@ import {AppDispatch} from "../redux/store";
 import styles from "./App.module.css"
 import {fetchFollowing} from "../redux/users/operations";
 import {fetchMeProfile} from "../redux/profile/operations";
+import DialogsPage from "../pages/DialogsPage/DialogsPage";
 
 
 const ProfilePage = lazy(() => import("../pages/ProfilePage/ProfilePage"));
@@ -21,18 +22,9 @@ const ProfileByIdPage = lazy(() => import("../pages/ProfilePage/ProfileByIdPage"
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
 
 
-
 const App = () => {
-  const dispatch = useDispatch<AppDispatch>();
   const isAuth = useSelector(selectIsAuth);
 
-  // useEffect(() => {
-    // dispatch(fetchMe());
-    // dispatch(fetchMeProfile())
-    // dispatch(fetchFollowing(1));
-  // }, [isAuth, dispatch]);
-
-  // @ts-ignore
   return (
     <>
       <Layout className={styles.container}>
@@ -58,7 +50,12 @@ const App = () => {
             path={RouterEndpoints.users}
             element={<UsersPage/>}
           />
-          {/*<Route path={RouterEndpoints.messages} element={<MessagesPage/>}/>*/}
+          <Route
+            path={RouterEndpoints.dialogs}
+            element={!isAuth ?
+              <Navigate to={RouterEndpoints.signin}/> :
+              <DialogsPage/>}
+          />
           <Route
             path={RouterEndpoints.signup}
             element={isAuth ? <Navigate to={RouterEndpoints.users}/> : <UserRegistrationPage/>}

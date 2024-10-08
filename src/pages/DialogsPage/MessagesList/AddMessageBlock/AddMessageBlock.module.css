@@ -1,0 +1,63 @@
+.addMessageBlockWrapper{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.AddMessageBlockTextarea{
+  width: calc(100% - 210px);
+  height: 18px;
+  border: 1px solid #8d8d8d;
+  border-radius: 10px;
+  padding: 10px 20px;
+  resize: none;
+  transition: 0.3s all;
+}
+
+.AddMessageBlockTextarea:focus {
+  outline: 0;
+  outline-offset: 0;
+  border: 1px solid #ff8f49;
+}
+
+.addMessageBlockSendButton{
+  position: absolute;
+  right: 15px;
+  bottom: 50%;
+  transform: translateY(50%) translateX(-50%);
+  padding: 8px 30px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ff8f49;
+  color: white;
+  transition: 0.3s all;
+}
+
+.addMessageBlockSendButton:hover {
+  background-color: #fc5a35;
+}
+
+.addMessageBlockSendButton:disabled {
+  background-color: gray;
+}
+
+@media (max-width: 700px) {
+  .AddMessageBlockTextarea{
+    width: calc(100% - 160px);
+    margin-right: 5px;
+  }
+
+  .addMessageBlockSendButton{
+    position: inherit;
+    bottom: auto;
+    right: auto;
+    transform: none;
+  }
+}

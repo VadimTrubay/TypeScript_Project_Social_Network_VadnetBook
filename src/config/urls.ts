@@ -1,6 +1,7 @@
 export const auth = "/auth";
 export const profile = "/profile";
 export const users = "/users";
+export const dialogs = "/dialogs";
 
 
 export const mainUrls = {
@@ -26,5 +27,9 @@ export const mainUrls = {
     following: (page: number) => `${users}/following?page=${page}`,
     follow: (user_id: string) => `${users}/follow/${user_id}`,
     unfollow: (user_id: string) => `${users}/unfollow/${user_id}`,
+  },
+  dialogs: {
+    dialogs: `${dialogs}/`,
+    deleteById: (user_id: string) => `${dialogs}/${user_id}/`,
   },
 }

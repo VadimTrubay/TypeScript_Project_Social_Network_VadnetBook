@@ -1,7 +1,7 @@
 import "react-toastify/dist/ReactToastify.css";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {initialProfileType} from "../../types/profileTypes";
-import {editProfile, fetchMeProfile, setPhotoProfile, setStatusProfile} from "./operations";
+import {deleteProfile, editProfile, fetchMeProfile, setPhotoProfile, setStatusProfile} from "./operations";
 import {toast} from "react-toastify";
 import {toast_settings} from "../../utils/toasts_settings";
 
@@ -54,7 +54,7 @@ const handleSetMeStatusFulfilled = (state: initialProfileType, action: PayloadAc
   state.profile.status = action.payload.status;
   state.refreshed = true;
   // @ts-ignore
-  toast.success('Status setting successfully', toast_settings);
+  toast.info('Status setting successfully', toast_settings);
 };
 
 const handleSetPhotoFulfilled = (state: initialProfileType, action: PayloadAction<any>) => {
@@ -62,7 +62,7 @@ const handleSetPhotoFulfilled = (state: initialProfileType, action: PayloadActio
   state.error = null;
   state.refreshed = true;
   // @ts-ignore
-  toast.success('Photo setting successfully', toast_settings);
+  toast.info('Photo setting successfully', toast_settings);
 };
 
 const handleEditProfileFulfilled = (state: initialProfileType, action: PayloadAction<any>) => {
@@ -81,7 +81,34 @@ const handleEditProfileFulfilled = (state: initialProfileType, action: PayloadAc
   state.profile.phone_number = action.payload.phone_number || state.profile.phone_number;
   state.refreshed = true;
   // @ts-ignore
-  toast.success('Profile edited successfully', toast_settings);
+  toast.info('Profile edited successfully', toast_settings);
+};
+
+const handleDeleteProfileFulfilled = (state: initialProfileType, action: PayloadAction<any>) => {
+  state.loading = false;
+  state.error = null;
+  state.profile = {
+    user: {
+      id: "",
+      username: "",
+      email: "",
+      first_name: "",
+      last_name: "",
+    },
+    status: "",
+    about_me: "",
+    website_page: "",
+    github_page: "",
+    linkedin_page: "",
+    looking_from_job: false,
+    job_skills: "",
+    birth_date: "",
+    profile_picture: "",
+    phone_number: "",
+    date_joined: "",
+  };
+  // @ts-ignore
+  toast.error('Profile deleted successfully', toast_settings);
 };
 
 const profileSlice = createSlice({
@@ -101,7 +128,10 @@ const profileSlice = createSlice({
       .addCase(editProfile.rejected, handleRejected)
       .addCase(setPhotoProfile.pending, handlePending)
       .addCase(setPhotoProfile.fulfilled, handleSetPhotoFulfilled)
-      .addCase(setPhotoProfile.rejected, handleRejected),
+      .addCase(setPhotoProfile.rejected, handleRejected)
+      .addCase(deleteProfile.pending, handlePending)
+      .addCase(deleteProfile.fulfilled, handleDeleteProfileFulfilled)
+      .addCase(deleteProfile.rejected, handleRejected),
 });
 
 export const profileReducer = profileSlice.reducer;

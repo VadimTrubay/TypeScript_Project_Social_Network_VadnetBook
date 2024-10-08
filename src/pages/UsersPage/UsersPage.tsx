@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchUsers} from "../../redux/users/operations.js";
+import {fetchFollowing, fetchUsers} from "../../redux/users/operations.js";
 import {AppDispatch} from "../../redux/store";
 import User from "./User/User";
 import {Pagination} from "@mui/material";
@@ -23,6 +23,7 @@ const UsersPage = () => {
       page: page
     }
     dispatch(fetchUsers(usersParams));
+    dispatch(fetchFollowing(1));
   }, [page, isRefresh]);
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {

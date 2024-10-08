@@ -1,5 +1,5 @@
 import styles from "./User.module.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import defaultImg from "../../../components/Other/user-smalled.png";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
@@ -10,12 +10,14 @@ import {AppDispatch} from "../../../redux/store";
 import {Grid} from "@mui/material";
 import Button from "@mui/material/Button";
 import RateReviewIcon from "@mui/icons-material/RateReview";
+import {createDialog} from "../../../redux/dialogs/operations";
 
 
 const User = ({user}: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const me = useSelector(selectMe);
   const isAuth = useSelector(selectIsAuth);
+  const navigate = useNavigate();
 
   const handleUnfollow = () => {
     dispatch(unfollow(user.user.id));
@@ -24,6 +26,13 @@ const User = ({user}: any) => {
   const handleFollow = () => {
     dispatch(follow(user.user.id));
   };
+
+  const handleCreateDialog = () => {
+    dispatch(createDialog({
+      "users": user.user.id
+    }));
+    navigate(mainUrls.dialogs.dialogs);
+  }
 
   return (
     <div className={styles.userBlock}>
@@ -54,6 +63,7 @@ const User = ({user}: any) => {
               <Grid container justifyContent="center">
         <Grid item>
           <Button
+            onClick={handleCreateDialog}
             size="large"
             variant="contained"
             startIcon={<RateReviewIcon/>}

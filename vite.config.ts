@@ -4,7 +4,6 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import {join} from 'path';
 
 
-// https://vitejs.dev/config/
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
@@ -12,17 +11,10 @@ export default defineConfig(({mode}) => {
       'process.env': env
     },
     plugins: [react(), tsconfigPaths()],
-    test: {
-      environment: 'jsdom',
-      globals: true,
-    },
     resolve: {
       alias: {
         '@': join(__dirname, 'src'),
       },
-    },
-    build: {
-      sourcemap: true,
     },
     server: {
       host: '0.0.0.0',

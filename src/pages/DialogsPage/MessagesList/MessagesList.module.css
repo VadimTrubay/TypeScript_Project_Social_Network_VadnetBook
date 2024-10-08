@@ -1,0 +1,147 @@
+.messagesList{
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.messagesList form {
+  width: 100%;
+  padding: 0 15px;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+}
+
+.messagesList .noMessages{
+ width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.messagesList .noMessages span {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.messagesBlockWrapper{
+  padding: 20px 20px 40px 20px;
+  max-height: 470px;
+  overflow-y: scroll;
+  display: grid;
+
+}
+
+.userHeader{
+  width: 100%;
+  height: 40px;
+  background-color: #cecece;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  /*position: fixed;*/
+  z-index: 70;
+}
+
+.userHeader a {
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 15px;
+  overflow: hidden;
+}
+
+.userHeader a img {
+  height: 100%;
+
+}
+
+.userInfo{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.userInfo span {
+  display: block;
+  width: 100%;
+}
+
+.userInfo span:first-child {
+  font-size: 18px;
+}
+
+.userInfo span:last-child {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.getOldMessageButton{
+  margin: 0 auto 20px;
+  padding: 8px 30px;
+  /*height: 40px;*/
+  border-radius: 10px;
+  border: none;
+  background-color: gray;
+  color: white;
+  transition: 0.3s all;
+}
+
+.getOldMessageButton:hover {
+  background-color: #ff8f49;
+}
+
+.backToChatsMenuButton{
+  display: none;
+}
+
+.goChatButton{
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .backToChatsMenuButton{
+    display: block;
+    height: 30px;
+    width: 30px;
+    margin-right: 20px;
+  }
+
+  .backToChatsMenuButton img {
+    width: 100%;
+  }
+
+  .userHeader{
+    padding-left: 10px;
+    position: fixed;
+  }
+
+  .messagesBlockWrapper {
+    padding: 70px 10px 40px 10px;
+    max-height: none;
+  }
+
+  .goChatButton{
+    display: block;
+    padding: 10px;
+    margin: 20px auto 0;
+    min-width: 100px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff8f49;
+    color: white;
+    transition: 0.3s all;
+  }
+
+  .messagesList form {
+    position: fixed;
+    display: block;
+    padding: 0 5px;
+  }
+}
