@@ -13,22 +13,6 @@ export const createDialogApi = async (userId: userIdType): Promise<AxiosResponse
 };
 
 
-export const deleteDialogApi = async (user_id: string): Promise<AxiosResponse> => {
-  return await axiosInstance.delete(mainUrls.dialogs.deleteById(user_id));
+export const deleteDialogApi = async (dialog_id: string): Promise<AxiosResponse> => {
+  return await axiosInstance.delete(mainUrls.dialogs.deleteDialogById(dialog_id));
 };
-
-// export const getFollowersApi = async (page: number): Promise<AxiosResponse> => {
-//   return await axiosInstance.get(mainUrls.users.followers(page));
-// };
-//
-// export const getFollowingApi = async (page: number): Promise<AxiosResponse> => {
-//   return await axiosInstance.get(mainUrls.users.following(page));
-// };
-//
-// export const followApi = async (user_id: string): Promise<AxiosResponse> => {
-//   return await axiosInstance.post(mainUrls.users.follow(user_id));
-// };
-//
-// export const unfollowApi = async (user_id: string): Promise<AxiosResponse> => {
-//   return await axiosInstance.delete(mainUrls.users.unfollow(user_id));
-// };

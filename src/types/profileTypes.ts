@@ -9,6 +9,7 @@ export interface initialProfileType {
 
 export interface profileType {
   user: UserProfileType;
+  is_friend: boolean;
   status: string | null;
   about_me: string | null;
   website_page: string | null;
@@ -19,7 +20,6 @@ export interface profileType {
   birth_date: string | null;
   profile_picture: string | null;
   phone_number: string | null;
-  date_joined: string;
 }
 
 export interface EditProfileType {

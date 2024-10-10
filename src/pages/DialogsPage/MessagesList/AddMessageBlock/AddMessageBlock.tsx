@@ -1,29 +1,50 @@
 import React from "react";
 import styles from './AddMessageBlock.module.css';
 import {Field, Form, Formik} from "formik";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch} from "../../../../redux/store";
+import {createMessage} from "../../../../redux/messages/operations";
+import {selectIdActiveChat} from "../../../../redux/dialogs/selectors";
 
-const AddMessageBlock = ({
-                           // currentChatUserId, sendMessage
-}) => {
-  return (<></>
-    // <Formik
-    //   initialValues={{
-    //     message: '',
-    //   }}
-    //   onSubmit={ (values, {resetForm}) => {
-    //     sendMessage(currentChatUserId, values.message);
-    //     resetForm();
-    //   }}
-    //   validateOnChange={false}
-    //   validateOnBlur={false}
-    // >
-    //   {({errors, touched, isValid, dirty}) => {
-    //     return <Form>
-    //       <Field cols="30" rows="10" id="message" name="message" type="textarea" className={styles.AddMessageBlockTextarea} placeholder='Add your message...'/>
-    //       <button type="submit" className={styles.addMessageBlockSendButton} disabled={!(isValid && dirty)}>Submit</button>
-    //     </Form>
-    //   }}
-    // </Formik>
+const AddMessageBlock = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const idActiveChat = useSelector(selectIdActiveChat);
+
+
+  return (
+    <Formik
+      initialValues={{
+        message: '',
+      }}
+      onSubmit={(values, {resetForm}) => {
+        dispatch(createMessage({
+          dialog: idActiveChat,
+          content: values.message,
+        }))
+        resetForm();
+      }}
+      validateOnChange={false}
+      validateOnBlur={false}
+    >
+      {({errors, touched, isValid, dirty}) => {
+        return <Form>
+          <Field
+            cols="30"
+            rows="10"
+            id="message"
+            name="message"
+            type="textarea"
+            className={styles.AddMessageBlockTextarea}
+            placeholder='Add your message...'/>
+          <button
+            type="submit"
+            className={styles.addMessageBlockSendButton}
+            disabled={!(isValid && dirty)}>
+            Submit
+          </button>
+        </Form>
+      }}
+    </Formik>
   );
 };
 

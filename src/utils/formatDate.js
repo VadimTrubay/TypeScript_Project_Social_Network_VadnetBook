@@ -1,5 +1,5 @@
-export const formatDate = (addedAt) => { // get date for YYYY-MM-DDTHH:mm:ss.sssZ format
-  let timestamp = Date.parse(addedAt) + 10800000; // fix server bug - return time plus 3 hours
+export const formatDate = (addedAt) => {// get date for YYYY-MM-DDTHH:mm:ss.sssZ format
+  let timestamp = Date.parse(addedAt);
   const date = new Date(timestamp);
 
   let dayOfMonth = date.getDate();
@@ -18,6 +18,7 @@ export const formatDate = (addedAt) => { // get date for YYYY-MM-DDTHH:mm:ss.sss
   dayOfMonth = dayOfMonth < 10 ? '0' + dayOfMonth : dayOfMonth;
   hour = hour < 10 ? '0' + hour : hour;
   minutes = minutes < 10 ? '0' + minutes : minutes;
+  console.log(diffSec)
 
   if (diffSec < 1) {
     return 'прямо сейчас';

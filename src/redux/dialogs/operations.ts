@@ -37,60 +37,12 @@ export const createDialog = createAsyncThunk(
 
 export const deleteDialog = createAsyncThunk(
   "dialogs/deleteDialog",
-  async (user_id: string, thunkAPI) => {
+  async (dialog_id: string, thunkAPI) => {
     try {
-      const response = await deleteDialogApi(user_id);
+      const response = await deleteDialogApi(dialog_id);
       return response.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
   }
 );
-
-// export const fetchFollowers = createAsyncThunk(
-//   "dialogs/fetchFollowers",
-//   async (page: number, thunkAPI) => {
-//     try {
-//       const response = await getFollowersApi(page);
-//       return response.data;
-//     } catch (error: any) {
-//       return thunkAPI.rejectWithValue(error.response.data.detail);
-//     }
-//   }
-// );
-//
-// export const fetchFollowing = createAsyncThunk(
-//   "dialogs/fetchFollowing",
-//   async (page: number, thunkAPI) => {
-//     try {
-//       const response = await getFollowingApi(page);
-//       return response.data;
-//     } catch (error: any) {
-//       return thunkAPI.rejectWithValue(error.response.data.detail);
-//     }
-//   }
-// );
-//
-// export const follow = createAsyncThunk(
-//   "dialogs/follow",
-//   async (user_id: string, thunkAPI) => {
-//     try {
-//       const response = await followApi(user_id);
-//       return response.data;
-//     } catch (error: any) {
-//       return thunkAPI.rejectWithValue(error.response.data.detail);
-//     }
-//   }
-// );
-//
-// export const unfollow = createAsyncThunk(
-//   "dialogs/unfollow",
-//   async (user_id: string, thunkAPI) => {
-//     try {
-//       const response = await unfollowApi(user_id);
-//       return response.data;
-//     } catch (error: any) {
-//       return thunkAPI.rejectWithValue(error.response.data.detail);
-//     }
-//   }
-// );

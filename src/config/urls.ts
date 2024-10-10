@@ -2,6 +2,7 @@ export const auth = "/auth";
 export const profile = "/profile";
 export const users = "/users";
 export const dialogs = "/dialogs";
+export const messages = "/messages";
 
 
 export const mainUrls = {
@@ -30,6 +31,10 @@ export const mainUrls = {
   },
   dialogs: {
     dialogs: `${dialogs}/`,
-    deleteById: (user_id: string) => `${dialogs}/${user_id}/`,
+    deleteDialogById: (dialog_id: string) => `${dialogs}/${dialog_id}/`,
+  },
+  messages: {
+    messagesByDialog: (dialog_id: string | null) =>  `${dialogs}/${dialog_id}${messages}/`,
+    deleteMessagesByDialog: (dialog_id: string | null, messages_id: string) =>  `${dialogs}/${dialog_id}/${messages}/${messages_id}/`,
   },
 }

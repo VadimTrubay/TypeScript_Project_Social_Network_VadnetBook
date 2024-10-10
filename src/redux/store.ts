@@ -14,6 +14,7 @@ import {authReducer} from "./auth/slice";
 import {profileReducer} from "./profile/slice";
 import {usersReducer} from "./users/slice";
 import {dialogsReducer} from "./dialogs/slice";
+import {messagesReducer} from "./messages/slice";
 
 
 const authPersistConfig = {
@@ -30,6 +31,7 @@ export const store = configureStore({
     profile: profileReducer,
     users: usersReducer,
     dialogs: dialogsReducer,
+    messages: messagesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

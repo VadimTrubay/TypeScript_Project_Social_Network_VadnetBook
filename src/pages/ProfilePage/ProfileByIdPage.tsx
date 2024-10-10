@@ -13,11 +13,14 @@ import Button from "@mui/material/Button";
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import {createDialog} from "../../redux/dialogs/operations";
 import {mainUrls} from "../../config/urls";
+import {selectIsAuth, selectMe} from "../../redux/auth/selectors";
 
 
 const ProfilePage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const {id} = useParams<{ id: string }>();
+  const me = useSelector(selectMe);
+  const isAuth = useSelector(selectIsAuth);
   const profile = useSelector(selectUserById) as profileType;
   const navigate = useNavigate();
 
@@ -32,6 +35,8 @@ const ProfilePage = () => {
     dispatch(createDialog({
       "users": id
     }));
+    // @ts-ignore
+    dispatch(fetchUserById(id));
     navigate(mainUrls.dialogs.dialogs);
   }
 
@@ -46,19 +51,25 @@ const ProfilePage = () => {
                  : defaultUser}
                alt="UserPhoto"/>
         </div>
-        <Grid container justifyContent="center">
-          <Grid item>
-            <Button
-              onClick={handleCreateDialog}
-              size="large"
-              variant="contained"
-              startIcon={<RateReviewIcon/>}
-              sx={{marginTop: 1, marginBottom: 1}}
-            >
-              Go to chat
-            </Button>
+
+        {isAuth && profile?.user?.id !== me?.id && profile?.is_friend ?
+          <Grid container justifyContent="center">
+            <Grid item>
+              <Button
+                onClick={handleCreateDialog}
+                size="large"
+                variant="contained"
+                startIcon={<RateReviewIcon/>}
+                sx={{marginTop: 1, marginBottom: 1}}
+              >
+                Go to chat
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
+          :
+          null
+        }
+
         <div className={styles.contactsWrapper}>
           <div className={styles.contactsTitle}>Contacts:</div>
           <div><span className={styles.title}>Website: </span>

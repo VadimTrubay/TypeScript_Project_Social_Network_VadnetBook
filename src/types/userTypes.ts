@@ -39,6 +39,7 @@ export interface UserProfileType {
   email: string;
   first_name: string | null;
   last_name: string | null;
+  date_joined: string;
 }
 
 export interface UserEditProfileType {

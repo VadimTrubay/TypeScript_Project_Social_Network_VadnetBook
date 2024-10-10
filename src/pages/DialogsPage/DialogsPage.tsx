@@ -11,7 +11,6 @@ import {MessagesList} from "./MessagesList/MessagesList";
 const DialogsPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const dialogsList = useSelector<DialogType[]>(selectDialogs);
-  const [showChatsMenu, toggleChatsMenu] = useState(false);
 
 
   useEffect(() => {
@@ -19,21 +18,10 @@ const DialogsPage = () => {
   }, [dispatch]);
 
 
-  // useEffect(() => {
-  //   if ((!userId && !currentChatUserId) || (!userId && currentChatUserId)) {
-  //     setCurrentChatUserId(null) // clear current chat when user go to main dialogs page (without userId param in URL)
-  //   } else {
-  //     setCurrentChatUserId(userId);
-  //     startChatting(userId)
-  //   }
-  // }, [userId])
-
   return (
     <div className={styles.dialogs}>
       <DialogsList
         dialogsList={dialogsList}
-        showChatsMenu={showChatsMenu}
-        toggleChatsMenu={toggleChatsMenu}
       />
       <MessagesList/>
     </div>

@@ -32,7 +32,7 @@ const handleRejected = (state: initialUsersType, action: PayloadAction<any>) => 
   state.loading = false;
   state.error = action.payload;
   // @ts-ignore
-  toast.error(`${state.error}`, toast_settings);
+  // toast.error(`${state.error}`, toast_settings);
 };
 
 const handleFetchUsersFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {

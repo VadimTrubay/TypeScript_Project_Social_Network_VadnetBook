@@ -5,7 +5,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectIsAuth, selectMe} from "../../../redux/auth/selectors";
 import {mainUrls} from "../../../config/urls";
-import {follow, unfollow} from "../../../redux/users/operations";
+import {fetchUserById, follow, unfollow} from "../../../redux/users/operations";
 import {AppDispatch} from "../../../redux/store";
 import {Grid} from "@mui/material";
 import Button from "@mui/material/Button";
@@ -31,6 +31,7 @@ const User = ({user}: any) => {
     dispatch(createDialog({
       "users": user.user.id
     }));
+    dispatch(fetchUserById(user.user.id));
     navigate(mainUrls.dialogs.dialogs);
   }
 
@@ -59,20 +60,21 @@ const User = ({user}: any) => {
           ) : null}
         </div>
       </div>
+
       {isAuth && user.user?.id !== me?.id && user.is_friend ?
-              <Grid container justifyContent="center">
-        <Grid item>
-          <Button
-            onClick={handleCreateDialog}
-            size="large"
-            variant="contained"
-            startIcon={<RateReviewIcon/>}
-            sx={{marginTop: 1, marginBottom: 1}}
-          >
-            Go to chat
-          </Button>
+        <Grid container justifyContent="center">
+          <Grid item>
+            <Button
+              onClick={handleCreateDialog}
+              size="large"
+              variant="contained"
+              startIcon={<RateReviewIcon/>}
+              sx={{marginTop: 1, marginBottom: 1}}
+            >
+              Go to chat
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
         :
         null
       }

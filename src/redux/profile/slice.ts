@@ -14,7 +14,9 @@ const initialProfile: initialProfileType = {
       email: "",
       first_name: "",
       last_name: "",
+      date_joined: "",
     },
+    is_friend: false,
     status: "",
     about_me: "",
     website_page: "",
@@ -25,7 +27,6 @@ const initialProfile: initialProfileType = {
     birth_date: "",
     profile_picture: "",
     phone_number: "",
-    date_joined: "",
   },
   refreshed: false,
   loading: false,
@@ -94,7 +95,9 @@ const handleDeleteProfileFulfilled = (state: initialProfileType, action: Payload
       email: "",
       first_name: "",
       last_name: "",
+      date_joined: "",
     },
+    is_friend: false,
     status: "",
     about_me: "",
     website_page: "",
@@ -105,10 +108,9 @@ const handleDeleteProfileFulfilled = (state: initialProfileType, action: Payload
     birth_date: "",
     profile_picture: "",
     phone_number: "",
-    date_joined: "",
   };
   // @ts-ignore
-  toast.error('Profile deleted successfully', toast_settings);
+  toast.success('Profile deleted successfully', toast_settings);
 };
 
 const profileSlice = createSlice({

@@ -1,29 +1,37 @@
 import React from "react";
 import styles from './SingleMessage.module.css';
-import user from './../../../../Other/user.png';
+import user from '../../../../components/Other/user.png';
 import {formatDate} from "../../../../utils/formatDate";
-import sendedIcon from "./../../../Other/sended.png";
-import readIcon from "./../../../../Other/read.png";
+import sendedIcon from "../../../../components/Other/sended.png";
+import readIcon from "../../../../components/Other/read.png";
+import defaultUser from "../../../../components/Other/user.png";
 
-export const SingleMessage = ({
-                                // data, currentChatUserId, activeChatUserInfo, loggedUserPhoto
-}) => {
-  // const {addedAt, body, id, recipientId, senderId, senderName, viewed} = data;
-  //
-  // let activeChatUserPhoto = activeChatUserInfo.photos.large ? activeChatUserInfo.photos.large : user;
-  // const loggedUser = loggedUserPhoto ? loggedUserPhoto : user;
+export const SingleMessage = ({message}) => {
 
-  return (<></>
+
+  return (
     // <div className={`${styles.message} ${+currentChatUserId !== +senderId ? styles.myMessage : ''}`} key={id}>
-    //   <div className={styles.messageUserInfo}>
-    //     <img src={+currentChatUserId === +senderId ? activeChatUserPhoto : loggedUser} alt="user photo"/>
-    //   </div>
-    //   <div className={styles.messageWrapper}>
-    //     <span>{body}</span>
-    //   </div>
-    //   <div className={styles.sendDateWrapper}>
-    //     <span>{viewed ? <img className={styles.readStatus} src={readIcon} alt=""/> : <img className={styles.readStatus} src={sendedIcon} alt=""/>}</span> <span>{formatDate(addedAt)}</span>
-    //   </div>
-    // </div>
+    <div className={styles.message}>
+      <div className={styles.messageUserInfo}>
+        {/*<img src={+currentChatUserId === +senderId ? activeChatUserPhoto : loggedUser} alt="user photo"/>*/}
+        <img src={message.sender?.profile_picture ?
+          message.sender?.profile_picture
+          : defaultUser}
+             alt="userPhoto"/>
+      </div>
+      <div className={styles.messageWrapper}>
+        <span>{message?.content}</span>
+      </div>
+      <div className={styles.sendDateWrapper}>
+        <span>
+          <img
+            className={styles.readStatus}
+            src={readIcon}
+            alt=""
+          />
+        </span>
+        <span>{formatDate(message.updated_at)}</span>
+      </div>
+    </div>
   );
 };

@@ -15,7 +15,7 @@ import {InputAdornment, IconButton, Grid} from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {validationSchemaAuthorization} from "../../validate/validationSchemaAuthorization.js";
-import {googleAuth, signIn} from "../../redux/auth/operations";
+import {fetchMe, googleAuth, signIn} from "../../redux/auth/operations";
 import {AppDispatch} from "../../redux/store";
 import {selectIsAuth} from "../../redux/auth/selectors";
 import styles from "../UserRegistrationPage/UserRegistrationPage.module.css";
@@ -44,6 +44,7 @@ const UserAuthorizationPage = () => {
       onSubmit: (values) => {
         if (formik.isValid) {
           dispatch(signIn(values));
+          dispatch(fetchMe)
         }
       },
     });

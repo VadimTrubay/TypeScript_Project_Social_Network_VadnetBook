@@ -19,7 +19,6 @@ export const DialogsList = (dialogsList: any) => {
         :
         <div className={styles.noDialoguesWrapper}>
           <span className={styles.noDialogues}>no active dialogues</span>
-          <span className={styles.noDialogues}><Link to={'/friends'}>write</Link> your first message</span>
         </div>}
     </div>
   );

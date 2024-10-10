@@ -6,6 +6,7 @@ import {initialDialogsType} from "../../types/dialogTypes";
 
 const initialDialogs: initialDialogsType = {
   items: [],
+  idActiveChat: null,
   refreshed: false,
   loading: false,
   error: null,
@@ -20,7 +21,7 @@ const handleRejected = (state: initialDialogsType, action: PayloadAction<any>) =
   state.loading = false;
   state.error = action.payload;
   // @ts-ignore
-  toast.error(`${state.error}`, toast_settings);
+  // toast.error(`${state.error}`, toast_settings);
 };
 
 const handleFetchDialogsFulfilled = (state: initialDialogsType, action: PayloadAction<any>) => {
@@ -32,6 +33,7 @@ const handleFetchDialogsFulfilled = (state: initialDialogsType, action: PayloadA
 const handleCreateDialogFulfilled = (state: initialDialogsType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
+  state.idActiveChat = action.payload.id
   state.refreshed = true;
 };
 
@@ -41,7 +43,7 @@ const handleDeleteDialogFulfilled = (state: initialDialogsType, action: PayloadA
   state.error = null;
   state.items = state.items.filter(item => item.id !== action.payload.id)
   // @ts-ignore
-  toast.error(`Dialog deleted successfully`, toast_settings);
+  toast.success(`Dialog deleted successfully`, toast_settings);
 };
 
 
