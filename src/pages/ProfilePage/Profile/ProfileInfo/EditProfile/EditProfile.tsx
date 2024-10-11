@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {AppDispatch} from "../../../../../redux/store";
 import {editProfile, fetchMeProfile} from "../../../../../redux/profile/operations";
 import {fetchMe} from "../../../../../redux/auth/operations";
-import {Bounce, toast} from "react-toastify";
+
 
 // @ts-ignore
 const EditProfile = ({profile, setEditeProfile}) => {
@@ -30,6 +30,7 @@ const EditProfile = ({profile, setEditeProfile}) => {
     birth_date: any;
     phone_number: any;
   }>) => {
+    // @ts-ignore
     // @ts-ignore
     return <div className={styles.inputWrapper}>
       <label htmlFor={formDataName}>{labelTitle}:</label>

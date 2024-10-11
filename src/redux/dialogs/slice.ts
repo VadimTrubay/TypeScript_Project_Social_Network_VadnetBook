@@ -7,21 +7,17 @@ import {initialDialogsType} from "../../types/dialogTypes";
 const initialDialogs: initialDialogsType = {
   items: [],
   idActiveDialog: null,
-  refreshed: false,
   loading: false,
   error: null,
 };
 
 const handlePending = (state: initialDialogsType) => {
   state.loading = true;
-  state.refreshed = false;
 };
 
 const handleRejected = (state: initialDialogsType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = action.payload;
-  // @ts-ignore
-  // toast.error(`${state.error}`, toast_settings);
 };
 
 const handleFetchDialogsFulfilled = (state: initialDialogsType, action: PayloadAction<any>) => {
@@ -34,7 +30,6 @@ const handleCreateDialogFulfilled = (state: initialDialogsType, action: PayloadA
   state.loading = false;
   state.error = null;
   state.idActiveDialog = action.payload.id
-  state.refreshed = true;
 };
 
 

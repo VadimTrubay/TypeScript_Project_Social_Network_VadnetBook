@@ -14,7 +14,6 @@ export interface initialUsersType {
     items: UserType[] | [];
     count: number;
   };
-  refreshed: boolean;
   loading: boolean;
   error: string | null;
 }

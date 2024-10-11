@@ -2,7 +2,6 @@ import {RequestDialogsUserType} from "./userTypes";
 
 export interface initialMessagesType {
   items: MessageType[] | [];
-  refreshed: boolean;
   loading: boolean;
   error: string | null;
 }

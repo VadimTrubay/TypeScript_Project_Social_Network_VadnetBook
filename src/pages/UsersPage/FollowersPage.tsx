@@ -5,8 +5,7 @@ import {AppDispatch} from "../../redux/store";
 import User from "./User/User";
 import {Pagination} from "@mui/material";
 import styles from "./Users.module.css";
-import {selectFollowers, selectRefresh, selectTotalCountFollowers} from "../../redux/users/selectors";
-import {selectIsAuth} from "../../redux/auth/selectors";
+import {selectFollowers, selectTotalCountFollowers} from "../../redux/users/selectors";
 import {pageSize} from "../../initialValues/initialValues";
 import Typography from "@mui/material/Typography";
 import {UserType} from "../../types/userTypes";
@@ -16,12 +15,11 @@ const UsersPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const followers = useSelector(selectFollowers) as UserType[];
   const totalCountFollowers: number = useSelector(selectTotalCountFollowers);
-  const isRefresh = useSelector<boolean>(selectRefresh);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     dispatch(fetchFollowers(page));
-  }, [page, isRefresh]);
+  }, [page]);
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);

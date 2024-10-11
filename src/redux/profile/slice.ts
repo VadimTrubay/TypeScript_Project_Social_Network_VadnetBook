@@ -28,7 +28,6 @@ const initialProfile: initialProfileType = {
     profile_picture: "",
     phone_number: "",
   },
-  refreshed: false,
   loading: false,
   error: null,
 };
@@ -40,7 +39,6 @@ const handlePending = (state: initialProfileType) => {
 const handleRejected = (state: initialProfileType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = action.payload;
-  // toast.error(`${state.error}`, toast_settings);
 };
 
 const handleFetchMeProfileFulfilled = (state: initialProfileType, action: PayloadAction<any>) => {
@@ -53,7 +51,6 @@ const handleSetMeStatusFulfilled = (state: initialProfileType, action: PayloadAc
   state.loading = false;
   state.error = null;
   state.profile.status = action.payload.status;
-  state.refreshed = true;
   // @ts-ignore
   toast.info('Status setting successfully', toast_settings);
 };
@@ -61,7 +58,6 @@ const handleSetMeStatusFulfilled = (state: initialProfileType, action: PayloadAc
 const handleSetPhotoFulfilled = (state: initialProfileType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
-  state.refreshed = true;
   // @ts-ignore
   toast.info('Photo setting successfully', toast_settings);
 };
@@ -80,7 +76,6 @@ const handleEditProfileFulfilled = (state: initialProfileType, action: PayloadAc
   state.profile.job_skills = action.payload.job_skills || state.profile.job_skills;
   state.profile.birth_date = action.payload.birth_date || state.profile.birth_date;
   state.profile.phone_number = action.payload.phone_number || state.profile.phone_number;
-  state.refreshed = true;
   // @ts-ignore
   toast.info('Profile edited successfully', toast_settings);
 };

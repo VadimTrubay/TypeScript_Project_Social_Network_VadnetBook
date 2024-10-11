@@ -24,10 +24,6 @@ const Header: React.FC = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(fetchMe());
-  }, [isAuth, dispatch]);
-
 
   const handleSearch = () => {
     const usersParams = {

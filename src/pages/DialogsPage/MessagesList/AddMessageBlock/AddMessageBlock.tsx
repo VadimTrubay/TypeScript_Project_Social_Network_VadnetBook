@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import styles from './AddMessageBlock.module.css';
 import {Field, Form, Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
@@ -20,7 +20,7 @@ const AddMessageBlock = () => {
         dispatch(createMessage({
           dialog: idActiveDialog,
           content: values.message,
-        }))
+        }));
         resetForm();
       }}
       validateOnChange={false}

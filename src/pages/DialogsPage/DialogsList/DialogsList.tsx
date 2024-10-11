@@ -1,7 +1,6 @@
 import React from "react";
 import styles from './DialogsList.module.css';
 import {DialogsItem} from "./DialogsItem/DialogsItem";
-import {Link} from "react-router-dom";
 import {DialogType} from "../../../types/dialogTypes";
 
 export const DialogsList = (dialogsList: any) => {

@@ -7,7 +7,6 @@ import {selectIsAuth} from "../redux/auth/selectors";
 import {fetchMe} from "../redux/auth/operations";
 import {AppDispatch} from "../redux/store";
 import styles from "./App.module.css"
-import {fetchFollowing} from "../redux/users/operations";
 import {fetchMeProfile} from "../redux/profile/operations";
 import DialogsPage from "../pages/DialogsPage/DialogsPage";
 
@@ -23,7 +22,13 @@ const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
 
 
 const App = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const isAuth = useSelector(selectIsAuth);
+
+  useEffect(() => {
+      dispatch(fetchMeProfile());
+      dispatch(fetchMe());
+  }, []);
 
   return (
     <>

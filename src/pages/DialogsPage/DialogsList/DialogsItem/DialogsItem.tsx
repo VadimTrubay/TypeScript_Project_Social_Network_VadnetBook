@@ -10,12 +10,10 @@ import {createDialog, deleteDialog} from "../../../../redux/dialogs/operations";
 import {fetchUserById} from "../../../../redux/users/operations";
 import {mainUrls} from "../../../../config/urls";
 import {fetchMessages} from "../../../../redux/messages/operations";
-import {selectRefresh} from "../../../../redux/messages/selectors";
 
 
 export const DialogsItem = ({dialog}: any) => {
   const dispatch = useDispatch<AppDispatch>();
-  const refresh = useSelector(selectRefresh);
 
   const handleOpenDialog = () => {
     dispatch(createDialog({
@@ -24,13 +22,6 @@ export const DialogsItem = ({dialog}: any) => {
     dispatch(fetchUserById(dialog.other_user.id));
     dispatch(fetchMessages(dialog.id));
   };
-
-  // useEffect(() => {
-  //   setInterval(
-  //     () => dispatch(fetchMessages(dialog.id)),
-  //     15000 // Update messages every 5 seconds
-  //   );
-  // }, []);
 
   const handleDeleteDialog = () => {
     dispatch(deleteDialog(dialog.id));

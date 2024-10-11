@@ -2,7 +2,6 @@ import {UserEditProfileType, UserProfileType} from "./userTypes";
 
 export interface initialProfileType {
   profile: profileType;
-  refreshed: boolean;
   loading: boolean;
   error: string | null;
 }

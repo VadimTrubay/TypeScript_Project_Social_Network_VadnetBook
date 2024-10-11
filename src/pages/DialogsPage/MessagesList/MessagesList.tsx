@@ -14,12 +14,12 @@ import {selectIdActiveDialog} from "../../../redux/dialogs/selectors";
 export const MessagesList = () => {
   const activeChatUserInfo = useSelector(selectUserById);
   const dialogsMessages = useSelector(selectMessages);
-  const activeDialog = useSelector(selectIdActiveDialog);
+  const idActiveDialog = useSelector(selectIdActiveDialog);
 
 
   return (
     <>
-      {activeDialog &&
+      {idActiveDialog &&
         <div className={styles.messagesList}>
           <div>
             <div className={styles.userHeader}>
@@ -40,7 +40,9 @@ export const MessagesList = () => {
               {dialogsMessages.map((message: { id: string }) =>
                 <SingleMessage
                   key={message.id}
-                  message={message}/>)}
+                  message={message}
+                />)
+              }
               <AddMessageBlock/>
             </div>
           </div>

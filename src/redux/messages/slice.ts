@@ -7,21 +7,17 @@ import {initialMessagesType} from "../../types/messageTypes";
 
 const initialMessages: initialMessagesType = {
   items: [],
-  refreshed: false,
   loading: false,
   error: null,
 };
 
 const handlePending = (state: initialMessagesType) => {
-  state.refreshed = false;
   state.loading = true;
 };
 
 const handleRejected = (state: initialMessagesType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = action.payload;
-  // @ts-ignore
-  // toast.error(`${state.error}`, toast_settings);
 };
 
 const handleFetchMessagesFulfilled = (state: initialMessagesType, action: PayloadAction<any>) => {
@@ -29,20 +25,17 @@ const handleFetchMessagesFulfilled = (state: initialMessagesType, action: Payloa
   state.error = null;
   state.items = [];
   state.items = action.payload;
-  state.refreshed = true;
 };
 
 const handleCreateMessageFulfilled = (state: initialMessagesType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
-  state.refreshed = true;
 };
 
 
 const handleDeleteMessageFulfilled = (state: initialMessagesType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
-  state.items = state.items.filter(item => item.id !== action.payload.id)
   // @ts-ignore
   toast.success(`Message deleted successfully`, toast_settings);
 };

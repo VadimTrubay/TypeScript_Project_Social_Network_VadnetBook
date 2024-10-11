@@ -1,8 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {fetchUserById, fetchUsers, fetchFollowers, fetchFollowing, follow, unfollow} from "./operations";
 import {initialUsersType} from "../../types/userTypes";
-import {toast} from "react-toastify";
-import {toast_settings} from "../../utils/toasts_settings";
 
 const initialUsers: initialUsersType = {
   userById: null,
@@ -18,21 +16,17 @@ const initialUsers: initialUsersType = {
     items: [],
     count: 0,
   },
-  refreshed: false,
   loading: false,
   error: null,
 };
 
 const handlePending = (state: initialUsersType) => {
   state.loading = true;
-  state.refreshed = false;
 };
 
 const handleRejected = (state: initialUsersType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = action.payload;
-  // @ts-ignore
-  // toast.error(`${state.error}`, toast_settings);
 };
 
 const handleFetchUsersFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
@@ -66,13 +60,11 @@ const handleFetchUserByIdFulfilled = (state: initialUsersType, action: PayloadAc
 const handleFollowFulfilled = (state: initialUsersType) => {
   state.loading = false;
   state.error = null;
-  state.refreshed = true;
 };
 
 const handleUnfollowFulfilled = (state: initialUsersType) => {
   state.loading = false;
   state.error = null;
-  state.refreshed = true;
 };
 
 
