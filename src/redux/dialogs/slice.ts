@@ -6,7 +6,7 @@ import {initialDialogsType} from "../../types/dialogTypes";
 
 const initialDialogs: initialDialogsType = {
   items: [],
-  idActiveChat: null,
+  idActiveDialog: null,
   refreshed: false,
   loading: false,
   error: null,
@@ -33,7 +33,7 @@ const handleFetchDialogsFulfilled = (state: initialDialogsType, action: PayloadA
 const handleCreateDialogFulfilled = (state: initialDialogsType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
-  state.idActiveChat = action.payload.id
+  state.idActiveDialog = action.payload.id
   state.refreshed = true;
 };
 

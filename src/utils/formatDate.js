@@ -18,7 +18,6 @@ export const formatDate = (addedAt) => {// get date for YYYY-MM-DDTHH:mm:ss.sssZ
   dayOfMonth = dayOfMonth < 10 ? '0' + dayOfMonth : dayOfMonth;
   hour = hour < 10 ? '0' + hour : hour;
   minutes = minutes < 10 ? '0' + minutes : minutes;
-  console.log(diffSec)
 
   if (diffSec < 1) {
     return 'прямо сейчас';

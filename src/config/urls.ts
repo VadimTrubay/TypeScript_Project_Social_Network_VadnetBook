@@ -35,6 +35,6 @@ export const mainUrls = {
   },
   messages: {
     messagesByDialog: (dialog_id: string | null) =>  `${dialogs}/${dialog_id}${messages}/`,
-    deleteMessagesByDialog: (dialog_id: string | null, messages_id: string) =>  `${dialogs}/${dialog_id}/${messages}/${messages_id}/`,
+    deleteMessagesByDialog: (dialog_id: string | null, messages_id: string) =>  `${dialogs}/${dialog_id}${messages}/${messages_id}/`,
   },
 }

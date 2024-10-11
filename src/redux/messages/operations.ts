@@ -1,6 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {createMessageApi, deleteMessageApi, getMessagesApi} from "../../api/apiMessages";
-import {messageDataType} from "../../types/messageTypes";
+import {deleteMessageDataType, messageDataType} from "../../types/messageTypes";
 
 
 export const fetchMessages = createAsyncThunk(
@@ -29,9 +29,9 @@ export const createMessage = createAsyncThunk(
 
 export const deleteMessage = createAsyncThunk(
   "messages/deleteMessage",
-  async (message_id: string, thunkAPI) => {
+  async (data: deleteMessageDataType, thunkAPI) => {
     try {
-      const response = await deleteMessageApi(message_id);
+      const response = await deleteMessageApi(data.dialog_id, data.message_id);
       return response.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);

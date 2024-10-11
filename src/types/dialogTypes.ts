@@ -2,7 +2,7 @@ import {RequestDialogsUserType} from "./userTypes";
 
 export interface initialDialogsType {
   items: DialogType[] | [];
-  idActiveChat: string | null;
+  idActiveDialog: string | null;
   refreshed: boolean;
   loading: boolean;
   error: string | null;

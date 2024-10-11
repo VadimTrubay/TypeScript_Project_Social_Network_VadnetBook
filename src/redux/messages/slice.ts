@@ -13,8 +13,8 @@ const initialMessages: initialMessagesType = {
 };
 
 const handlePending = (state: initialMessagesType) => {
-  state.loading = true;
   state.refreshed = false;
+  state.loading = true;
 };
 
 const handleRejected = (state: initialMessagesType, action: PayloadAction<any>) => {
@@ -29,6 +29,7 @@ const handleFetchMessagesFulfilled = (state: initialMessagesType, action: Payloa
   state.error = null;
   state.items = [];
   state.items = action.payload;
+  state.refreshed = true;
 };
 
 const handleCreateMessageFulfilled = (state: initialMessagesType, action: PayloadAction<any>) => {

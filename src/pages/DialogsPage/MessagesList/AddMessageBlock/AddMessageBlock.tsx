@@ -1,15 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from './AddMessageBlock.module.css';
 import {Field, Form, Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../../../../redux/store";
 import {createMessage} from "../../../../redux/messages/operations";
-import {selectIdActiveChat} from "../../../../redux/dialogs/selectors";
+import {selectIdActiveDialog} from "../../../../redux/dialogs/selectors";
+
 
 const AddMessageBlock = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const idActiveChat = useSelector(selectIdActiveChat);
-
+  const idActiveDialog = useSelector(selectIdActiveDialog);
 
   return (
     <Formik
@@ -18,7 +18,7 @@ const AddMessageBlock = () => {
       }}
       onSubmit={(values, {resetForm}) => {
         dispatch(createMessage({
-          dialog: idActiveChat,
+          dialog: idActiveDialog,
           content: values.message,
         }))
         resetForm();

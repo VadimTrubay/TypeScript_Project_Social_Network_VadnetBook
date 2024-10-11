@@ -11,7 +11,6 @@ import {RouterEndpoints} from "../../config/routes";
 import {mainUrls} from "../../config/urls";
 import Button from "@mui/material/Button";
 import {selectMeProfile} from "../../redux/profile/selectors";
-import {selectRefresh} from "../../redux/users/selectors";
 import defaultImage from "../../components/Other/user-smalled.png"
 import {fetchUsers} from "../../redux/users/operations";
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -23,7 +22,6 @@ const Header: React.FC = () => {
   const user = useSelector(selectMeProfile);
   const isAuth = useSelector(selectIsAuth);
   const [search, setSearch] = useState("");
-  const isRefresh = useSelector<boolean>(selectRefresh);
   const navigate = useNavigate();
 
   useEffect(() => {

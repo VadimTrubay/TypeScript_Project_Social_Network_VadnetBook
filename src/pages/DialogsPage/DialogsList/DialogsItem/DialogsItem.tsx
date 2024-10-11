@@ -6,7 +6,7 @@ import {MdDeleteForever} from "react-icons/md";
 import Button from "@mui/material/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../../../../redux/store";
-import {deleteDialog} from "../../../../redux/dialogs/operations";
+import {createDialog, deleteDialog} from "../../../../redux/dialogs/operations";
 import {fetchUserById} from "../../../../redux/users/operations";
 import {mainUrls} from "../../../../config/urls";
 import {fetchMessages} from "../../../../redux/messages/operations";
@@ -18,13 +18,19 @@ export const DialogsItem = ({dialog}: any) => {
   const refresh = useSelector(selectRefresh);
 
   const handleOpenDialog = () => {
+    dispatch(createDialog({
+      "users": dialog.other_user.id
+    }));
     dispatch(fetchUserById(dialog.other_user.id));
     dispatch(fetchMessages(dialog.id));
   };
 
-  useEffect(() => {
-    dispatch(fetchMessages(dialog.id))
-  }, [refresh]);
+  // useEffect(() => {
+  //   setInterval(
+  //     () => dispatch(fetchMessages(dialog.id)),
+  //     15000 // Update messages every 5 seconds
+  //   );
+  // }, []);
 
   const handleDeleteDialog = () => {
     dispatch(deleteDialog(dialog.id));
@@ -40,7 +46,7 @@ export const DialogsItem = ({dialog}: any) => {
         <span>{dialog.other_user?.username}</span>
       </NavLink>
       <Button onClick={handleDeleteDialog}>
-        <MdDeleteForever className={styles.deleteDialogIcon} color="red" size={25}/>
+        <MdDeleteForever className={styles.deleteDialogIcon} color="0f4fe2" size={25}/>
       </Button>
     </div>
   );

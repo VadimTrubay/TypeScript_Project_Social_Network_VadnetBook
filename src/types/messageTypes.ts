@@ -16,7 +16,12 @@ export interface MessageType {
   content: string;
 }
 
-export interface  messageDataType {
+export interface messageDataType {
   dialog: string | null;
   content: string | null;
+}
+
+export interface deleteMessageDataType {
+  dialog_id: string;
+  message_id: string;
 }
