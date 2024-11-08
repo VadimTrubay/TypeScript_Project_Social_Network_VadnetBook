@@ -1,14 +1,12 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   deleteProfileApi,
   editProfileApi,
   getMeProfileApi,
   setPhotoProfileApi,
-  setStatusProfileApi
+  setStatusProfileApi,
 } from "../../api/apiProfile";
-import {EditProfileType, statusDataType} from "../../types/profileTypes";
-
-
+import { EditProfileType, statusDataType } from "../../types/profileTypes";
 
 export const fetchMeProfile = createAsyncThunk(
   "profile/fetchMeProfile",
@@ -19,7 +17,7 @@ export const fetchMeProfile = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const setStatusProfile = createAsyncThunk(
@@ -31,7 +29,7 @@ export const setStatusProfile = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const setPhotoProfile = createAsyncThunk(
@@ -43,7 +41,7 @@ export const setPhotoProfile = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const editProfile = createAsyncThunk(
@@ -55,7 +53,7 @@ export const editProfile = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const deleteProfile = createAsyncThunk(
@@ -67,5 +65,5 @@ export const deleteProfile = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );

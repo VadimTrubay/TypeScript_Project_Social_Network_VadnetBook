@@ -1,10 +1,10 @@
-.statusWrapper{
+.statusWrapper {
   display: flex;
   margin-bottom: 5px;
   cursor: pointer;
 }
 
-.status{
+.status {
   display: flex;
   align-items: center;
   min-width: 50px;
@@ -14,17 +14,16 @@
   background-color: #fcf4ec;
   border: 1px solid var(--brand-color);
   border-radius: 6px;
-  padding: 2px 20px 2px 2px
+  padding: 2px 20px 2px 2px;
 }
 
 .inputChangeStatus {
   background-color: #fcf4ec;
-  outline:none;
+  outline: none;
   border: 1px solid var(--brand-color);
   border-radius: 6px;
-  padding: 5px 15px 5px 5px
+  padding: 5px 15px 5px 5px;
 }
-
 
 .statusWrapper:hover .editButton {
   background-color: #006bc9;

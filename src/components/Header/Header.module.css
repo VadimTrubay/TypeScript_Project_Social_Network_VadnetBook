@@ -1,14 +1,16 @@
 @font-face {
-  font-family: 'Raleway';
-  src: local('Raleway'),
-  url('./../Other/fonts/Raleway/Raleway-Bold.ttf') format('truetype');
+  font-family: "Raleway";
+  src:
+    local("Raleway"),
+    url("./../Other/fonts/Raleway/Raleway-Bold.ttf") format("truetype");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Raleway';
-  src: local('Raleway'),
-  url('./../Other/fonts/Raleway/Raleway-Light.ttf') format('truetype');
+  font-family: "Raleway";
+  src:
+    local("Raleway"),
+    url("./../Other/fonts/Raleway/Raleway-Light.ttf") format("truetype");
   font-weight: 300;
 }
 
@@ -30,7 +32,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 }
 
 .loggedUserWrapper {
@@ -84,8 +85,6 @@
   font-weight: 600;
 }
 
-
-
 .loggedUserLink:hover .logoutButton {
   display: block;
 }
@@ -106,7 +105,6 @@
   color: white;
   text-decoration: none;
   width: 100%;
-
 }
 
 .headerSocialSubname {

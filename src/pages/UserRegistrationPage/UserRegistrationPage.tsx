@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import {useFormik} from "formik";
-import {Link} from "react-router-dom";
+import React, { useState } from "react";
+import { useFormik } from "formik";
+import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -9,21 +9,20 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {Checkbox, Grid, IconButton, InputAdornment} from "@mui/material";
-import {validationSchemaRegistration} from "../../validate/validationSchemaRegistration.js";
-import {signUp} from "../../redux/auth/operations";
-import {useDispatch} from "react-redux";
-import {AppDispatch} from "../../redux/store";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Checkbox, Grid, IconButton, InputAdornment } from "@mui/material";
+import { validationSchemaRegistration } from "../../validate/validationSchemaRegistration.js";
+import { signUp } from "../../redux/auth/operations";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
 import styles from "../UserRegistrationPage/UserRegistrationPage.module.css";
-import {initialValueUserRegistration} from "../../initialValues/initialValues";
+import { initialValueUserRegistration } from "../../initialValues/initialValues";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import {RouterEndpoints} from "../../config/routes";
-import {Login} from "@mui/icons-material";
+import { RouterEndpoints } from "../../config/routes";
+import { Login } from "@mui/icons-material";
 
 const defaultTheme = createTheme();
-
 
 const RegistrationForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -34,7 +33,9 @@ const RegistrationForm = () => {
   const handleClickShowConfirmPassword = () =>
     setShowConfirmPassword(!showConfirmPassword);
 
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     event.preventDefault();
   };
 
@@ -49,10 +50,10 @@ const RegistrationForm = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
-        <CssBaseline/>
+        <CssBaseline />
         <Box className={styles.box}>
           <Avatar className={styles.avatar}>
-            <LockOutlinedIcon/>
+            <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             SignUp
@@ -69,9 +70,11 @@ const RegistrationForm = () => {
                   autoFocus
                   value={formik.values.username}
                   onChange={formik.handleChange}
-                  error={formik.touched.username && Boolean(formik.errors.username)}
+                  error={
+                    formik.touched.username && Boolean(formik.errors.username)
+                  }
                   helperText={formik.touched.username && formik.errors.username}
-                  sx={{marginTop: 2, marginBottom: 1}}
+                  sx={{ marginTop: 2, marginBottom: 1 }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -97,7 +100,9 @@ const RegistrationForm = () => {
                   id="password"
                   value={formik.values.password}
                   onChange={formik.handleChange}
-                  error={formik.touched.password && Boolean(formik.errors.password)}
+                  error={
+                    formik.touched.password && Boolean(formik.errors.password)
+                  }
                   helperText={formik.touched.password && formik.errors.password}
                   InputProps={{
                     endAdornment: (
@@ -108,7 +113,7 @@ const RegistrationForm = () => {
                           onMouseDown={handleMouseDownPassword}
                           edge="end"
                         >
-                          {showPassword ? <Visibility/> : <VisibilityOff/>}
+                          {showPassword ? <Visibility /> : <VisibilityOff />}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -125,8 +130,14 @@ const RegistrationForm = () => {
                   id="confirmPassword"
                   value={formik.values.confirmPassword}
                   onChange={formik.handleChange}
-                  error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-                  helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+                  error={
+                    formik.touched.confirmPassword &&
+                    Boolean(formik.errors.confirmPassword)
+                  }
+                  helperText={
+                    formik.touched.confirmPassword &&
+                    formik.errors.confirmPassword
+                  }
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -136,7 +147,11 @@ const RegistrationForm = () => {
                           onMouseDown={handleMouseDownPassword}
                           edge="end"
                         >
-                          {showConfirmPassword ? <Visibility/> : <VisibilityOff/>}
+                          {showConfirmPassword ? (
+                            <Visibility />
+                          ) : (
+                            <VisibilityOff />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -150,9 +165,9 @@ const RegistrationForm = () => {
               variant="contained"
               color="primary"
               className={styles.submit}
-              sx={{marginTop: 2, marginBottom: 1}}
-              style={{textTransform: "none"}}
-              endIcon={<Login/>}
+              sx={{ marginTop: 2, marginBottom: 1 }}
+              style={{ textTransform: "none" }}
+              endIcon={<Login />}
             >
               SignUp
             </Button>

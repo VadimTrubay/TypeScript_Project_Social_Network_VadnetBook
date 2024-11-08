@@ -1,8 +1,13 @@
 import React from "react";
 import {
-  Dialog, DialogActions, DialogContent, DialogTitle, Button, TextField
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Button,
+  TextField,
 } from "@mui/material";
-import {useFormik} from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 
 interface FileUploadModalProps {
@@ -11,7 +16,11 @@ interface FileUploadModalProps {
   onSubmit: (file: File) => void;
 }
 
-const FileUploadModal: React.FC<FileUploadModalProps> = ({openModal, closeModal, onSubmit}) => {
+const FileUploadModal: React.FC<FileUploadModalProps> = ({
+  openModal,
+  closeModal,
+  onSubmit,
+}) => {
   const formik = useFormik({
     initialValues: {
       file: null,
@@ -47,8 +56,12 @@ const FileUploadModal: React.FC<FileUploadModalProps> = ({openModal, closeModal,
         ) : null}
       </DialogContent>
       <DialogActions>
-        <Button onClick={closeModal} color="primary">Cancel</Button>
-        <Button onClick={formik.submitForm} color="primary">Upload</Button>
+        <Button onClick={closeModal} color="primary">
+          Cancel
+        </Button>
+        <Button onClick={formik.submitForm} color="primary">
+          Upload
+        </Button>
       </DialogActions>
     </Dialog>
   );

@@ -24,14 +24,14 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  content: '';
+  content: "";
   width: 150px;
   border-radius: 2px;
   height: 4px;
   background: linear-gradient(to left, #f1c387, #ff8f49);
 }
 
-.addPostWrapper{
+.addPostWrapper {
   display: block;
   margin-bottom: 30px;
 }
@@ -44,7 +44,7 @@
   margin-bottom: 15px;
 }
 
-.addPostButton{
+.addPostButton {
   display: block;
   padding: 10px;
   min-width: 100px;

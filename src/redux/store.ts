@@ -1,4 +1,4 @@
-import {configureStore} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -10,12 +10,11 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import {authReducer} from "./auth/slice";
-import {profileReducer} from "./profile/slice";
-import {usersReducer} from "./users/slice";
-import {dialogsReducer} from "./dialogs/slice";
-import {messagesReducer} from "./messages/slice";
-
+import { authReducer } from "./auth/slice";
+import { profileReducer } from "./profile/slice";
+import { usersReducer } from "./users/slice";
+import { dialogsReducer } from "./dialogs/slice";
+import { messagesReducer } from "./messages/slice";
 
 const authPersistConfig = {
   key: "auth",

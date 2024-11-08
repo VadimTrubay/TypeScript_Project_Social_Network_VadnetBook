@@ -1,11 +1,10 @@
 import {
   UserAuthorizationType,
-  UserRegistrationType
+  UserRegistrationType,
 } from "../types/authTypes";
-import {EditProfileType} from "../types/profileTypes";
+import { EditProfileType } from "../types/profileTypes";
 
-export const pageSize = 10;  // Adjust the page size as per your requirement
-
+export const pageSize = 10; // Adjust the page size as per your requirement
 
 export const initialValueUserAuthorization: UserAuthorizationType = {
   email: "",
@@ -17,7 +16,7 @@ export const initialValueUserRegistration: UserRegistrationType = {
   email: "",
   password: "",
   confirmPassword: "",
-}
+};
 
 export const initialValueUserProfile: EditProfileType = {
   user: {
@@ -32,4 +31,4 @@ export const initialValueUserProfile: EditProfileType = {
   job_skills: "",
   birth_date: "",
   phone_number: "",
-}
+};

@@ -1,8 +1,8 @@
 .appWrapper {
   display: grid;
   grid-template-areas:
-  "header header header"
-  "nav content content";
+    "header header header"
+    "nav content content";
   grid-template-rows: 1fr;
   grid-template-columns: 2fr 10fr;
   box-sizing: border-box;
@@ -12,16 +12,14 @@
   grid-area: content;
 }
 
-.preloaderWrapper{
-
+.preloaderWrapper {
 }
-
 
 @media (max-width: 600px) {
   .appWrapper {
     grid-template-areas:
-  "header header header"
-  "content content content";
+      "header header header"
+      "content content content";
     grid-template-columns: 1fr;
   }
 

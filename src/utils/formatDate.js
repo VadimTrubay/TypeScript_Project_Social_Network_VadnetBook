@@ -1,4 +1,5 @@
-export const formatDate = (addedAt) => {// get date for YYYY-MM-DDTHH:mm:ss.sssZ format
+export const formatDate = (addedAt) => {
+  // get date for YYYY-MM-DDTHH:mm:ss.sssZ format
   let timestamp = Date.parse(addedAt);
   const date = new Date(timestamp);
 
@@ -14,18 +15,18 @@ export const formatDate = (addedAt) => {// get date for YYYY-MM-DDTHH:mm:ss.sssZ
 
   // форматирование
   year = year.toString().slice(-2);
-  month = month < 10 ? '0' + month : month;
-  dayOfMonth = dayOfMonth < 10 ? '0' + dayOfMonth : dayOfMonth;
-  hour = hour < 10 ? '0' + hour : hour;
-  minutes = minutes < 10 ? '0' + minutes : minutes;
+  month = month < 10 ? "0" + month : month;
+  dayOfMonth = dayOfMonth < 10 ? "0" + dayOfMonth : dayOfMonth;
+  hour = hour < 10 ? "0" + hour : hour;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
 
   if (diffSec < 1) {
-    return 'прямо сейчас';
+    return "прямо сейчас";
   } else if (diffMin < 1) {
-    return `${Math.floor(diffSec)} сек. назад`
+    return `${Math.floor(diffSec)} сек. назад`;
   } else if (diffHour < 1) {
-    return `${Math.floor(diffMin)} мин. назад`
+    return `${Math.floor(diffMin)} мин. назад`;
   } else {
-    return `${hour}:${minutes} [${dayOfMonth}.${month}.${year}]`
+    return `${hour}:${minutes} [${dayOfMonth}.${month}.${year}]`;
   }
-}
+};

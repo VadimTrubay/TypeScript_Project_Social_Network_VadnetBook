@@ -1,4 +1,4 @@
-import {UserEditProfileType, UserProfileType} from "./userTypes";
+import { UserEditProfileType, UserProfileType } from "./userTypes";
 
 export interface initialProfileType {
   profile: profileType;
@@ -34,9 +34,9 @@ export interface EditProfileType {
 }
 
 export interface statusDataType {
-  status: string
+  status: string;
 }
 
 export interface photoDataType {
-  profile_picture: File
+  profile_picture: File;
 }

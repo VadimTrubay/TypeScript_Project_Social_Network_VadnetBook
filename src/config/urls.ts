@@ -4,7 +4,6 @@ export const users = "/users";
 export const dialogs = "/dialogs";
 export const messages = "/messages";
 
-
 export const mainUrls = {
   id: ":id",
   notFound: "*",
@@ -22,7 +21,8 @@ export const mainUrls = {
     setStatus: `${profile}/edit/status`,
   },
   users: {
-    users: (search: string, page: number) => `${users}/?search=${search}&page=${page}`,
+    users: (search: string, page: number) =>
+      `${users}/?search=${search}&page=${page}`,
     userById: (user_id: string) => `${users}/${user_id}`,
     followers: (page: number) => `${users}/followers?page=${page}`,
     following: (page: number) => `${users}/following?page=${page}`,
@@ -34,7 +34,9 @@ export const mainUrls = {
     deleteDialogById: (dialog_id: string) => `${dialogs}/${dialog_id}/`,
   },
   messages: {
-    messagesByDialog: (dialog_id: string | null) =>  `${dialogs}/${dialog_id}${messages}/`,
-    deleteMessagesByDialog: (dialog_id: string | null, messages_id: string) =>  `${dialogs}/${dialog_id}${messages}/${messages_id}/`,
+    messagesByDialog: (dialog_id: string | null) =>
+      `${dialogs}/${dialog_id}${messages}/`,
+    deleteMessagesByDialog: (dialog_id: string | null, messages_id: string) =>
+      `${dialogs}/${dialog_id}${messages}/${messages_id}/`,
   },
-}
+};

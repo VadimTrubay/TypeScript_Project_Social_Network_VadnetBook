@@ -1,12 +1,17 @@
-import {AxiosResponse} from 'axios';
-import {mainUrls} from '../config/urls';
+import { AxiosResponse } from "axios";
+import { mainUrls } from "../config/urls";
 import axiosInstance from "../utils/createAxiosInstance";
 
-export const getUsersApi = async (search: string, page: number): Promise<AxiosResponse> => {
+export const getUsersApi = async (
+  search: string,
+  page: number,
+): Promise<AxiosResponse> => {
   return await axiosInstance.get(mainUrls.users.users(search, page));
 };
 
-export const getUserByIdApi = async (user_id: string): Promise<AxiosResponse> => {
+export const getUserByIdApi = async (
+  user_id: string,
+): Promise<AxiosResponse> => {
   return await axiosInstance.get(mainUrls.users.userById(user_id));
 };
 

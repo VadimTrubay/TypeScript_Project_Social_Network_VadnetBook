@@ -14,7 +14,7 @@
   max-width: calc(100% - 80px);
 }
 
-.messageUserInfo{
+.messageUserInfo {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
@@ -28,11 +28,11 @@
   border-radius: 50%;
 }
 
-.messageWrapper{
+.messageWrapper {
   display: block;
 }
 
-.sendDateWrapper{
+.sendDateWrapper {
   text-align: right;
   display: flex;
   justify-content: flex-end;
@@ -43,15 +43,15 @@
   max-width: 19px;
 }
 
-.sendDateWrapper .readStatus{
+.sendDateWrapper .readStatus {
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
 }
 
-.myMessage{
-justify-self: end;
-right: 0;
+.myMessage {
+  justify-self: end;
+  right: 0;
 }
 
 @media (max-width: 600px) {

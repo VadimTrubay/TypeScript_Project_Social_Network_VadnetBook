@@ -1,4 +1,4 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getUserByIdApi,
   getUsersApi,
@@ -7,8 +7,7 @@ import {
   followApi,
   unfollowApi,
 } from "../../api/apiUsers";
-import {usersParamsType} from "../../types/userTypes";
-
+import { usersParamsType } from "../../types/userTypes";
 
 export const fetchUsers = createAsyncThunk(
   "users/fetchUsers",
@@ -19,7 +18,7 @@ export const fetchUsers = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const fetchUserById = createAsyncThunk(
@@ -31,7 +30,7 @@ export const fetchUserById = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const fetchFollowers = createAsyncThunk(
@@ -43,7 +42,7 @@ export const fetchFollowers = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const fetchFollowing = createAsyncThunk(
@@ -55,7 +54,7 @@ export const fetchFollowing = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const follow = createAsyncThunk(
@@ -67,7 +66,7 @@ export const follow = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const unfollow = createAsyncThunk(
@@ -79,5 +78,5 @@ export const unfollow = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );

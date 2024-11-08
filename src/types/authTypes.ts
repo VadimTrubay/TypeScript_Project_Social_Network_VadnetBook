@@ -1,7 +1,7 @@
 export interface initialAuthType {
   me: meType | null;
-  access_token: string | null,
-  isAuth: boolean,
+  access_token: string | null;
+  isAuth: boolean;
   loading: boolean;
   error: string | null;
 }
@@ -23,7 +23,7 @@ export interface UserRegistrationType {
   username: string;
   email: string;
   password: string;
-  confirmPassword: string,
+  confirmPassword: string;
 }
 
 export interface RegisterType {
@@ -33,9 +33,9 @@ export interface RegisterType {
 }
 
 export interface googleCredType {
-  token: string,
-  backend: string,
-  grant_type: string,
-  client_id: string,
-  client_secret: string,
+  token: string;
+  backend: string;
+  grant_type: string;
+  client_id: string;
+  client_secret: string;
 }

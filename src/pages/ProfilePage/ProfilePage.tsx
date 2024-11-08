@@ -1,25 +1,28 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {deleteProfile, fetchMeProfile, setPhotoProfile} from "../../redux/profile/operations";
-import {AppDispatch} from "../../redux/store";
-import {profileType} from "../../types/profileTypes";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import {
+  deleteProfile,
+  fetchMeProfile,
+  setPhotoProfile,
+} from "../../redux/profile/operations";
+import { AppDispatch } from "../../redux/store";
+import { profileType } from "../../types/profileTypes";
 import React from "react";
-import styles from './ProfilePage.module.css';
-import defaultUser from '../../components/Other/user.png'
-import {selectMeProfile} from "../../redux/profile/selectors";
+import styles from "./ProfilePage.module.css";
+import defaultUser from "../../components/Other/user.png";
+import { selectMeProfile } from "../../redux/profile/selectors";
 import ProfileStatus from "./Profile/ProfileInfo/ProfleStatus/ProfileStatus";
 import EditProfile from "./Profile/ProfileInfo/EditProfile/EditProfile";
-import {NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import BaseModalWindow from "../../components/BaseModalWindow/BaseModalWindow";
-import {logOut} from "../../redux/auth/operations";
-import {RouterEndpoints} from "../../config/routes";
-import {selectMe} from "../../redux/auth/selectors";
-import {meType} from "../../types/authTypes";
-
+import { logOut } from "../../redux/auth/operations";
+import { RouterEndpoints } from "../../config/routes";
+import { selectMe } from "../../redux/auth/selectors";
+import { meType } from "../../types/authTypes";
 
 const ProfilePage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -32,17 +35,15 @@ const ProfilePage = () => {
   const [editProfile, setEditeProfile] = useState(false);
   const [photo, setPhoto] = useState<File | null>(null);
 
-
   useEffect(() => {
     dispatch(fetchMeProfile());
   }, [refresh, dispatch]);
 
   const onChangedPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setPhoto(e.target.files[0]);  // Set the photo when selected
+      setPhoto(e.target.files[0]); // Set the photo when selected
     }
   };
-
 
   const handleDeleteUser = () => {
     dispatch(deleteProfile());
@@ -58,56 +59,63 @@ const ProfilePage = () => {
   useEffect(() => {
     if (photo) {
       const formData = new FormData();
-      formData.append('profile_picture', photo);
+      formData.append("profile_picture", photo);
       dispatch(setPhotoProfile(formData));
       setPhoto(null);
     }
     setTimeout(() => {
-      setRefresh(!refresh)
-    }, 2000)
+      setRefresh(!refresh);
+    }, 2000);
   }, [photo, dispatch]);
-
 
   return (
     <div className={styles.profileMainWrapper}>
-
-      {editProfile && <EditProfile
-        profile={profile}
-        setEditeProfile={setEditeProfile}/>
-      }
+      {editProfile && (
+        <EditProfile profile={profile} setEditeProfile={setEditeProfile} />
+      )}
       <div className={styles.leftBlockWrapper}>
         <div className={styles.photoWrapper}>
-          <img className={styles.photo}
-               src={profile?.profile_picture ?
-                 `https://res.cloudinary.com/dip870vma/${profile?.profile_picture}`
-                 : defaultUser}
-               alt="UserPhoto"/>
+          <img
+            className={styles.photo}
+            src={
+              profile?.profile_picture
+                ? `https://res.cloudinary.com/dip870vma/${profile?.profile_picture}`
+                : defaultUser
+            }
+            alt="UserPhoto"
+          />
           <>
-            <label className={styles.profileChangePhotoButtonLabel}
-                   htmlFor="changePhoto">
+            <label
+              className={styles.profileChangePhotoButtonLabel}
+              htmlFor="changePhoto"
+            >
               Изменить фото
             </label>
-            <input className={styles.profileChangePhotoButton}
-                   id="changePhoto"
-                   type="file"
-                   onChange={onChangedPhoto}
-                   title=" "
+            <input
+              className={styles.profileChangePhotoButton}
+              id="changePhoto"
+              type="file"
+              onChange={onChangedPhoto}
+              title=" "
             />
           </>
         </div>
         <div className={styles.contactsWrapper}>
           <div className={styles.contactsTitle}>Contacts:</div>
-          <div><span className={styles.title}>Website: </span>
+          <div>
+            <span className={styles.title}>Website: </span>
             <NavLink to={`${profile?.website_page}`}>
               {profile?.website_page}
             </NavLink>
           </div>
-          <div><span className={styles.title}>Github: </span>
+          <div>
+            <span className={styles.title}>Github: </span>
             <NavLink to={`${profile?.github_page}`}>
               {profile?.github_page}
             </NavLink>
           </div>
-          <div><span className={styles.title}>Linkedin: </span>
+          <div>
+            <span className={styles.title}>Linkedin: </span>
             <NavLink to={`${profile?.linkedin_page}`}>
               {profile?.linkedin_page}
             </NavLink>
@@ -132,22 +140,30 @@ const ProfilePage = () => {
                 />
               </div>
             </div>
-            <div className={styles.title}>First name: <span>{profile?.user.first_name}</span></div>
-            <div className={styles.title}>Last name: {profile?.user.last_name}</div>
+            <div className={styles.title}>
+              First name: <span>{profile?.user.first_name}</span>
+            </div>
+            <div className={styles.title}>
+              Last name: {profile?.user.last_name}
+            </div>
             <div className={styles.title}>About me: {profile?.about_me}</div>
-            <div className={styles.title}>Birth date: {profile?.birth_date}</div>
-            <div className={styles.title}>Phone number: {profile?.phone_number}</div>
+            <div className={styles.title}>
+              Birth date: {profile?.birth_date}
+            </div>
+            <div className={styles.title}>
+              Phone number: {profile?.phone_number}
+            </div>
 
             {profile?.looking_from_job && (
               <div className={styles.jobBlockWrapper}>
-            <span className={styles.jobStatus}>
-              <b>Job status:</b> {profile.looking_from_job ?
-              'В поиске работы' : 'Уже работаю'}
-            </span>
+                <span className={styles.jobStatus}>
+                  <b>Job status:</b>{" "}
+                  {profile.looking_from_job ? "В поиске работы" : "Уже работаю"}
+                </span>
                 {profile.job_skills && (
                   <span className={styles.jobDescription}>
-                <b>Job info:</b> {profile.job_skills}
-              </span>
+                    <b>Job info:</b> {profile.job_skills}
+                  </span>
                 )}
               </div>
             )}
@@ -156,23 +172,25 @@ const ProfilePage = () => {
             <Button
               className={styles.editButton}
               onClick={() => {
-                setEditeProfile(true)
+                setEditeProfile(true);
               }}
               variant="contained"
-              startIcon={<EditIcon/>}
+              startIcon={<EditIcon />}
               color="primary"
-              sx={{marginLeft: 2}}
-              style={{textTransform: "none"}}>
+              sx={{ marginLeft: 2 }}
+              style={{ textTransform: "none" }}
+            >
               Edit profile
             </Button>
             <Button
               className={styles.deleteButton}
               onClick={handleOpenDeleteModal}
               variant="contained"
-              startIcon={<DeleteIcon/>}
+              startIcon={<DeleteIcon />}
               color="error"
-              sx={{margin: 2}}
-              style={{textTransform: "none"}}>
+              sx={{ margin: 2 }}
+              style={{ textTransform: "none" }}
+            >
               Delete profile
             </Button>
           </div>
@@ -188,7 +206,7 @@ const ProfilePage = () => {
         title={"Delete profile"}
         text={"Are you sure you want to delete this profile?"}
         onSubmit={handleDeleteUser}
-        style_done={{color: "red", fontSize: 50}}
+        style_done={{ color: "red", fontSize: 50 }}
       />
     </div>
   );

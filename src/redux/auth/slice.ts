@@ -1,9 +1,8 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {logOut, signIn, signUp, fetchMe} from "./operations";
-import {initialAuthType} from "../../types/authTypes";
-import {toast} from "react-toastify";
-import {toast_settings} from "../../utils/toasts_settings";
-
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { logOut, signIn, signUp, fetchMe } from "./operations";
+import { initialAuthType } from "../../types/authTypes";
+import { toast } from "react-toastify";
+import { toast_settings } from "../../utils/toasts_settings";
 
 const initialAuth: initialAuthType = {
   me: null,
@@ -23,21 +22,30 @@ const handleRejected = (state: initialAuthType, action: PayloadAction<any>) => {
   // toast.error(`${state.error}`, toast_settings);
 };
 
-const handleSignInFulfilled = (state: initialAuthType, action: PayloadAction<any>) => {
+const handleSignInFulfilled = (
+  state: initialAuthType,
+  action: PayloadAction<any>,
+) => {
   state.loading = false;
   state.error = null;
-  state.access_token = action.payload.access_token
+  state.access_token = action.payload.access_token;
   state.isAuth = true;
 };
 
-const handleSignUpFulfilled = (state: initialAuthType, action: PayloadAction<any>) => {
+const handleSignUpFulfilled = (
+  state: initialAuthType,
+  action: PayloadAction<any>,
+) => {
   state.loading = false;
   state.error = null;
-  state.access_token = action.payload.access_token
+  state.access_token = action.payload.access_token;
   state.isAuth = true;
 };
 
-const handleFetchMeFulfilled = (state: initialAuthType, action: PayloadAction<any>) => {
+const handleFetchMeFulfilled = (
+  state: initialAuthType,
+  action: PayloadAction<any>,
+) => {
   state.loading = false;
   state.error = null;
   state.me = action.payload;
@@ -50,7 +58,7 @@ const handleLogOutFulfilled = (state: initialAuthType) => {
   state.me = null;
   state.access_token = "";
   state.isAuth = false;
-}
+};
 
 const authSlice = createSlice({
   name: "auth",
@@ -58,7 +66,7 @@ const authSlice = createSlice({
   reducers: {
     setAccessToken(state: initialAuthType, action: PayloadAction<string>) {
       state.access_token = action.payload;
-    }
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -76,5 +84,5 @@ const authSlice = createSlice({
       .addCase(logOut.rejected, handleRejected),
 });
 
-export const {setAccessToken} = authSlice.actions;
+export const { setAccessToken } = authSlice.actions;
 export const authReducer = authSlice.reducer;

@@ -1,7 +1,13 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
-import {createMessageApi, deleteMessageApi, getMessagesApi} from "../../api/apiMessages";
-import {deleteMessageDataType, messageDataType} from "../../types/messageTypes";
-
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createMessageApi,
+  deleteMessageApi,
+  getMessagesApi,
+} from "../../api/apiMessages";
+import {
+  deleteMessageDataType,
+  messageDataType,
+} from "../../types/messageTypes";
 
 export const fetchMessages = createAsyncThunk(
   "messages/fetchMessages",
@@ -12,7 +18,7 @@ export const fetchMessages = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const createMessage = createAsyncThunk(
@@ -24,7 +30,7 @@ export const createMessage = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const deleteMessage = createAsyncThunk(
@@ -36,5 +42,5 @@ export const deleteMessage = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );

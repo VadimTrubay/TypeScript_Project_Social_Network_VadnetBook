@@ -1,4 +1,4 @@
-import {RequestDialogsUserType} from "./userTypes";
+import { RequestDialogsUserType } from "./userTypes";
 
 export interface initialMessagesType {
   items: MessageType[] | [];

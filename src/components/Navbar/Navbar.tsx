@@ -1,12 +1,12 @@
 import React from "react";
-import styles from './Navbar.module.css';
-import {NavLink} from "react-router-dom";
+import styles from "./Navbar.module.css";
+import { NavLink } from "react-router-dom";
 import OnlineFriendsListItem from "./OnlineFriendsListItem/OnlineFriendsListItem";
-import {selectIsAuth} from "../../redux/auth/selectors.js";
-import {useSelector} from "react-redux";
-import {RouterEndpoints} from "../../config/routes";
-import {UserType} from "../../types/userTypes";
-import {selectFollowing} from "../../redux/users/selectors";
+import { selectIsAuth } from "../../redux/auth/selectors.js";
+import { useSelector } from "react-redux";
+import { RouterEndpoints } from "../../config/routes";
+import { UserType } from "../../types/userTypes";
+import { selectFollowing } from "../../redux/users/selectors";
 
 const Navbar: React.FC = () => {
   const isAuth = useSelector(selectIsAuth);
@@ -19,7 +19,8 @@ const Navbar: React.FC = () => {
           <NavLink
             to={RouterEndpoints.users}
             end
-            className={({isActive}) => isActive ? styles.active : ''}>
+            className={({ isActive }) => (isActive ? styles.active : "")}
+          >
             Users
           </NavLink>
         </div>
@@ -29,7 +30,8 @@ const Navbar: React.FC = () => {
               <NavLink
                 to={RouterEndpoints.profile}
                 end
-                className={({isActive}) => isActive ? styles.active : ''}>
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
                 Profile
               </NavLink>
             </div>
@@ -37,7 +39,8 @@ const Navbar: React.FC = () => {
               <NavLink
                 to={RouterEndpoints.followers}
                 end
-                className={({isActive}) => isActive ? styles.active : ''}>
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
                 Followers
               </NavLink>
             </div>
@@ -45,7 +48,8 @@ const Navbar: React.FC = () => {
               <NavLink
                 to={RouterEndpoints.following}
                 end
-                className={({isActive}) => isActive ? styles.active : ''}>
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
                 Following
               </NavLink>
             </div>
@@ -53,7 +57,8 @@ const Navbar: React.FC = () => {
               <NavLink
                 to={RouterEndpoints.dialogs}
                 end
-                className={({isActive}) => isActive ? styles.active : ''}>
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
                 Messages
               </NavLink>
             </div>
@@ -61,7 +66,8 @@ const Navbar: React.FC = () => {
               <NavLink
                 to={RouterEndpoints.settings}
                 end
-                className={({isActive}) => isActive ? styles.active : ''}>
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
                 Settings
               </NavLink>
             </div>

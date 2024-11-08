@@ -1,4 +1,4 @@
-import {profileType} from "./profileTypes";
+import { profileType } from "./profileTypes";
 
 export interface initialUsersType {
   userById: profileType | null;
@@ -31,7 +31,6 @@ export interface RequestDialogsUserType {
   profile_picture: string | undefined;
 }
 
-
 export interface UserProfileType {
   id: string;
   username: string;
@@ -51,7 +50,6 @@ export interface usersParamsType {
   search: string;
   page: number;
 }
-
 
 export interface userIdType {
   users: string | undefined;

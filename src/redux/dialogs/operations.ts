@@ -1,4 +1,4 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getUserByIdApi,
   getUsersApi,
@@ -7,9 +7,12 @@ import {
   followApi,
   unfollowApi,
 } from "../../api/apiUsers";
-import {userIdType, usersParamsType} from "../../types/userTypes";
-import {createDialogApi, deleteDialogApi, getDialogsApi} from "../../api/apiDialogs";
-
+import { userIdType, usersParamsType } from "../../types/userTypes";
+import {
+  createDialogApi,
+  deleteDialogApi,
+  getDialogsApi,
+} from "../../api/apiDialogs";
 
 export const fetchDialogs = createAsyncThunk(
   "dialogs/fetchDialogs",
@@ -20,7 +23,7 @@ export const fetchDialogs = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const createDialog = createAsyncThunk(
@@ -32,7 +35,7 @@ export const createDialog = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );
 
 export const deleteDialog = createAsyncThunk(
@@ -44,5 +47,5 @@ export const deleteDialog = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
     }
-  }
+  },
 );

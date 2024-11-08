@@ -19,7 +19,6 @@
 }
 
 .buttonBlockWrapper {
-
 }
 
 .title_delete {
@@ -113,7 +112,7 @@
 }
 
 .photoWrapper:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -177,7 +176,6 @@
     top: 0;
     margin-bottom: 15px;
   }
-
 }
 
 @media (max-width: 800px) {

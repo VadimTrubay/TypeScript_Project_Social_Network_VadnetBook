@@ -5,7 +5,9 @@
   height: fit-content;
   min-height: 590px;
   border-bottom-right-radius: 30px;
-  transition: transform 0.5s, opacity 0.2s;
+  transition:
+    transform 0.5s,
+    opacity 0.2s;
   opacity: 1;
 }
 

@@ -1,12 +1,12 @@
 import styles from "./HomePage.module.css";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Loader from "../../components/Loader/Loader.jsx";
 
 const HomePage = () => {
   return (
     <div className={styles.container}>
       <h1>Home</h1>
-      <Loader/>
+      <Loader />
       <NavLink to={"/users"}>Users</NavLink>
     </div>
   );

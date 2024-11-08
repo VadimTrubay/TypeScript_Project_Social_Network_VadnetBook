@@ -1,8 +1,8 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {createDialog, deleteDialog, fetchDialogs} from "./operations";
-import {toast} from "react-toastify";
-import {toast_settings} from "../../utils/toasts_settings";
-import {initialDialogsType} from "../../types/dialogTypes";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createDialog, deleteDialog, fetchDialogs } from "./operations";
+import { toast } from "react-toastify";
+import { toast_settings } from "../../utils/toasts_settings";
+import { initialDialogsType } from "../../types/dialogTypes";
 
 const initialDialogs: initialDialogsType = {
   items: [],
@@ -15,32 +15,42 @@ const handlePending = (state: initialDialogsType) => {
   state.loading = true;
 };
 
-const handleRejected = (state: initialDialogsType, action: PayloadAction<any>) => {
+const handleRejected = (
+  state: initialDialogsType,
+  action: PayloadAction<any>,
+) => {
   state.loading = false;
   state.error = action.payload;
 };
 
-const handleFetchDialogsFulfilled = (state: initialDialogsType, action: PayloadAction<any>) => {
+const handleFetchDialogsFulfilled = (
+  state: initialDialogsType,
+  action: PayloadAction<any>,
+) => {
   state.loading = false;
   state.error = null;
   state.items = action.payload;
 };
 
-const handleCreateDialogFulfilled = (state: initialDialogsType, action: PayloadAction<any>) => {
+const handleCreateDialogFulfilled = (
+  state: initialDialogsType,
+  action: PayloadAction<any>,
+) => {
   state.loading = false;
   state.error = null;
-  state.idActiveDialog = action.payload.id
+  state.idActiveDialog = action.payload.id;
 };
 
-
-const handleDeleteDialogFulfilled = (state: initialDialogsType, action: PayloadAction<any>) => {
+const handleDeleteDialogFulfilled = (
+  state: initialDialogsType,
+  action: PayloadAction<any>,
+) => {
   state.loading = false;
   state.error = null;
-  state.items = state.items.filter(item => item.id !== action.payload.id)
+  state.items = state.items.filter((item) => item.id !== action.payload.id);
   // @ts-ignore
   toast.success(`Dialog deleted successfully`, toast_settings);
 };
-
 
 const dialogsSlice = createSlice({
   name: "dialogs",
@@ -56,7 +66,7 @@ const dialogsSlice = createSlice({
       .addCase(createDialog.rejected, handleRejected)
       .addCase(deleteDialog.pending, handlePending)
       .addCase(deleteDialog.fulfilled, handleDeleteDialogFulfilled)
-      .addCase(deleteDialog.rejected, handleRejected)
+      .addCase(deleteDialog.rejected, handleRejected),
 });
 
 export const dialogsReducer = dialogsSlice.reducer;
