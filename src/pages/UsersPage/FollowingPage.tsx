@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchFollowing } from "../../redux/users/operations.js";
-import { AppDispatch } from "../../redux/store";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchFollowing} from "../../redux/users/operations.js";
+import {AppDispatch} from "../../redux/store";
 import User from "./User/User";
-import { Pagination } from "@mui/material";
+import {Pagination} from "@mui/material";
 import styles from "./Users.module.css";
 import {
   selectFollowing,
   selectTotalCountFollowing,
 } from "../../redux/users/selectors";
-import { UserType } from "../../types/userTypes";
-import { selectIsAuth } from "../../redux/auth/selectors";
-import { pageSize } from "../../initialValues/initialValues";
+import {UserType} from "../../types/userTypes";
+import {pageSize} from "../../initialValues/initialValues";
 import Typography from "@mui/material/Typography";
+import {NoResults} from "../../components/NoResults/NoResults";
 
 const UsersPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -32,28 +32,31 @@ const UsersPage = () => {
   };
 
   return (
-    <div className={styles.usersMainWrapper}>
-      <Typography variant="h5" fontSize={30}>
-        Following
-      </Typography>
+    <>
+      {following.length === 0 ? <NoResults/> :
+        <div className={styles.usersMainWrapper}>
+          <Typography variant="h5" fontSize={30}>
+            Following
+          </Typography>
 
-      {totalCountFollowing > 0 && (
-        <Pagination
-          count={Math.ceil(totalCountFollowing / pageSize)} // Total number of pages
-          page={page}
-          onChange={handlePageChange}
-          color="primary"
-          variant="outlined"
-          sx={{ m: 2 }}
-        />
-      )}
+          {totalCountFollowing > 0 && (
+            <Pagination
+              count={Math.ceil(totalCountFollowing / pageSize)} // Total number of pages
+              page={page}
+              onChange={handlePageChange}
+              color="primary"
+              variant="outlined"
+              sx={{m: 2}}
+            />
+          )}
 
-      <div className={styles.usersBlockWrapper}>
-        {following?.map((follow: UserType) => (
-          <User key={follow.id} user={follow} />
-        ))}
-      </div>
-    </div>
+          <div className={styles.usersBlockWrapper}>
+            {following?.map((follow: UserType) => (
+              <User key={follow.id} user={follow}/>
+            ))}
+          </div>
+        </div>}
+    </>
   );
 };
 

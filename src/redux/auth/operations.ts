@@ -12,7 +12,7 @@ import {
   signUpApi,
 } from "../../api/apiAuth";
 
-export const signUp = createAsyncThunk(
+export const signUp: any = createAsyncThunk(
   "auth/signUp",
   async (credentials: RegisterType, thunkAPI) => {
     try {
@@ -25,7 +25,7 @@ export const signUp = createAsyncThunk(
   },
 );
 
-export const signIn = createAsyncThunk(
+export const signIn: any = createAsyncThunk(
   "auth/signIn",
   async (credentials: UserAuthorizationType, thunkAPI) => {
     try {
@@ -38,7 +38,7 @@ export const signIn = createAsyncThunk(
   },
 );
 
-export const googleAuth = createAsyncThunk(
+export const googleAuth: any = createAsyncThunk(
   "auth/googleAuth",
   async (googleCred: googleCredType, thunkAPI) => {
     try {
@@ -51,7 +51,7 @@ export const googleAuth = createAsyncThunk(
   },
 );
 
-export const fetchMe = createAsyncThunk("auth/fetchMe", async (_, thunkAPI) => {
+export const fetchMe: any = createAsyncThunk("auth/fetchMe", async (_, thunkAPI) => {
   try {
     const response = await getMeApi();
     return response.data;
@@ -60,7 +60,7 @@ export const fetchMe = createAsyncThunk("auth/fetchMe", async (_, thunkAPI) => {
   }
 });
 
-export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
+export const logOut: any = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
   try {
     clearAuthHeader();
   } catch (error: any) {

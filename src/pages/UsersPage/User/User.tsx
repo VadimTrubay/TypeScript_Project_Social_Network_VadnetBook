@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsAuth, selectMe } from "../../../redux/auth/selectors";
 import { mainUrls } from "../../../config/urls";
 import {
-  fetchUserById,
-  follow,
-  unfollow,
+    fetchFollowing,
+    fetchUserById, fetchUsers,
+    follow,
+    unfollow,
 } from "../../../redux/users/operations";
 import { AppDispatch } from "../../../redux/store";
 import { Grid } from "@mui/material";
@@ -24,10 +25,22 @@ const User = ({ user }: any) => {
 
   const handleUnfollow = () => {
     dispatch(unfollow(user.user.id));
+      const usersParams = {
+          search: "",
+          page: 1,
+      };
+      dispatch(fetchUsers(usersParams));
+      dispatch(fetchFollowing(1));
   };
 
   const handleFollow = () => {
     dispatch(follow(user.user.id));
+      const usersParams = {
+          search: "",
+          page: 1,
+      };
+      dispatch(fetchUsers(usersParams));
+      dispatch(fetchFollowing(1));
   };
 
   const handleCreateDialog = () => {

@@ -9,7 +9,7 @@ import {
   messageDataType,
 } from "../../types/messageTypes";
 
-export const fetchMessages = createAsyncThunk(
+export const fetchMessages: any = createAsyncThunk(
   "messages/fetchMessages",
   async (dialog_id: string, thunkAPI) => {
     try {
@@ -21,7 +21,7 @@ export const fetchMessages = createAsyncThunk(
   },
 );
 
-export const createMessage = createAsyncThunk(
+export const createMessage: any = createAsyncThunk(
   "messages/createMessage",
   async (messageData: messageDataType, thunkAPI) => {
     try {
@@ -33,7 +33,7 @@ export const createMessage = createAsyncThunk(
   },
 );
 
-export const deleteMessage = createAsyncThunk(
+export const deleteMessage: any = createAsyncThunk(
   "messages/deleteMessage",
   async (data: deleteMessageDataType, thunkAPI) => {
     try {

@@ -8,7 +8,7 @@ import {
 } from "../../api/apiProfile";
 import { EditProfileType, statusDataType } from "../../types/profileTypes";
 
-export const fetchMeProfile = createAsyncThunk(
+export const fetchMeProfile: any = createAsyncThunk(
   "profile/fetchMeProfile",
   async (_, thunkAPI) => {
     try {
@@ -20,7 +20,7 @@ export const fetchMeProfile = createAsyncThunk(
   },
 );
 
-export const setStatusProfile = createAsyncThunk(
+export const setStatusProfile: any = createAsyncThunk(
   "profile/setStatusProfile",
   async (statusData: statusDataType, thunkAPI) => {
     try {
@@ -32,7 +32,7 @@ export const setStatusProfile = createAsyncThunk(
   },
 );
 
-export const setPhotoProfile = createAsyncThunk(
+export const setPhotoProfile: any = createAsyncThunk(
   "profile/setPhotoProfile",
   async (photoData: FormData, thunkAPI) => {
     try {
@@ -44,7 +44,7 @@ export const setPhotoProfile = createAsyncThunk(
   },
 );
 
-export const editProfile = createAsyncThunk(
+export const editProfile: any = createAsyncThunk(
   "profile/editProfile",
   async (statusData: EditProfileType, thunkAPI) => {
     try {
@@ -56,7 +56,7 @@ export const editProfile = createAsyncThunk(
   },
 );
 
-export const deleteProfile = createAsyncThunk(
+export const deleteProfile: any = createAsyncThunk(
   "profile/deleteProfile",
   async (_, thunkAPI) => {
     try {

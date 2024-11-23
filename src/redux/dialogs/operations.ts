@@ -1,20 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  getUserByIdApi,
-  getUsersApi,
-  getFollowersApi,
-  getFollowingApi,
-  followApi,
-  unfollowApi,
-} from "../../api/apiUsers";
-import { userIdType, usersParamsType } from "../../types/userTypes";
+import { userIdType } from "../../types/userTypes";
 import {
   createDialogApi,
   deleteDialogApi,
   getDialogsApi,
 } from "../../api/apiDialogs";
 
-export const fetchDialogs = createAsyncThunk(
+export const fetchDialogs: any = createAsyncThunk(
   "dialogs/fetchDialogs",
   async (_, thunkAPI) => {
     try {
@@ -26,7 +18,7 @@ export const fetchDialogs = createAsyncThunk(
   },
 );
 
-export const createDialog = createAsyncThunk(
+export const createDialog: any = createAsyncThunk(
   "dialogs/createDialog",
   async (userId: userIdType, thunkAPI) => {
     try {
@@ -38,7 +30,7 @@ export const createDialog = createAsyncThunk(
   },
 );
 
-export const deleteDialog = createAsyncThunk(
+export const deleteDialog: any = createAsyncThunk(
   "dialogs/deleteDialog",
   async (dialog_id: string, thunkAPI) => {
     try {

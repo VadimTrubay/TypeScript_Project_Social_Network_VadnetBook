@@ -6,6 +6,9 @@
   background-color: #f9f9f9;
   border-radius: 10px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .userBlockLogout {
@@ -78,8 +81,8 @@
 }
 
 .buttonsWrapper {
-  position: absolute;
-  bottom: 15px;
+  /*position: absolute;*/
+  margin-top: 15px;
   left: 0;
   right: 0;
   display: flex;

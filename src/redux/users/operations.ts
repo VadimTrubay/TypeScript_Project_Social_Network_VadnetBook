@@ -9,7 +9,7 @@ import {
 } from "../../api/apiUsers";
 import { usersParamsType } from "../../types/userTypes";
 
-export const fetchUsers = createAsyncThunk(
+export const fetchUsers: any = createAsyncThunk(
   "users/fetchUsers",
   async (usersParams: usersParamsType, thunkAPI) => {
     try {
@@ -21,7 +21,7 @@ export const fetchUsers = createAsyncThunk(
   },
 );
 
-export const fetchUserById = createAsyncThunk(
+export const fetchUserById: any = createAsyncThunk(
   "users/fetchUserById",
   async (user_id: string, thunkAPI) => {
     try {
@@ -33,7 +33,7 @@ export const fetchUserById = createAsyncThunk(
   },
 );
 
-export const fetchFollowers = createAsyncThunk(
+export const fetchFollowers: any = createAsyncThunk(
   "users/fetchFollowers",
   async (page: number, thunkAPI) => {
     try {
@@ -45,7 +45,7 @@ export const fetchFollowers = createAsyncThunk(
   },
 );
 
-export const fetchFollowing = createAsyncThunk(
+export const fetchFollowing: any = createAsyncThunk(
   "users/fetchFollowing",
   async (page: number, thunkAPI) => {
     try {
@@ -57,7 +57,7 @@ export const fetchFollowing = createAsyncThunk(
   },
 );
 
-export const follow = createAsyncThunk(
+export const follow: any = createAsyncThunk(
   "users/follow",
   async (user_id: string, thunkAPI) => {
     try {
@@ -69,7 +69,7 @@ export const follow = createAsyncThunk(
   },
 );
 
-export const unfollow = createAsyncThunk(
+export const unfollow: any = createAsyncThunk(
   "users/unfollow",
   async (user_id: string, thunkAPI) => {
     try {
