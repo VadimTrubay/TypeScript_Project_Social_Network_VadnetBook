@@ -3,12 +3,13 @@ import { Layout } from "./Layout/Layout.jsx";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { RouterEndpoints } from "../config/routes";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsAuth } from "../redux/auth/selectors";
+import {selectAuthError, selectIsAuth} from "../redux/auth/selectors";
 import { fetchMe } from "../redux/auth/operations";
 import { AppDispatch } from "../redux/store";
 import styles from "./App.module.css";
 import { fetchMeProfile } from "../redux/profile/operations";
 import DialogsPage from "../pages/DialogsPage/DialogsPage";
+
 
 const ProfilePage = lazy(() => import("../pages/ProfilePage/ProfilePage"));
 const UsersPage = lazy(() => import("../pages/UsersPage/UsersPage"));
@@ -32,7 +33,7 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchMeProfile());
     dispatch(fetchMe());
-  }, []);
+  }, [isAuth]);
 
   return (
     <>

@@ -46,7 +46,6 @@ const UserAuthorizationPage = () => {
     onSubmit: (values) => {
       if (formik.isValid) {
         dispatch(signIn(values));
-        dispatch(fetchMe);
       }
     },
   });
