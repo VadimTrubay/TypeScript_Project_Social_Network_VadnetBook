@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import {useFormik} from "formik";
+import {Link, useNavigate} from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -9,18 +9,18 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Checkbox, Grid, IconButton, InputAdornment } from "@mui/material";
-import { validationSchemaRegistration } from "../../validate/validationSchemaRegistration.js";
-import { signUp } from "../../redux/auth/operations";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+import {Grid, IconButton, InputAdornment} from "@mui/material";
+import {validationSchemaRegistration} from "../../validate/validationSchemaRegistration.js";
+import {signUp} from "../../redux/auth/operations";
+import {useDispatch} from "react-redux";
+import {AppDispatch} from "../../redux/store";
 import styles from "../UserRegistrationPage/UserRegistrationPage.module.css";
-import { initialValueUserRegistration } from "../../initialValues/initialValues";
+import {initialValueUserRegistration} from "../../initialValues/initialValues";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { RouterEndpoints } from "../../config/routes";
-import { Login } from "@mui/icons-material";
+import {RouterEndpoints} from "../../config/routes";
+import {Login} from "@mui/icons-material";
 
 const defaultTheme = createTheme();
 
@@ -28,6 +28,7 @@ const RegistrationForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleClickShowConfirmPassword = () =>
@@ -39,21 +40,22 @@ const RegistrationForm = () => {
     event.preventDefault();
   };
 
-  const formik = useFormik({
+  const formik: any = useFormik({
     initialValues: initialValueUserRegistration,
     validationSchema: validationSchemaRegistration,
     onSubmit: (values) => {
       dispatch(signUp(values));
+      // navigate(RouterEndpoints.signin);
     },
   });
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
+        <CssBaseline/>
         <Box className={styles.box}>
           <Avatar className={styles.avatar}>
-            <LockOutlinedIcon />
+            <LockOutlinedIcon/>
           </Avatar>
           <Typography component="h1" variant="h5">
             SignUp
@@ -74,7 +76,7 @@ const RegistrationForm = () => {
                     formik.touched.username && Boolean(formik.errors.username)
                   }
                   helperText={formik.touched.username && formik.errors.username}
-                  sx={{ marginTop: 2, marginBottom: 1 }}
+                  sx={{marginTop: 2, marginBottom: 1}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -113,7 +115,7 @@ const RegistrationForm = () => {
                           onMouseDown={handleMouseDownPassword}
                           edge="end"
                         >
-                          {showPassword ? <Visibility /> : <VisibilityOff />}
+                          {showPassword ? <Visibility/> : <VisibilityOff/>}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -148,9 +150,9 @@ const RegistrationForm = () => {
                           edge="end"
                         >
                           {showConfirmPassword ? (
-                            <Visibility />
+                            <Visibility/>
                           ) : (
-                            <VisibilityOff />
+                            <VisibilityOff/>
                           )}
                         </IconButton>
                       </InputAdornment>
@@ -164,10 +166,9 @@ const RegistrationForm = () => {
               fullWidth
               variant="contained"
               color="primary"
-              className={styles.submit}
-              sx={{ marginTop: 2, marginBottom: 1 }}
-              style={{ textTransform: "none" }}
-              endIcon={<Login />}
+              sx={{marginTop: 2, marginBottom: 1}}
+              style={{textTransform: "none"}}
+              endIcon={<Login/>}
             >
               SignUp
             </Button>

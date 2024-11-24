@@ -23,7 +23,7 @@ const DialogsPage = () => {
       dispatch(fetchMessages(idActiveDialog));
       dispatch(fetchDialogs());
       setReload(!reload); // Перезагрузка страницы каждые 5 секунд для получения новых сообщений и диалогов
-    }, 1000); // Fetch dialogs and messages every 5 seconds
+    }, 3000); // Fetch dialogs and messages every 5 seconds
 
     // Функция очистки для очистки интервала при размонтировании компонента
     return () => clearInterval(intervalId);
