@@ -15,7 +15,7 @@ export const fetchMeProfile: any = createAsyncThunk(
       const response = await getMeProfileApi();
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -27,7 +27,7 @@ export const setStatusProfile: any = createAsyncThunk(
       const response = await setStatusProfileApi(statusData);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -39,7 +39,7 @@ export const setPhotoProfile: any = createAsyncThunk(
       const response = await setPhotoProfileApi(photoData);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -51,7 +51,7 @@ export const editProfile: any = createAsyncThunk(
       const response = await editProfileApi(statusData);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -63,7 +63,7 @@ export const deleteProfile: any = createAsyncThunk(
       const response = await deleteProfileApi();
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );

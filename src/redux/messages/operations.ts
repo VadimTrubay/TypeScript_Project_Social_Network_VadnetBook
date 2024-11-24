@@ -16,7 +16,7 @@ export const fetchMessages: any = createAsyncThunk(
       const response = await getMessagesApi(dialog_id);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -28,7 +28,7 @@ export const createMessage: any = createAsyncThunk(
       const response = await createMessageApi(messageData);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -40,7 +40,7 @@ export const deleteMessage: any = createAsyncThunk(
       const response = await deleteMessageApi(data.dialog_id, data.message_id);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );

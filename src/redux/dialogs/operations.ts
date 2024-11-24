@@ -13,7 +13,7 @@ export const fetchDialogs: any = createAsyncThunk(
       const response = await getDialogsApi();
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -25,7 +25,7 @@ export const createDialog: any = createAsyncThunk(
       const response = await createDialogApi(userId);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -37,7 +37,7 @@ export const deleteDialog: any = createAsyncThunk(
       const response = await deleteDialogApi(dialog_id);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );

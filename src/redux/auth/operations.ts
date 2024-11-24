@@ -20,7 +20,7 @@ export const signUp: any = createAsyncThunk(
       setAuthHeader(response.data.access_token);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -33,7 +33,7 @@ export const signIn: any = createAsyncThunk(
       setAuthHeader(response.data.access_token);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -46,7 +46,7 @@ export const googleAuth: any = createAsyncThunk(
       setAuthHeader(response.data.access_token);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -56,7 +56,7 @@ export const fetchMe: any = createAsyncThunk("auth/fetchMe", async (_, thunkAPI)
     const response = await getMeApi();
     return response.data;
   } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.detail);
+    return thunkAPI.rejectWithValue(error.response.data.details);
   }
 });
 
@@ -64,6 +64,6 @@ export const logOut: any = createAsyncThunk("auth/logOut", async (_, thunkAPI) =
   try {
     clearAuthHeader();
   } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.detail);
+    return thunkAPI.rejectWithValue(error.response.data.details);
   }
 });

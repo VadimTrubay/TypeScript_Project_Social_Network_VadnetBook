@@ -16,7 +16,7 @@ export const fetchUsers: any = createAsyncThunk(
       const response = await getUsersApi(usersParams.search, usersParams.page);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -28,7 +28,7 @@ export const fetchUserById: any = createAsyncThunk(
       const response = await getUserByIdApi(user_id);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -40,7 +40,7 @@ export const fetchFollowers: any = createAsyncThunk(
       const response = await getFollowersApi(page);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -52,7 +52,7 @@ export const fetchFollowing: any = createAsyncThunk(
       const response = await getFollowingApi(page);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -64,7 +64,7 @@ export const follow: any = createAsyncThunk(
       const response = await followApi(user_id);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
@@ -76,7 +76,7 @@ export const unfollow: any = createAsyncThunk(
       const response = await unfollowApi(user_id);
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.detail);
+      return thunkAPI.rejectWithValue(error.response.data.details);
     }
   },
 );
