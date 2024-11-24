@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { createDialog, deleteDialog, fetchDialogs } from "./operations";
-import { toast } from "react-toastify";
-import { toast_settings } from "../../utils/toasts_settings";
-import { initialDialogsType } from "../../types/dialogTypes";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createDialog, deleteDialog, fetchDialogs} from "./operations";
+import {toast} from "react-toastify";
+import {toast_settings} from "../../utils/toasts_settings";
+import {initialDialogsType} from "../../types/dialogTypes";
 
 const initialDialogs: initialDialogsType = {
   items: [],
