@@ -20,14 +20,14 @@ const DialogsPage = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      dispatch(fetchMessages(idActiveDialog));
       dispatch(fetchDialogs());
+      dispatch(fetchMessages(idActiveDialog));
       setReload(!reload); // Перезагрузка страницы каждые 5 секунд для получения новых сообщений и диалогов
-    }, 3000); // Fetch dialogs and messages every 5 seconds
+    }, 2000); // Fetch dialogs and messages every 5 seconds
 
     // Функция очистки для очистки интервала при размонтировании компонента
     return () => clearInterval(intervalId);
-  }, [reload]);
+  }, [reload, idActiveDialog]);
 
   return (
     <div className={styles.dialogs}>
