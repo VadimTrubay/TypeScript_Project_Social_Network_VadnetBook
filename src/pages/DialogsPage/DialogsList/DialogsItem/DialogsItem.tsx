@@ -12,7 +12,7 @@ import {
 } from "../../../../redux/dialogs/operations";
 import { fetchUserById } from "../../../../redux/users/operations";
 import { mainUrls } from "../../../../config/urls";
-import { fetchMessages } from "../../../../redux/messages/operations";
+// import { fetchMessages } from "../../../../redux/messages/operations";
 
 export const DialogsItem = ({ dialog }: any) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,7 +24,7 @@ export const DialogsItem = ({ dialog }: any) => {
       }),
     );
     dispatch(fetchUserById(dialog.other_user.id));
-    dispatch(fetchMessages(dialog.id));
+    // dispatch(fetchMessages(dialog.id));
   };
 
   const handleDeleteDialog = () => {
