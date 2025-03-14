@@ -14,6 +14,7 @@ export default defineConfig(({mode}) => {
     resolve: {
       alias: {
         '@': join(__dirname, 'src'),
+        global: "global", // Ensure `global` resolves properly
       },
     },
     server: {

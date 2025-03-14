@@ -3,25 +3,21 @@ import styles from "./AddMessageBlock.module.css";
 import { Field, Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../../../redux/store";
-import { createMessage } from "../../../../redux/messages/operations";
 import { selectIdActiveDialog } from "../../../../redux/dialogs/selectors";
 
-const AddMessageBlock = () => {
+const AddMessageBlock = ({ wsService }) => {
   const dispatch = useDispatch<AppDispatch>();
   const idActiveDialog = useSelector(selectIdActiveDialog);
 
   return (
     <Formik
-      initialValues={{
-        message: "",
-      }}
+      initialValues={{ message: "" }}
       onSubmit={(values, { resetForm }) => {
-        dispatch(
-          createMessage({
-            dialog: idActiveDialog,
-            content: values.message,
-          }),
-        );
+        wsService.sendMessage({
+          type: "send_message",
+          dialog_id: idActiveDialog,
+          content: values.message,
+        });
         resetForm();
       }}
       validateOnChange={false}

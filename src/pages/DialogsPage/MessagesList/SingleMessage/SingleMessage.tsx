@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import styles from "./SingleMessage.module.css";
 import { formatDate } from "../../../../utils/formatDate";
 import readIcon from "../../../../components/Other/read.png";
@@ -16,14 +16,27 @@ export const SingleMessage = ({ message }: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const currentUser = useSelector(selectMe);
   const idActiveDialog = useSelector(selectIdActiveDialog);
+  const wsService = useRef(null);
+
+  // const handleDeleteMessage = () => {
+  //   const data: deleteMessageDataType = {
+  //     dialog_id: idActiveDialog,
+  //     message_id: message.id,
+  //   };
+  //   dispatch(deleteMessage(data));
+  // };
 
   const handleDeleteMessage = () => {
-    const data: deleteMessageDataType = {
+  if (wsService.current) {
+    // @ts-ignore
+    const message = {
+      type: "delete_message",
       dialog_id: idActiveDialog,
       message_id: message.id,
     };
-    dispatch(deleteMessage(data));
-  };
+    wsService.current.send(JSON.stringify(message));
+  }
+};
 
   return (
     <div

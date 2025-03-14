@@ -10,7 +10,6 @@ import styles from "./App.module.css";
 import { fetchMeProfile } from "../redux/profile/operations";
 import DialogsPage from "../pages/DialogsPage/DialogsPage";
 
-
 const ProfilePage = lazy(() => import("../pages/ProfilePage/ProfilePage"));
 const UsersPage = lazy(() => import("../pages/UsersPage/UsersPage"));
 const FollowersPage = lazy(() => import("../pages/UsersPage/FollowersPage"));
