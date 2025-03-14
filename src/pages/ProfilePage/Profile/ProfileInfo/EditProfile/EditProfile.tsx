@@ -7,8 +7,6 @@ import { AppDispatch } from '../../../../../redux/store';
 import { editProfile, fetchMeProfile } from '../../../../../redux/profile/operations';
 import { fetchMe } from '../../../../../redux/auth/operations';
 
-// @ts-ignore
-// eslint-disable-next-line react/prop-types
 const EditProfile = ({ profile, setEditeProfile }) => {
   const dispatch = useDispatch<AppDispatch>();
 
@@ -18,15 +16,8 @@ const EditProfile = ({ profile, setEditeProfile }) => {
   }, [dispatch]);
 
   const createFormikTextField = (
-    formDataName: string | undefined,
-    labelTitle:
-      | string
-      | number
-      | boolean
-      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-      | Iterable<React.ReactNode>
-      | null
-      | undefined,
+    formDataName: any,
+    labelTitle: any,
     placeholder: string,
     errorsObject: FormikErrors<{
       username: any;
@@ -42,8 +33,6 @@ const EditProfile = ({ profile, setEditeProfile }) => {
       phone_number: any;
     }>
   ) => {
-    // @ts-ignore
-    // @ts-ignore
     return (
       <div className={styles.inputWrapper}>
         <label htmlFor={formDataName}>{labelTitle}:</label>
