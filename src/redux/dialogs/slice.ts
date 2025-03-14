@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { createDialog, deleteDialog, fetchDialogs } from './operations';
-import { toast } from 'react-toastify';
-import { toast_settings } from '../../utils/toasts_settings';
 import { initialDialogsType } from '../../types/dialogTypes';
 
 const initialDialogs: initialDialogsType = {
@@ -37,7 +35,7 @@ const handleDeleteDialogFulfilled = (state: initialDialogsType, action: PayloadA
   state.error = null;
   state.items = state.items.filter((item) => item.id !== action.payload.id);
   // @ts-ignore
-  toast.success(`Dialog deleted successfully`, toast_settings);
+  toast.success(`Dialog deleted successfully`);
 };
 
 const dialogsSlice = createSlice({

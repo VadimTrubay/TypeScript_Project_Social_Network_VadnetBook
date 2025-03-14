@@ -1,16 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
-import { toast_settings } from '../../utils/toasts_settings';
 import { initialMessagesType } from '../../types/messageTypes';
+import toast from 'react-hot-toast';
 
-// Начальное состояние
 const initialMessages: initialMessagesType = {
   items: [],
   loading: false,
   error: null,
 };
 
-// Слайс сообщений
 const messagesSlice = createSlice({
   name: 'messages',
   initialState: initialMessages,
@@ -21,6 +18,7 @@ const messagesSlice = createSlice({
       state.error = null;
     },
     addMessage: (state, action: PayloadAction<any>) => {
+      // @ts-ignore
       state.items.push(action.payload);
     },
     setLoading: (state) => {
@@ -32,8 +30,7 @@ const messagesSlice = createSlice({
     },
     deleteMessage: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter((message) => message.id !== action.payload);
-      // @ts-ignore
-      toast.success(`Message deleted successfully`, toast_settings);
+      toast.success(`Message deleted successfully`);
     },
   },
   extraReducers: () => {
@@ -41,7 +38,6 @@ const messagesSlice = createSlice({
   },
 });
 
-export const { setMessages, addMessage, setLoading, setError, deleteMessage } =
-  messagesSlice.actions;
+export const { setMessages, addMessage } = messagesSlice.actions;
 
 export const messagesReducer = messagesSlice.reducer;
