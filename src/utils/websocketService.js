@@ -1,7 +1,7 @@
 export class WebSocketService {
   constructor(url, token) {
     if (!token) {
-      throw new Error("Токен отсутствует!");
+      throw new Error('Токен отсутствует!');
     }
 
     const socketUrl = `${url}`;

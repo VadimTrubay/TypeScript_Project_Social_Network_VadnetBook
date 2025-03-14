@@ -1,17 +1,14 @@
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchFollowing, fetchUsers} from "../../redux/users/operations.js";
-import {AppDispatch} from "../../redux/store";
-import User from "./User/User";
-import {Pagination} from "@mui/material";
-import styles from "./Users.module.css";
-import {
-  selectTotalCountUsers,
-  selectUsers,
-} from "../../redux/users/selectors";
-import {pageSize} from "../../initialValues/initialValues";
-import Typography from "@mui/material/Typography";
-import {NoResults} from "../../components/NoResults/NoResults";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFollowing, fetchUsers } from '../../redux/users/operations.js';
+import { AppDispatch } from '../../redux/store';
+import User from './User/User';
+import { Pagination } from '@mui/material';
+import styles from './Users.module.css';
+import { selectTotalCountUsers, selectUsers } from '../../redux/users/selectors';
+import { pageSize } from '../../initialValues/initialValues';
+import Typography from '@mui/material/Typography';
+import { NoResults } from '../../components/NoResults/NoResults';
 
 const UsersPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,23 +18,22 @@ const UsersPage = () => {
 
   useEffect(() => {
     const usersParams = {
-      search: "",
+      search: '',
       page: page,
     };
     dispatch(fetchUsers(usersParams));
     dispatch(fetchFollowing(1));
   }, [page]);
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number,
-  ) => {
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
 
   return (
     <>
-      {users.length === 0 ? <NoResults/> :
+      {users.length === 0 ? (
+        <NoResults />
+      ) : (
         <div className={styles.usersMainWrapper}>
           <Typography variant="h5" fontSize={30}>
             Users
@@ -50,17 +46,17 @@ const UsersPage = () => {
               onChange={handlePageChange}
               color="primary"
               variant="outlined"
-              sx={{m: 2}}
+              sx={{ m: 2 }}
             />
           )}
 
           <div className={styles.usersBlockWrapper}>
             {users?.map((user: { id: React.Key | null | undefined }) => (
-              <User key={user.id} user={user}/>
+              <User key={user.id} user={user} />
             ))}
           </div>
         </div>
-      }
+      )}
     </>
   );
 };

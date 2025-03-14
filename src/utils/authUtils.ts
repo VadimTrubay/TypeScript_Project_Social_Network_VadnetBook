@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const setAuthHeader = (access_token: string | null) => {
   if (access_token) {
@@ -9,5 +9,5 @@ export const setAuthHeader = (access_token: string | null) => {
 };
 
 export const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = "";
+  axios.defaults.headers.common.Authorization = '';
 };

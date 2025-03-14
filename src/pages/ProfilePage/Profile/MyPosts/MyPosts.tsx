@@ -1,10 +1,10 @@
-import React from "react";
-import styles from "./MyPosts.module.css";
-import Post from "./Post/Post";
-import { Field, Form, Formik } from "formik";
+import React from 'react';
+import styles from './MyPosts.module.css';
+import Post from './Post/Post';
+import { Field, Form, Formik } from 'formik';
 
-const MyPosts = ({ profilePosts, onAddMessage }) => {
-  const addMessage = (newPostText) => {
+const MyPosts = ({ profilePosts, onAddMessage }: any) => {
+  const addMessage = (newPostText: string) => {
     onAddMessage(newPostText);
   };
 
@@ -14,7 +14,7 @@ const MyPosts = ({ profilePosts, onAddMessage }) => {
       <div className={styles.addPostWrapper}>
         <Formik
           initialValues={{
-            message: "",
+            message: '',
           }}
           onSubmit={(values, { resetForm }) => {
             addMessage(values.message);
@@ -23,7 +23,7 @@ const MyPosts = ({ profilePosts, onAddMessage }) => {
           validateOnChange={false}
           validateOnBlur={false}
         >
-          {({ errors, touched, isValid, dirty }) => {
+          {({ isValid, dirty }) => {
             return (
               <Form>
                 <Field
@@ -48,12 +48,8 @@ const MyPosts = ({ profilePosts, onAddMessage }) => {
         </Formik>
       </div>
       <div>
-        {profilePosts.map((item) => (
-          <Post
-            key={Math.random()}
-            message={item.message}
-            likesCount={item.likesCount}
-          />
+        {profilePosts.map((item: { message: any; likesCount: any }) => (
+          <Post key={Math.random()} message={item.message} likesCount={item.likesCount} />
         ))}
       </div>
     </div>

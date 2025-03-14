@@ -1,8 +1,8 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {createDialog, deleteDialog, fetchDialogs} from "./operations";
-import {toast} from "react-toastify";
-import {toast_settings} from "../../utils/toasts_settings";
-import {initialDialogsType} from "../../types/dialogTypes";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createDialog, deleteDialog, fetchDialogs } from './operations';
+import { toast } from 'react-toastify';
+import { toast_settings } from '../../utils/toasts_settings';
+import { initialDialogsType } from '../../types/dialogTypes';
 
 const initialDialogs: initialDialogsType = {
   items: [],
@@ -15,36 +15,24 @@ const handlePending = (state: initialDialogsType) => {
   state.loading = true;
 };
 
-const handleRejected = (
-  state: initialDialogsType,
-  action: PayloadAction<any>,
-) => {
+const handleRejected = (state: initialDialogsType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = action.payload;
 };
 
-const handleFetchDialogsFulfilled = (
-  state: initialDialogsType,
-  action: PayloadAction<any>,
-) => {
+const handleFetchDialogsFulfilled = (state: initialDialogsType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
   state.items = action.payload;
 };
 
-const handleCreateDialogFulfilled = (
-  state: initialDialogsType,
-  action: PayloadAction<any>,
-) => {
+const handleCreateDialogFulfilled = (state: initialDialogsType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
   state.idActiveDialog = action.payload.id;
 };
 
-const handleDeleteDialogFulfilled = (
-  state: initialDialogsType,
-  action: PayloadAction<any>,
-) => {
+const handleDeleteDialogFulfilled = (state: initialDialogsType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
   state.items = state.items.filter((item) => item.id !== action.payload.id);
@@ -53,7 +41,7 @@ const handleDeleteDialogFulfilled = (
 };
 
 const dialogsSlice = createSlice({
-  name: "dialogs",
+  name: 'dialogs',
   initialState: initialDialogs,
   reducers: {},
   extraReducers: (builder) =>

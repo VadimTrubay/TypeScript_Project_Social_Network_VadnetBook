@@ -1,16 +1,16 @@
 @font-face {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   src:
-    local("Raleway"),
-    url("./../Other/fonts/Raleway/Raleway-Bold.ttf") format("truetype");
+    local('Raleway'),
+    url('./../Other/fonts/Raleway/Raleway-Bold.ttf') format('truetype');
   font-weight: 700;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   src:
-    local("Raleway"),
-    url("./../Other/fonts/Raleway/Raleway-Light.ttf") format("truetype");
+    local('Raleway'),
+    url('./../Other/fonts/Raleway/Raleway-Light.ttf') format('truetype');
   font-weight: 300;
 }
 
@@ -98,7 +98,7 @@
 }
 
 .headerSocialName {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: 700;
   display: block;
   font-size: 18px;
@@ -108,7 +108,7 @@
 }
 
 .headerSocialSubname {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: 300;
   display: block;
   font-size: 12px;

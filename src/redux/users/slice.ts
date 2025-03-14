@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   fetchUserById,
   fetchUsers,
@@ -6,8 +6,8 @@ import {
   fetchFollowing,
   follow,
   unfollow,
-} from "./operations";
-import { initialUsersType } from "../../types/userTypes";
+} from './operations';
+import { initialUsersType } from '../../types/userTypes';
 
 const initialUsers: initialUsersType = {
   userById: null,
@@ -31,48 +31,33 @@ const handlePending = (state: initialUsersType) => {
   state.loading = true;
 };
 
-const handleRejected = (
-  state: initialUsersType,
-  action: PayloadAction<any>,
-) => {
+const handleRejected = (state: initialUsersType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = action.payload;
 };
 
-const handleFetchUsersFulfilled = (
-  state: initialUsersType,
-  action: PayloadAction<any>,
-) => {
+const handleFetchUsersFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
   state.users.items = action.payload.results;
   state.users.count = action.payload.count;
 };
 
-const handleFetchFollowersFulfilled = (
-  state: initialUsersType,
-  action: PayloadAction<any>,
-) => {
+const handleFetchFollowersFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
   state.followers.items = action.payload.results;
   state.followers.count = action.payload.count;
 };
 
-const handleFetchFollowingFulfilled = (
-  state: initialUsersType,
-  action: PayloadAction<any>,
-) => {
+const handleFetchFollowingFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
   state.following.items = action.payload.results;
   state.following.count = action.payload.count;
 };
 
-const handleFetchUserByIdFulfilled = (
-  state: initialUsersType,
-  action: PayloadAction<any>,
-) => {
+const handleFetchUserByIdFulfilled = (state: initialUsersType, action: PayloadAction<any>) => {
   state.loading = false;
   state.error = null;
   state.userById = action.payload;
@@ -89,7 +74,7 @@ const handleUnfollowFulfilled = (state: initialUsersType) => {
 };
 
 const usersSlice = createSlice({
-  name: "users",
+  name: 'users',
   initialState: initialUsers,
   reducers: {},
   extraReducers: (builder) =>

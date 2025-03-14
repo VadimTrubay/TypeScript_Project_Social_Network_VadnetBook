@@ -1,15 +1,15 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   deleteProfileApi,
   editProfileApi,
   getMeProfileApi,
   setPhotoProfileApi,
   setStatusProfileApi,
-} from "../../api/apiProfile";
-import { EditProfileType, statusDataType } from "../../types/profileTypes";
+} from '../../api/apiProfile';
+import { EditProfileType, statusDataType } from '../../types/profileTypes';
 
 export const fetchMeProfile: any = createAsyncThunk(
-  "profile/fetchMeProfile",
+  'profile/fetchMeProfile',
   async (_, thunkAPI) => {
     try {
       const response = await getMeProfileApi();
@@ -17,11 +17,11 @@ export const fetchMeProfile: any = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.details);
     }
-  },
+  }
 );
 
 export const setStatusProfile: any = createAsyncThunk(
-  "profile/setStatusProfile",
+  'profile/setStatusProfile',
   async (statusData: statusDataType, thunkAPI) => {
     try {
       const response = await setStatusProfileApi(statusData);
@@ -29,11 +29,11 @@ export const setStatusProfile: any = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.details);
     }
-  },
+  }
 );
 
 export const setPhotoProfile: any = createAsyncThunk(
-  "profile/setPhotoProfile",
+  'profile/setPhotoProfile',
   async (photoData: FormData, thunkAPI) => {
     try {
       const response = await setPhotoProfileApi(photoData);
@@ -41,11 +41,11 @@ export const setPhotoProfile: any = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.details);
     }
-  },
+  }
 );
 
 export const editProfile: any = createAsyncThunk(
-  "profile/editProfile",
+  'profile/editProfile',
   async (statusData: EditProfileType, thunkAPI) => {
     try {
       const response = await editProfileApi(statusData);
@@ -53,17 +53,14 @@ export const editProfile: any = createAsyncThunk(
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.details);
     }
-  },
+  }
 );
 
-export const deleteProfile: any = createAsyncThunk(
-  "profile/deleteProfile",
-  async (_, thunkAPI) => {
-    try {
-      const response = await deleteProfileApi();
-      return response.data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.details);
-    }
-  },
-);
+export const deleteProfile: any = createAsyncThunk('profile/deleteProfile', async (_, thunkAPI) => {
+  try {
+    const response = await deleteProfileApi();
+    return response.data;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.response.data.details);
+  }
+});

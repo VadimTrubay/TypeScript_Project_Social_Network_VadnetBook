@@ -1,5 +1,5 @@
-import React from "react";
-import ContactBlock from "./ContactBlock/ContactBlock";
+import React from 'react';
+import ContactBlock from './ContactBlock/ContactBlock';
 
 const ContactsInfoBlock = ({ fullContactsArray }) => {
   const renderContacts = (data) => {
@@ -7,9 +7,7 @@ const ContactsInfoBlock = ({ fullContactsArray }) => {
     let createdContactBlock = [];
     sortData.map((item) => {
       if (item[1]) {
-        createdContactBlock.push(
-          <ContactBlock contactInfo={item} key={item[0]} />,
-        );
+        createdContactBlock.push(<ContactBlock contactInfo={item} key={item[0]} />);
       }
     });
 

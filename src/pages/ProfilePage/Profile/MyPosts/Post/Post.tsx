@@ -1,9 +1,9 @@
-import React from "react";
-import styles from "./Post.module.css";
-import likeImage from "./heart-black-shape.png";
-import defaultProfileImage from "../../../../../Other/user.png";
+import React from 'react';
+import styles from './Post.module.css';
+import likeImage from './heart-black-shape.png';
+import defaultProfileImage from '../../../../../Other/user.png';
 
-const Post = (props) => {
+const Post = (props: any) => {
   return (
     <div className={styles.singlePostWrapper}>
       <img className={styles.userImage} src={defaultProfileImage} alt="" />

@@ -28,8 +28,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "generalLeftBlock rightContactBlock"
-    "confirmButtonsBlock confirmButtonsBlock";
+    'generalLeftBlock rightContactBlock'
+    'confirmButtonsBlock confirmButtonsBlock';
   grid-gap: 40px;
   position: relative;
   border-radius: 10px;
@@ -186,7 +186,7 @@
 }
 
 .modalBlockSubtitle:after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;

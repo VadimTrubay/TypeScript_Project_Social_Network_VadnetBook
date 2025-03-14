@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import styles from "./ProfleStatus.module.css";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../../../redux/store";
-import { setStatusProfile } from "../../../../../redux/profile/operations";
-import EditIcon from "@mui/icons-material/Edit";
+import React, { useEffect, useState } from 'react';
+import styles from './ProfleStatus.module.css';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../../../redux/store';
+import { setStatusProfile } from '../../../../../redux/profile/operations';
+import EditIcon from '@mui/icons-material/Edit';
 
 const ProfileStatus = ({ myStatus, editStatus, setEditStatus }: any) => {
   const dispatch = useDispatch<AppDispatch>();
-  let [status, setStatus] = useState(myStatus);
+  const [status, setStatus] = useState(myStatus);
 
   useEffect(() => {
     setStatus(myStatus);
@@ -21,7 +21,7 @@ const ProfileStatus = ({ myStatus, editStatus, setEditStatus }: any) => {
     dispatch(
       setStatusProfile({
         status: status,
-      }),
+      })
     );
     setEditStatus(false);
   };
@@ -46,9 +46,9 @@ const ProfileStatus = ({ myStatus, editStatus, setEditStatus }: any) => {
       ) : (
         <div className={styles.statusWrapper}>
           <span className={styles.status} onClick={activateEditStatus}>
-            {myStatus ? myStatus : ""}
+            {myStatus ? myStatus : ''}
           </span>
-          <EditIcon color={"primary"} />
+          <EditIcon color={'primary'} />
         </div>
       )}
     </>

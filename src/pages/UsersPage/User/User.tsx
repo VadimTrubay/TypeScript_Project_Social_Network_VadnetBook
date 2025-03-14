@@ -1,21 +1,22 @@
-import styles from "./User.module.css";
-import { NavLink, useNavigate } from "react-router-dom";
-import defaultImg from "../../../components/Other/user-smalled.png";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsAuth, selectMe } from "../../../redux/auth/selectors";
-import { mainUrls } from "../../../config/urls";
+import styles from './User.module.css';
+import { NavLink, useNavigate } from 'react-router-dom';
+import defaultImg from '../../../components/Other/user-smalled.png';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsAuth, selectMe } from '../../../redux/auth/selectors';
+import { mainUrls } from '../../../config/urls';
 import {
-    fetchFollowing,
-    fetchUserById, fetchUsers,
-    follow,
-    unfollow,
-} from "../../../redux/users/operations";
-import { AppDispatch } from "../../../redux/store";
-import { Grid } from "@mui/material";
-import Button from "@mui/material/Button";
-import RateReviewIcon from "@mui/icons-material/RateReview";
-import { createDialog } from "../../../redux/dialogs/operations";
+  fetchFollowing,
+  fetchUserById,
+  fetchUsers,
+  follow,
+  unfollow,
+} from '../../../redux/users/operations';
+import { AppDispatch } from '../../../redux/store';
+import { Grid } from '@mui/material';
+import Button from '@mui/material/Button';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+import { createDialog } from '../../../redux/dialogs/operations';
 
 const User = ({ user }: any) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -25,29 +26,29 @@ const User = ({ user }: any) => {
 
   const handleUnfollow = () => {
     dispatch(unfollow(user.user.id));
-      const usersParams = {
-          search: "",
-          page: 1,
-      };
-      dispatch(fetchUsers(usersParams));
-      dispatch(fetchFollowing(1));
+    const usersParams = {
+      search: '',
+      page: 1,
+    };
+    dispatch(fetchUsers(usersParams));
+    dispatch(fetchFollowing(1));
   };
 
   const handleFollow = () => {
     dispatch(follow(user.user.id));
-      const usersParams = {
-          search: "",
-          page: 1,
-      };
-      dispatch(fetchUsers(usersParams));
-      dispatch(fetchFollowing(1));
+    const usersParams = {
+      search: '',
+      page: 1,
+    };
+    dispatch(fetchUsers(usersParams));
+    dispatch(fetchFollowing(1));
   };
 
   const handleCreateDialog = () => {
     dispatch(
       createDialog({
         users: user.user.id,
-      }),
+      })
     );
     dispatch(fetchUserById(user.user.id));
     navigate(mainUrls.dialogs.dialogs);
@@ -108,7 +109,7 @@ const User = ({ user }: any) => {
           )}
         </div>
       ) : (
-        ""
+        ''
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import { RequestDialogsUserType } from "./userTypes";
+import { RequestDialogsUserType } from './userTypes';
 
 export interface initialDialogsType {
   items: DialogType[] | [];

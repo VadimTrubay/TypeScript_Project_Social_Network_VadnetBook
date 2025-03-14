@@ -1,4 +1,4 @@
-import { UserEditProfileType, UserProfileType } from "./userTypes";
+import { UserEditProfileType, UserProfileType } from './userTypes';
 
 export interface initialProfileType {
   profile: profileType;

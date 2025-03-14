@@ -1,31 +1,31 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import { style } from "../../utils/BaseModal.styled";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import { StyledBox, Text } from "../../utils/BaseModal.styled";
-import { Button } from "@mui/material";
-import DoneIcon from "@mui/icons-material/Done";
+import React from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import { style } from '../../utils/BaseModal.styled';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { StyledBox, Text } from '../../utils/BaseModal.styled';
+import { Button } from '@mui/material';
+import DoneIcon from '@mui/icons-material/Done';
 
 export interface BaseModalWindowType {
   openModal: boolean;
   closeModal: () => void;
   style_close: string;
   color_off:
-    | "inherit"
-    | "disabled"
-    | "action"
-    | "primary"
-    | "secondary"
-    | "error"
-    | "info"
-    | "success"
-    | "warning";
+    | 'inherit'
+    | 'disabled'
+    | 'action'
+    | 'primary'
+    | 'secondary'
+    | 'error'
+    | 'info'
+    | 'success'
+    | 'warning';
   style_title: string;
   title: string;
   text: string;
-  onSubmit: (event: React.FormEvent<HTMLFormElement> | any) => void;
+  onSubmit: (event: any) => void;
   style_done: any;
 }
 
@@ -40,6 +40,7 @@ const BaseModalWindow: React.FC<BaseModalWindowType> = ({
   onSubmit,
   style_done,
 }) => {
+  // @ts-ignore
   return (
     <>
       <Modal

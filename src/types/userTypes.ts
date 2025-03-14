@@ -1,4 +1,4 @@
-import { profileType } from "./profileTypes";
+import { profileType } from './profileTypes';
 
 export interface initialUsersType {
   userById: profileType | null;
