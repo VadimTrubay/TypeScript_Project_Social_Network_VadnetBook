@@ -7,15 +7,14 @@ import styles from './Layout.module.css';
 import { LayoutProps } from '../../types/layoutTypes';
 import { useSelector } from 'react-redux';
 import { selectAuthError } from '../../redux/auth/selectors';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 export const Layout = ({ children }: LayoutProps) => {
   const errorMessage = useSelector(selectAuthError);
 
   useEffect(() => {
     if (errorMessage) {
-      // @ts-ignore
-      toast.error(errorMessage, toast_settings);
+      toast.error(errorMessage);
     }
   }, [errorMessage]);
 
