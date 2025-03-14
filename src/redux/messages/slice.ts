@@ -21,17 +21,17 @@ const messagesSlice = createSlice({
       // @ts-ignore
       state.items.push(action.payload);
     },
-    setLoading: (state) => {
-      state.loading = true;
-    },
-    setError: (state, action: PayloadAction<any>) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    deleteMessage: (state, action: PayloadAction<string>) => {
-      state.items = state.items.filter((message) => message.id !== action.payload);
-      toast.success(`Message deleted successfully`);
-    },
+    // setLoading: (state) => {
+    //   state.loading = true;
+    // },
+    // setError: (state, action: PayloadAction<any>) => {
+    //   state.loading = false;
+    //   state.error = action.payload;
+    // },
+    // deleteMessage: (state, action: PayloadAction<string>) => {
+    //   state.items = state.items.filter((message) => message.id !== action.payload);
+    //   toast.success(`Message deleted successfully`);
+    // },
   },
   extraReducers: () => {
     // Здесь можно добавить дополнительные обработчики для других действий, если это необходимо
