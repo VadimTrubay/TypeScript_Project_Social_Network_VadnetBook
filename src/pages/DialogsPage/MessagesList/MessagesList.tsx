@@ -4,7 +4,7 @@ import { setMessages, addMessage } from '../../../redux/messages/slice';
 import { WebSocketService } from '../../../utils/websocketService';
 import AddMessageBlock from './AddMessageBlock/AddMessageBlock';
 import { SingleMessage } from './SingleMessage/SingleMessage';
-import { selectDialogs, selectIdActiveDialog } from '../../../redux/dialogs/selectors';
+import { selectDialogs, selectIdActiveDialog } from '../../../redux/dialogs/selectors.js';
 import { formatDate } from '../../../utils/formatDate';
 import { Link } from 'react-router-dom';
 import defaultUser from '../../../components/Other/user.png';
@@ -33,34 +33,36 @@ export const MessagesList = () => {
   }, [messages]);
 
   useEffect(() => {
-    // Устанавливаем WebSocket
-    // @ts-ignore
-    wsService.current = new WebSocketService(
-      // `ws://localhost:8000/ws/dialogs/${idActiveDialog}/messages/`,
-      `wss://django-project-social-network-vadnetbook.onrender.com/api/v1/ws/dialogs/${idActiveDialog}/messages/`,
-      accessToken
-    );
     console.log(idActiveDialog);
-
-    // Обработка сообщений от WebSocket
-    // @ts-ignore
-    wsService.current.onMessage((data) => {
-      if (data.type === 'existing_message') {
-        // Загружаем все сообщения при подключении
-        dispatch(setMessages(data.message));
-        setMessagesState(data.message);
-      } else if (data.type === 'new_message') {
-        // Добавляем новое сообщение в конец списка
-        dispatch(addMessage(data.message));
-        // @ts-ignore
-        setMessagesState((prevMessages) => [...prevMessages, data.message]);
-      }
-    });
-
-    return () => {
+    // Устанавливаем WebSocket
+    if (idActiveDialog) {
       // @ts-ignore
-      wsService.current.close();
-    };
+      wsService.current = new WebSocketService(
+        `ws://localhost:8000/ws/dialogs/${idActiveDialog}/messages/`,
+        // `wss://django-project-social-network-vadnetbook.onrender.com/api/v1/ws/dialogs/${idActiveDialog}/messages/`,
+        accessToken
+      );
+
+      // Обработка сообщений от WebSocket
+      // @ts-ignore
+      wsService.current.onMessage((data) => {
+        if (data.type === 'existing_message') {
+          // Загружаем все сообщения при подключении
+          dispatch(setMessages(data.message));
+          setMessagesState(data.message);
+        } else if (data.type === 'new_message') {
+          // Добавляем новое сообщение в конец списка
+          dispatch(addMessage(data.message));
+          // @ts-ignore
+          setMessagesState((prevMessages) => [...prevMessages, data.message]);
+        }
+      });
+
+      return () => {
+        // @ts-ignore
+        wsService.current.close();
+      };
+    }
   }, [dispatch, accessToken, idActiveDialog]);
 
   return (

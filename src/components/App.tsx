@@ -1,13 +1,13 @@
-import React, {useEffect, lazy} from 'react';
-import {Layout} from './Layout/Layout.jsx';
-import {Navigate, Route, Routes, useNavigate} from 'react-router-dom';
-import {RouterEndpoints} from '../config/routes';
-import {useDispatch, useSelector} from 'react-redux';
-import {selectIsAuth} from '../redux/auth/selectors';
-import {fetchMe} from '../redux/auth/operations';
-import {AppDispatch} from '../redux/store';
+import React, { useEffect, lazy } from 'react';
+import { Layout } from './Layout/Layout.jsx';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { RouterEndpoints } from '../config/routes';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsAuth } from '../redux/auth/selectors';
+import { fetchMe } from '../redux/auth/operations';
+import { AppDispatch } from '../redux/store';
 import styles from './App.module.css';
-import {fetchMeProfile} from '../redux/profile/operations';
+import { fetchMeProfile } from '../redux/profile/operations';
 import DialogsPage from '../pages/DialogsPage/DialogsPage';
 
 const ProfilePage = lazy(() => import('../pages/ProfilePage/ProfilePage'));
@@ -31,7 +31,7 @@ const App = () => {
   useEffect(() => {
     const lastPath = localStorage.getItem('lastPath');
     if (lastPath) {
-      navigate(lastPath, {replace: true});
+      navigate(lastPath, { replace: true });
     }
   }, []);
 
@@ -49,36 +49,36 @@ const App = () => {
       <Layout className={styles.container}>
         <Routes>
           {/*<Route path="/" element={<Navigate to={RouterEndpoints.users}/>}/>*/}
-          <Route path={RouterEndpoints.users} element={<UsersPage/>}/>
+          <Route path={RouterEndpoints.users} element={<UsersPage />} />
           <Route
             path={RouterEndpoints.profile}
-            element={!isAuth ? <Navigate to={RouterEndpoints.signin}/> : <ProfilePage/>}
+            element={!isAuth ? <Navigate to={RouterEndpoints.signin} /> : <ProfilePage />}
           />
           <Route
             path={RouterEndpoints.followers}
-            element={!isAuth ? <Navigate to={RouterEndpoints.signin}/> : <FollowersPage/>}
+            element={!isAuth ? <Navigate to={RouterEndpoints.signin} /> : <FollowersPage />}
           />
           <Route
             path={RouterEndpoints.following}
-            element={!isAuth ? <Navigate to={RouterEndpoints.signin}/> : <FollowingPage/>}
+            element={!isAuth ? <Navigate to={RouterEndpoints.signin} /> : <FollowingPage />}
           />
           <Route
             path={RouterEndpoints.dialogs}
-            element={!isAuth ? <Navigate to={RouterEndpoints.signin}/> : <DialogsPage/>}
+            element={!isAuth ? <Navigate to={RouterEndpoints.signin} /> : <DialogsPage />}
           />
           <Route
             path={RouterEndpoints.signup}
-            element={isAuth ? <Navigate to={RouterEndpoints.users}/> : <UserRegistrationPage/>}
+            element={isAuth ? <Navigate to={RouterEndpoints.users} /> : <UserRegistrationPage />}
           />
           <Route
             path={RouterEndpoints.signin}
-            element={isAuth ? <Navigate to={RouterEndpoints.users}/> : <UserAuthorizationPage/>}
+            element={isAuth ? <Navigate to={RouterEndpoints.users} /> : <UserAuthorizationPage />}
           />
           <Route
             path={`${RouterEndpoints.users}/${RouterEndpoints.id}`}
-            element={<ProfileByIdPage/>}
+            element={<ProfileByIdPage />}
           />
-          <Route path="*" element={<NotFoundPage/>}/>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>
     </>

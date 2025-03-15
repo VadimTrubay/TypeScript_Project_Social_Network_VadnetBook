@@ -4,8 +4,8 @@ export class WebSocketService {
       throw new Error('Токен отсутствует!');
     }
 
-    const socketUrl = `${url}`;
-    this.socket = new WebSocket(socketUrl, [`Bearer ${token}`]); // Bearer передаётся в subprotocol
+    const socketUrl = `${url}?token=${token}`;
+    this.socket = new WebSocket(socketUrl);
     this.listeners = [];
 
     this.socket.onmessage = (event) => {
