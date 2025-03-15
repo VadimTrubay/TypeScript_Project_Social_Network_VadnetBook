@@ -37,7 +37,7 @@ export const MessagesList = () => {
     // @ts-ignore
     wsService.current = new WebSocketService(
       // `ws://localhost:8000/ws/dialogs/${idActiveDialog}/messages/`,
-      `ws://django-project-social-network-vadnetbook.onrender.com/api/v1/ws/dialogs/${idActiveDialog}/messages/`,
+      `wss://django-project-social-network-vadnetbook.onrender.com/api/v1/ws/dialogs/${idActiveDialog}/messages/`,
       accessToken
     );
     console.log(idActiveDialog);
