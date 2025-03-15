@@ -22,7 +22,6 @@ const DialogsPage = () => {
       <MessagesList />
     </div>
   );
-
 };
 
 export default DialogsPage;

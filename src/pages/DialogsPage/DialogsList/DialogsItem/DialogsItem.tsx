@@ -19,7 +19,7 @@ export const DialogsItem = ({ dialog }: any) => {
         users: dialog.other_user.id,
       })
     );
-    console.log(dialog.other_user.id)
+    console.log(dialog.other_user.id);
     dispatch(fetchUserById(dialog.other_user.id));
   };
 
