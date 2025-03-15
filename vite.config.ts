@@ -1,25 +1,35 @@
-import {defineConfig, loadEnv} from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import {join} from 'path';
+import { join } from 'path';
 
-
-export default defineConfig(({mode}) => {
+// https://vitejs.dev/config/
+export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
     define: {
-      'process.env': env
+      'process.env': env,
     },
     plugins: [react(), tsconfigPaths()],
+    base: '/',
+    test: {
+      environment: 'jsdom',
+      globals: true,
+    },
     resolve: {
       alias: {
         '@': join(__dirname, 'src'),
-        global: "global", // Ensure `global` resolves properly
+      },
+    },
+    build: {
+      sourcemap: true,
+      rollupOptions: {
+        external: ['luxon'],
       },
     },
     server: {
       host: '0.0.0.0',
-      port: 3000
-    }
-  }
-})
+      port: 5173,
+    },
+  };
+});
