@@ -48,7 +48,8 @@ const App = () => {
     <>
       <Layout className={styles.container}>
         <Routes>
-          <Route path={RouterEndpoints.users} element={<Navigate to={RouterEndpoints.users}/>}/>
+          {/*<Route path="/" element={<Navigate to={RouterEndpoints.users}/>}/>*/}
+          <Route path={RouterEndpoints.users} element={<UsersPage/>}/>
           <Route
             path={RouterEndpoints.profile}
             element={!isAuth ? <Navigate to={RouterEndpoints.signin}/> : <ProfilePage/>}
@@ -61,7 +62,6 @@ const App = () => {
             path={RouterEndpoints.following}
             element={!isAuth ? <Navigate to={RouterEndpoints.signin}/> : <FollowingPage/>}
           />
-          <Route path={RouterEndpoints.users} element={<UsersPage/>}/>
           <Route
             path={RouterEndpoints.dialogs}
             element={!isAuth ? <Navigate to={RouterEndpoints.signin}/> : <DialogsPage/>}
