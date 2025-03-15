@@ -48,7 +48,7 @@ const App = () => {
     <>
       <Layout className={styles.container}>
         <Routes>
-          <Route path="/" element={<Navigate to={RouterEndpoints.users}/>}/>
+          <Route path={RouterEndpoints.users} element={<Navigate to={RouterEndpoints.users}/>}/>
           <Route
             path={RouterEndpoints.profile}
             element={!isAuth ? <Navigate to={RouterEndpoints.signin}/> : <ProfilePage/>}
